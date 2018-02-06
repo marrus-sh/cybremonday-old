@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang={{ page.lang | default: site.lang | default: 'en' }}>
+
+<title>{{ page.title | default: site.title | default: site.github.repository_name }}</title>
+<meta charset=utf-8>
+<meta name=viewport content="width=30em">
+
+<style type=text/css>
+{% capture styling %}{% assign issue = site.CMON | sort: 'date' | last %}
+	$bg_colour: #faf8f7;
+	$fg_colour: #1f1a14;
+	$hex_colour: {% if issue.invert %}{{ issue.hex_colour | default: '$bg_colour' }}{% else %}{{ issue.hex_colour | default: '$fg_colour' }}{% endif %};;
+
+	html {
+		display: block;
+		position: static;
+		margin: 0;
+		border: none;
+		padding: 0;
+		font: normal 1em / 1.5 serif;
+	}
+
+	body {
+		display: block;
+		position: static;
+		margin: 0;
+		border: none;
+		padding: 0;
+		min-width: 30em;
+		height: 100vh;
+		color: {% if issue.invert %}$fg_colour{% else %}$bg_colour{% endif %};
+		background: $hex_colour;
+		text-align: center;
+	}
+
+	#portal {
+		display: block;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		border: none;
+		padding: 1.5em;
+		outline: thin transparent dashed;
+		outline-offset: 1.5em;
+		width: 30em;
+		height: 7.5em;
+		color: inherit;
+		box-shadow: 0 0 0 0 $fg_colour;
+		text-decoration: none;
+		transition: outline-color .3s, outline-offset .3s, box-shadow .3s;
+
+		body:hover > & {
+			outline-color: {% if issue.invert %}$fg_colour{% else %}$bg_colour{% endif %};
+			outline-offset: 0;
+		}
+
+		&:hover { box-shadow: .25em .25em .75em 0 $fg_colour }
+	}
+
+	#title {
+		display: inline-block;
+		position: static;
+		margin: -3px;
+		border: 3px {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %} solid;
+		padding: 0 .25em;
+		max-width: 100%;
+		height: 1em;
+		color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+		background: {% if page.invert %}$hex_colour{% else %}$bg_colour{% endif %};
+		font: bold italic 3em / 1 sans-serif;
+		letter-spacing: .125em;
+		text-transform: uppercase;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	#latest {
+		display: block;
+		position: static;
+		margin: .75em 0 0;
+		border: none;
+		padding: 0;
+		height: 1.5em;
+		font: normal 2em / 1.5 serif;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+{% endcapture %}{{ styling | scssify }}</style>
+
+{{ content }}

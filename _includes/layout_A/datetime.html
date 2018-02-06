@@ -1,0 +1,2 @@
+<time {% if include.id %}id={{ include.id | replace: " ", "_" | xml_escape }} {% endif %}datetime="{{ include.datetime | date: "%Y-%m-%d" }}">{{ include.datetime | date: "%d %B %Y" }}</time>
+{%- comment %}[Strip whitespace]{% endcomment -%}

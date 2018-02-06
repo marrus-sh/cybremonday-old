@@ -1,0 +1,7 @@
+---
+title: Images | CYBREMONDAY
+layout: nada
+---
+<h1>Images</h1>
+<!--  Miscellaneous images.  There is no real organization here, as each image may be used multiple times.  -->
+{% assign images = site.static_files | where: "type", "image" | sort: "name" %}{% include nada/file_list.html files=images %}

@@ -1,0 +1,76 @@
+title: CYBREMONDAY
+author: CYBREMONDAY Staff
+description: A weekly cybrezine
+lang: en
+permalink: /0:year:month:day/:slug.html
+paginate: 7
+paginate_path: /archive/:num/
+timezone: US/Pacific
+markdown: kramdown
+collections:
+  CGST:  #  CYBREMONDAY guest issues
+    output: true
+  CMBD:  #  CYBREMONDAY embedded content
+    output: true
+  CMON:  #  CYBREMONDAY original numbered issues
+    output: true
+  CPLA:  #  CYBREMONDAY issue playlists; numbering tracks CMON
+    output: true
+  CPLB:  #  CYBREMONDAY alternate playlists; numbering is freeform
+    output: true
+kramdown:
+    smart_quotes: ["apos", "apos", "quot", "quot"]
+plugins:
+  - jekyll-coffeescript
+  - jekyll-redirect-from
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      author: CYBREMONDAY Staff
+  -
+    scope:
+      path: bkg
+    values:
+      type: background
+  -
+    scope:
+      path: cvr
+    values:
+      type: cover
+  -
+    scope:
+      path: img
+    values:
+      type: image
+  -
+    scope:
+      path: ""
+      type: CGST
+    values:
+      permalink: "/:collection:name/"
+  -
+    scope:
+      path: ""
+      type: CMBD
+    values:
+      permalink: "/:collection:name/"
+  -
+    scope:
+      path: ""
+      type: CMON
+    values:
+      permalink: "/:collection:name/"
+  -
+    scope:
+      path: ""
+      type: CPLA
+    values:
+      permalink: "/:collection:name/"
+  -
+    scope:
+      path: ""
+      type: CPLB
+    values:
+      permalink: "/:collection:name/"

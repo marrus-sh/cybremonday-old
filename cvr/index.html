@@ -1,0 +1,7 @@
+---
+title: Covers | CYBREMONDAY
+layout: nada
+---
+<h1>Covers</h1>
+<!--  Each issue may have a single cover image, whose name should match the issue's slug.  -->
+{% assign covers = site.static_files | where: "type", "background" | sort: "name" %}{% include nada/file_list.html files=covers %}

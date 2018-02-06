@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang={{ page.lang | default: site.lang | default: "en" }}>
+
+<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
+<meta charset=utf-8>
+<meta name=viewport content="width=24em">
+
+<style type=text/css>
+{% capture styling %}
+	$bg_colour: #faf8f7;
+	$fg_colour: #1f1a14;
+	$aside_colour: mix({{ page.hex_colour | default: "$fg_colour" }}, $bg_colour, 25%);
+	$hex_colour: {% if page.invert %}{{ page.hex_colour | default: '$bg_colour' }}{% else %}{{ page.hex_colour | default: '$fg_colour' }}{% endif %};;
+	$background_image: url("{{ page.background | relative_url }}");
+	$h3_image: url("{{ "/img/siri_small.png" | relative_url }}");
+
+	html {
+		display: block;
+		position: static;
+		margin: 0;
+		border: none;
+		padding: 0;
+		font: normal 1em / 1.5 serif;
+	}
+	body {
+		display: block;
+		position: static;
+		margin: 0;
+		border: none;
+		padding: 3em 7px 0;
+		min-width: 21.6em;
+		color: $bg_colour;
+		background: $background_image fixed center / cover no-repeat, $fg_colour;
+	}
+	#topbar {
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		margin: 0;
+		border: none;
+		padding: .375em .75em;
+		height: 1.25em;
+		color: {% if page.invert %}$fg_colour{% else %}$bg_colour{% endif %};
+		background: $hex_colour;
+		font: bold italic 1.5em / 1.25 sans-serif;
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		z-index: 1;
+
+		h1 {
+			display: inline-block;
+			position: static;
+			margin: -3px;
+			border: 3px {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %} solid;
+			padding: .125em .25em;
+			height: 1em;
+			color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+			background: {% if page.invert %}$hex_colour{% else %}$bg_colour{% endif %};
+			font: bold italic 1em / 1 sans-serif;
+			letter-spacing: .125em;
+			text-transform: uppercase;
+			vertical-align: bottom;
+		}
+		a[href] { text-decoration: none }
+	}
+	#appx {
+		display: block;
+		position: relative;
+		margin: 0 -7px;
+		border: none;
+		padding: .5em .75em;
+		color: {% if page.invert %}$fg_colour{% else %}$bg_colour{% endif %};
+		background: $hex_colour;
+		font: normal .8em / 1.25 serif;
+		text-align: center;
+		overflow: hidden;
+
+		& > p {
+			display: block;
+			position: static;
+			margin: 1em auto;
+			border: none;
+			padding: 0;
+			max-width: 43.75em;
+		}
+	}
+	article {
+		display: block;
+		position: relative;
+		margin: auto;
+		border: none;
+		padding: 0 3em;
+		max-width: 31em;
+		color: $fg_colour;
+		background: $bg_colour;
+		box-shadow: 0 0 3.5em 0 $fg_colour;
+		text-align: justify;
+		hyphens: auto;
+
+		&::before,
+		&::after {
+			display: block;
+			position: static;
+			clear: both;
+			overflow: hidden;
+			content: "";
+		}
+		#title {
+			display: block;
+			position: relative;
+			margin: 0 -3em;
+			border: none;
+			padding: 0;
+			color: {% if page.invert %}$fg_colour{% else %}$bg_colour{% endif %};
+			background: $hex_colour;
+			min-height: 21em;
+			overflow: hidden;
+
+			& > h2#issuetitle {
+				display: block;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				border: none;
+				padding: 0;
+				height: 3em;
+				font: bold 2.7em / 1.5 sans-serif;
+				text-align: center;
+
+				& > cite {
+					display: inline;
+					position: static;
+					margin: 0;
+					border-style: solid double double solid;
+					border-color: currentColor;
+					border-width: thick;
+					padding: 0 .25em;
+					color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+					background: {% if page.invert %}$hex_colour{% else %}$bg_colour{% endif %};
+					font: inherit;
+					text-transform: uppercase;
+				}
+			}
+			& > p {
+				display: block;
+				position: absolute;
+				margin: 0;
+				border: thin currentColor solid;
+				padding: 0 .25em;
+				color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+				background: {% if page.invert %}$hex_colour{% else %}$bg_colour{% endif %};
+
+				&#journaltitle {
+					top: 1.5em;
+					left: 1.5em;
+					padding: 0 .5em;
+					max-width: calc(100% - 4em);
+					font: bold italic 1em / 1.5 sans-serif;
+					letter-spacing: .125em;
+					text-transform: uppercase;
+				}
+				&#issueno {
+					top: 3.75em;
+					left: 3em;
+					max-width: calc(100% - 6.5em);
+					font: italic 1rem / 1.5 serif;
+					text-transform: uppercase;
+				}
+				&#weekno {
+					bottom: 1.5em;
+					right: 1.5em;
+					max-width: calc(100% - 3.5em);
+					font: italic 1rem / 1.5 serif;
+
+					& > time { font: inherit }
+				}
+			}
+			& > img#cover {
+				display: block;
+				position: static;
+				margin: 0;
+				border: none;
+				padding: 0;
+				width: 100%;
+				height: auto;
+				color: transparent;
+			}
+		}
+		#playlist {
+			display: block;
+			position: static;
+			margin: 0 -3em;
+			border: none;
+			padding: 0;
+
+			& > iframe#playlist\.embed {
+				display: block;
+				position: static;
+				margin: 0;
+				border: none;
+				padding: 0;
+				width: 100%;
+				height: 10.8em;
+			}
+		}
+		#warnings {
+			display: block;
+			position: relative;
+			margin: 0 -3.75em;
+			border-style: none none solid;
+			border-color: transparent transparent {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+			border-width: 0 0 thin;
+			padding: .5em .75em;
+			color: $fg_colour;
+			background: $aside_colour;
+			font: italic .8em / 1.875 serif;
+			text-align: center;
+		}
+		#endmatter {
+			display: block;
+			position: relative;
+			margin: 0 -3.75em;
+			border-style: solid none none;
+			border-color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %} transparent transparent;
+			border-width: thin 0 0;
+			padding: 0;
+			color: $fg_colour;
+			background: $aside_colour;
+			font: normal .8em / 1.875 serif;
+			overflow-y: auto;
+
+			& > section { margin: 1.25em 2.5em }
+			#hex\.colour {
+				display: block;
+				position: static;
+				float: left;
+				box-sizing: border-box;
+				margin: .625em .75em 0 0;
+				padding: 3.5em 1em;
+				width: 8em;
+				height: 8em;
+				font: normal 1.875em / 1 monospace;
+				text-align: center;
+			}
+			h3 {
+				display: block;
+				position: static;
+				margin: 1.25em -2.5em;
+				border-style: double none;
+				border-color: {% if page.invert %}$fg_colour{% else %}$bg_colour{% endif %} transparent;
+				border-width: medium 0;
+				padding: .5em 2.5em;
+				color: {% if page.invert %}$fg_colour{% else %}$bg_colour{% endif %};
+				background: $hex_colour;
+				font: bold 1em / 1.875 sans-serif;
+				text-align: center;
+
+				&::after { content: ":" }
+			}
+			p {
+				display: inline;
+				position: static;
+				margin: 0;
+				border: none;
+				padding: 0;
+
+				& + p::before {
+					display: inline-block;
+					position: static;
+					margin: 0;
+					border: none;
+					padding: 0 .75em 0 0;
+					width: 1.25em;
+					color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+					background: {% if page.invert %}$hex_colour{% else %}transparent{% endif %};
+					font: italic 1em / 1.875 serif;
+					text-align: right;
+					content: "¶";
+				}
+			}
+		}
+		& > nav,
+		& > section {
+			display: block;
+			position: relative;
+			margin: -3em 0 1em;
+			border: none;
+			padding: 4em 1em 0;
+			pointer-events: none;
+
+			& > * { pointer-events: auto }
+			&#introduction > a.sectionlink > h3,
+			& > h3 {
+				display: block;
+				position: static;
+				margin: 0;
+				border-style: double solid;
+				border-color: currentColor transparent;
+				border-width: thick thick;
+				padding: 1rem .75em;
+				color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+				background: {% if page.invert %}$hex_colour{% else %}transparent{% endif %};
+				font: bold 3em / 1 sans-serif;
+				letter-spacing: .125em;
+				text-align: center;
+				text-transform: uppercase;
+			}
+			&:not(#introduction) > a.sectionlink > h3,
+			& > h3 {
+				display: block;
+				position: relative;
+				margin: 0 -1em 0 -1.75em;
+				border: none;
+				border-radius: 1.75em 0 0 1.75em;
+				padding: 1em .75em 1em 4.5em;
+				min-height: 1.5em;
+				color: $bg_colour;
+				background: radial-gradient(ellipse farthest-corner at -13% -13%, $fg_colour 69%, {% if page.invert %}mix($fg_colour, $hex_colour, 75%) 69%, mix($fg_colour, $hex_colour, 75%) 74%, mix($fg_colour, $hex_colour, 50%) 74%,  mix($fg_colour, $hex_colour, 50%) 79%,  mix($fg_colour, $hex_colour, 25%) 79%, mix($fg_colour, $hex_colour, 25%) 84%, {% endif %}$hex_colour 84%), $fg_colour;
+				font: normal 1em / 1.5 sans-serif;
+				font-variant: small-caps;
+
+				&::before {
+					display: block;
+					position: absolute;
+					top: 0;
+					left: .75em;
+					bottom: 0;
+					margin: auto;
+					border: none;
+					border-radius: 50%;
+					padding: 0;
+					height: 3em;
+					width: 3em;
+					background: $h3_image center / contain, $hex_colour;
+					background-blend-mode: luminosity;
+					box-shadow: 0 0 .375em .375em inset $fg_colour;
+					transition: box-shadow ease-in-out .15s;
+					content: "";
+				}
+				&:hover {
+					&::before { box-shadow: 0 0 .25em .25em inset $fg_colour }
+				}
+				&::after {
+					display: block;
+					position: absolute;
+					top: 100%;
+					right: 0;
+					margin: 0;
+					border: none;
+					padding: 0;
+					width: 1px;
+					height: 15em;
+					color: $hex_colour;
+					background: linear-gradient(to bottom, currentColor, transparent);
+					content: "";
+				}
+			}
+			& > a.sectionlink,
+			h3 {
+				& + blockquote {
+					margin-top: 0;
+					border-top: 0 transparent none
+				}
+			}
+			& > nav {
+				margin: 0 -4em;
+				border-style: solid none;
+				border-color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %} transparent;
+				border-width: thin 0;
+				padding: 0 4em;
+				background: $aside_colour;
+				overflow-y: auto;
+
+				a[href] { font-style: italic;
+
+					&:not(:hover) {
+						color: inherit;
+						text-decoration: none;
+					}
+				}
+			}
+			blockquote {
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
+				justify-content: start;
+				position: static;
+				margin: .75em auto;
+				border-style: double solid;
+				border-color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %} transparent;
+				border-width: medium .5em;
+				padding: 1em 1.5em;
+				width: -webkit-fit-content;
+				width: -moz-fit-content;
+				width: fit-content;
+				min-width: calc(50% + 2em);
+				background: {% if page.invert %}$hex_colour{% else %}transparent{% endif %};
+
+				& > p {
+					margin: 0 0 .75em;
+
+					&:only-of-type { align-self: center }
+					&:last-child { margin-bottom: 0 }
+					&::before { content: no-open-quote }
+					&::after { content: no-close-quote }
+					&:first-of-type::before,
+					&:last-of-type::after {
+						display: block;
+						position: absolute;
+						margin: 0;
+						border: none;
+						padding: 0 .375em;
+						min-width: .625em;
+						height: 1em;
+						color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+						background: {% if page.invert %}$hex_colour{% else %}transparent{% endif %};
+						font: bold italic 2em / 1 serif;
+						opacity: .69;
+					}
+					&:first-of-type::before {
+						top: .25em;
+						right: 100%;
+						padding-left: 0;
+						text-align: right;
+						content: open-quote;
+					}
+					&:last-of-type::after {
+						bottom: -.25em;
+						left: 100%;
+						padding-right: 0;
+						text-align: left;
+						content: close-quote;
+					}
+				}
+				& > footer:last-child {
+					display: block;
+					position: relative;
+					box-sizing: border-box;
+					margin: 0;
+					border: none;
+					padding: 0 0 0 2.5em;
+					align-self: center;
+					font: normal .8em / 1.25 serif;
+					width: 0;
+					min-width: 100%;
+
+					&::before {
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 0;
+						margin: 0;
+						border: none;
+						padding: 0 .9375em 0 0;
+						width: 1.5625em;
+						color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+						background: {% if page.invert %}$hex_colour{% else %}transparent{% endif %};
+						text-align: right;
+						content: "―";
+					}
+				}
+			}
+			figure {
+				display: block;
+				position: static;
+				margin: .75em -1em;
+				border: none;
+				padding: 0;
+			}
+			h4 {
+				display: block;
+				position: static;
+				margin: 1em 0 .5em;
+				border: none;
+				padding: 0;
+				font: bold 1.5em / 1 serif;
+			}
+			iframe {
+				display: block;
+				position: static;
+				box-sizing: border-box;
+				margin: 0;
+				border: none;
+				padding: 0;
+
+				&.webview {
+					border: 7px $fg_colour inset;
+					width: 100%;
+					height: 21.6em;
+				}
+			}
+			div.p,
+			p {
+				display: block;
+				position: relative;
+				margin: .75em 0;
+				border: none;
+				padding: 0;
+
+				& + div.p,
+				& + p { text-indent: 2em;
+
+					&::before {
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 0;
+						margin: 0;
+						border: none;
+						padding: 0 .75em 0 0;
+						width: 1.25em;
+						color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+						background: {% if page.invert %}$hex_colour{% else %}transparent{% endif %};
+						font: italic 1em / 1.5 serif;
+						text-align: right;
+						text-indent: 0;
+						vertical-align: middle;
+						content: "¶";
+					}
+					& > * { text-indent: 0 }
+				}
+				& > div.p,
+				& > p {
+					position: static;
+					margin: 0;
+
+					& + div.p,
+					& + p { text-indent: 0;
+
+						&::before { content: none }
+					}
+					&:not(:last-child) { text-align-last: center }
+				}
+				& > blockquote,
+				& > ol,
+				& > table,
+				& > ul { margin: 0 auto }
+			}
+			ol,
+			ul {
+				display: block;
+				position: static;
+				margin: .75em 0;
+				border: none;
+				padding: 0;
+				counter-reset: list-count;
+
+				& > li {
+					display: block;
+					position: relative;
+					margin: 0;
+					border: none;
+					padding: 0 0 0 2em;
+
+					&::before {
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 0;
+						margin: 0;
+						border: none;
+						padding: 0 .75em 0 0;
+						width: 1.25em;
+						color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+						background: {% if page.invert %}$hex_colour{% else %}transparent{% endif %};
+						font: italic 1em / 1.5 serif;
+						text-align: right;
+					}
+				}
+			}
+			ol > li::before { content: counter(list-count) "." }
+			ul > li::before { content: "⁃" }
+			ul > li ul > li::before { content: "†" }
+			ul > li ul > li ul > li::before { content: "÷" }
+			ul > li ul > li ul > li ul > li::before { content: "‡" }
+			table {
+				display: table;
+				position: static;
+				margin: .75em auto;
+				border: none;
+				border-collapse: collapse;
+				padding: 0;
+
+				td,
+				th {
+					display: table-cell;
+					position: static;
+					margin: 0;
+					border: none;
+					padding: .25em .375em;
+
+					&.lefthand { text-align-last: right }
+					&.righthand { text-align-last: left }
+				}
+
+				&.split {
+					position: static;
+					box-sizing: border-box;
+					border-style: dotted double double dotted;
+					border-color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+					border-width: thin medium medium thin;
+					width: 100%;
+					max-width: calc(100% - 2em);
+					background: {% if page.invert %}$hex_colour{% else %}transparent{% endif %};
+
+					col {
+						border-style: none dashed;
+						border-color: transparent {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+						border-width: 0 thin;
+
+						&:first-of-type { border-left: none }
+						&:last-of-type { border-right: none }
+					}
+					& > tbody {
+						& > tr {
+							& > td { padding: .375em 1em;
+
+								p:first-of-type { margin-top: 0 }
+								p:last-of-type { margin-bottom: 0 }
+							}
+						}
+					}
+				}
+			}
+		}
+		@media (max-width: 25em) {
+			padding: 0 1em;
+			box-shadow: 0 0 21px 7px $fg_colour;
+
+			#title,
+			#playlist { margin: 0 -1em }
+			#warnings,
+			#endmatter { margin: 0 -1.25em }
+			& > section {
+				& > nav {
+					margin: 0 -2em;
+					padding: 0 2em;
+				}
+			}
+		}
+		a[href] {
+			color: $fg_colour;
+			background: transparent;
+			text-decoration: underline;
+			text-decoration-style: wavy;
+
+			&:hover {
+				color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+				background: {% if page.invert %}$hex_colour{% else %}transparent{% endif %};
+				text-decoration: underline;
+				text-decoration-style: dashed;
+			}
+			&.sectionlink,
+			&.sectionlink:hover {
+				color: inherit;
+				text-decoration: none;
+			}
+		}
+		code.hashtag,
+		dfn,
+		em,
+		q,
+		strong {
+			color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+			background: {% if page.invert %}$aside_colour{% else %}transparent{% endif %};
+		}
+		b {
+			& > code.hashtag,
+			& > dfn,
+			& > em,
+			& > q,
+			& > strong {
+				color: inherit;
+				background: transparent;
+			}
+		}
+	}
+	a[href] {
+		color: inherit;
+		text-decoration: underline;
+		text-decoration-style: dashed;
+
+		&:hover { text-decoration: none }
+	}
+	b {
+		display: inline;
+		position: static;
+		margin: 0;
+		border: thin {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %} solid;
+		padding: 0 .125em;
+		font: inherit;
+		color: {% if page.invert %}$fg_colour{% else %}$bg_colour{% endif %};
+		background: $hex_colour;
+
+		&.cybremonday {
+			border: thin currentColor solid;
+			padding: 0 .25em;
+			font: bold italic 1em / 1.5 sans-serif;
+			letter-spacing: .125em;
+			text-transform: uppercase;
+		}
+	}
+	cite,
+	i { font: inherit;
+
+		&.analytic,
+		&.soCalled,
+		&.track {
+			&::before { content: open-quote }
+			&::after { content: close-quote }
+		}
+		&.monogr,
+		&.mentioned { font-style: italic }
+		&.series {
+			font-style: italic;
+			font-variant: small-caps;
+		}
+	}
+	code {
+		&.colour {
+			display: inline-block;
+			position: static;
+			margin: 0;
+			border: thin currentColor solid;
+			border-radius: .25em;
+			padding: .25em;
+			color: $bg_colour;
+			background: $fg_colour;
+			font: normal 1em / 1 monospace;
+		}
+		&.hashtag { font: bold 1em / 1 monospace }
+	}
+	dfn,
+	em { font-style: italic;
+
+		dfn,
+		em { font-style: normal }
+	}
+	img { border: none }
+	small {
+		font-size: .8em;
+		font-style: italic;
+		line-height: 1.5;
+
+		dfn,
+		em { font-style: normal }
+	}
+	span {
+		&.pre { white-space: pre-wrap }
+	}
+	strong { font-weight: bold }
+	time { font-weight: bold }
+	u { text-decoration: none;
+
+		&.bloc,
+		&.event,
+		&.placeName { font-weight: bold }
+		&.country,
+		&.district,
+		&.orgName,
+		&.persName { font-variant: small-caps }
+		&.name { font-family: sans-serif }
+		&.region,
+		&.surname { text-transform: uppercase }
+		&.settlement { /*  No styling  */ }
+	}
+{% endcapture %}{{ styling | scssify }}</style>
+
+<header id=topbar>
+	<h1><a href="{{ '/' | relative_url }}" target="_self">{{ site.title | default: site.github.repository_name }}</a></h1>
+</header>
+
+<article id=article>
+
+<header id=title>
+	<p id=journaltitle>{{ site.title | default: site.github.repository_name }}</p>
+	{% if page.issue_no %}<p id=issueno>Issue {% if 10 > page.issue_no %}0{% endif %}{{ page.issue_no }}</p>{% endif %}
+	<img id=cover alt="{{ page.image.description | xml_escape }}" src="{% if page.image.data_uri %}{{ page.image.path | default: "about:blank" }}{% else %}{{ page.image.path | relative_url | default: "about:blank" }}{% endif %}">
+	{% if page.title %}<h2 id=issuetitle><cite>{{ page.title }}</cite></h2>{% endif %}
+	<p id=weekno>The Week of {% include layout_A/datetime.html datetime=page.date %}</p>
+</header>
+
+{% capture playlist %}/CPLA{% if 10 > page.vol_no %}0{% endif %}{{ page.vol_no }}{% if 10 > page.issue_no %}0{% endif %}{{ page.issue_no }}/{% endcapture %}<aside id=playlist><iframe id=playlist.embed src="{{ playlist  | relative_url }}">Playlist: {{ page.playlist | relative_url }}</iframe></aside>
+
+{% if page.warnings and page.warnings.size > 0 %}<aside id=warnings><abbr title="Content Warning">CW</abbr>: {% if page.warnings.size > 2 %}{{ page.warnings | first | capitalize }}, {{ page.warnings | shift | pop | join: ", " }}, and {{ page.warnings | last }}{% else %}{{ page.warnings | first | capitalize }}{% if page.warnings.size > 1 %} and {{ page.warnings | last }}{% endif %}{% endif %}.</aside>{% endif %}
+
+{{ content }}
+</article>
+
+<footer id=appx>
+	<p id=pubdate> Published {% include layout_A/datetime.html datetime=page.date %}.
+	{% if page.credits and page.credits.size > 0 %}<p id=credits>
+		<strong>Credits:</strong>{% assign creditmax = page.credits.size | minus: 1 %}{% for creditno in (0..creditmax) %}{% assign credit = page.credits[creditno] %}
+		{% if credit.name %}{{ credit.name }} {% endif %}{% if credit.social %}{% if credit.name %}[{% endif %}<a href="{{ credit.social.url }}"><code class=handle>{{ credit.social.handle }}</code></a>{% if credit.name %}]{% endif %}{% endif %}{% if credit.description %}: {{ credit.description }}{% endif %}{% unless creditno == creditmax %}; {% endunless %}{% endfor %}.
+	{% endif %}
+	<p id=license> <cite class=monogr><b class=cybremonday>CYBREMONDAY</b></cite> is licensed under a <a rel=license href="https://creativecommons.org/licenses/by-sa/4.0/" title="Creative Commons Attribution-ShareAlike 4.0 International License"><cite class=monogr>CC BY-SA 4.0 license</cite></a>.<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img width=80 height=15 src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" alt="(CC) BY-SA"></a>
+</footer>
