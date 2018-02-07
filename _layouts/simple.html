@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang={{ page.lang | default: site.lang | default: 'en' }}>
+
+<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
+<meta charset=utf-8>
+
+<style type=text/css>
+{% capture styling %}{% assign issue = site.CMON | sort: 'date' | last %}
+	$bg_colour: {% if issue.invert %}{{ issue.hex_colour | default: '#faf8f7' }}{% else %}{{ issue.hex_colour | default: '#1f1a14' }}{% endif %};
+	$fg_colour: {% if issue.invert %}#1f1a14{% else %}#faf8f7{% endif %};
+
+	html {
+		display: block;
+		position: static;
+		margin: 0;
+		border: none;
+		padding: 0;
+		color: $fg_colour;
+		background: $bg_colour;
+		font: normal 1em / 1.5 serif;
+	}
+	body {
+		display: block;
+		position: static;
+		margin: auto;
+		border: none;
+		padding: 0;
+		max-width: 31em;
+	}
+	a[href] {
+		color: inherit;
+		text-decoration: underline;
+		text-decoration-style: dashed;
+
+		&:hover { text-decoration: none }
+	}
+	b {
+		display: inline;
+		position: static;
+		margin: 0;
+		border: thin $bg_colour solid;
+		padding: 0 .125em;
+		font: inherit;
+		color: $bg_colour;
+		background: $fg_colour;
+
+		&.cybremonday {
+			border: thin currentColor solid;
+			padding: 0 .25em;
+			font: bold italic 1em / 1.5 sans-serif;
+			letter-spacing: .125em;
+			text-transform: uppercase;
+		}
+	}
+	cite,
+	i { font: inherit;
+
+		&.analytic,
+		&.soCalled,
+		&.track {
+			&::before { content: open-quote }
+			&::after { content: close-quote }
+		}
+		&.monogr,
+		&.mentioned { font-style: italic }
+		&.series {
+			font-style: italic;
+			font-variant: small-caps;
+		}
+	}
+	code {
+		&.colour {
+			display: inline-block;
+			position: static;
+			margin: 0;
+			border: thin currentColor solid;
+			border-radius: .25em;
+			padding: .25em;
+			color: $bg_colour;
+			background: $fg_colour;
+			font: normal 1em / 1 monospace;
+		}
+		&.hashtag { font: bold 1em / 1 monospace }
+	}
+	dfn,
+	em { font-style: italic;
+
+		dfn,
+		em { font-style: normal }
+	}
+	img { border: none }
+	small {
+		font-size: .8em;
+		font-style: italic;
+		line-height: 1.5;
+
+		dfn,
+		em { font-style: normal }
+	}
+	span {
+		&.pre { white-space: pre-wrap }
+	}
+	strong { font-weight: bold }
+	time { font-weight: bold }
+	u { text-decoration: none;
+
+		&.bloc,
+		&.event,
+		&.placeName { font-weight: bold }
+		&.country,
+		&.district,
+		&.orgName,
+		&.persName { font-variant: small-caps }
+		&.name { font-family: sans-serif }
+		&.lang,
+		&.region,
+		&.surname { text-transform: uppercase }
+		&.settlement { /*  No styling  */ }
+	}
+{% endcapture %}{{ styling | scssify }}</style>
+
+<article id=content>
+
+{{ content }}
+</article>
