@@ -9,7 +9,7 @@
 {% capture styling %}{% assign issue = site.CMON | sort: 'date' | last %}
 	$bg_colour: #faf8f7;
 	$fg_colour: #1f1a14;
-	$hex_colour: {% if issue.invert %}{{ issue.hex_colour | default: '$bg_colour' }}{% else %}{{ issue.hex_colour | default: '$fg_colour' }}{% endif %};;
+	$hex_colour: {% if issue.invert %}{{ issue.hex_colour | default: '$bg_colour' }}{% else %}{{ issue.hex_colour | default: '$fg_colour' }}{% endif %};
 
 	html {
 		display: block;
@@ -64,12 +64,12 @@
 		display: inline-block;
 		position: static;
 		margin: -3px;
-		border: 3px {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %} solid;
+		border: 3px {% if issue.invert %}$fg_colour{% else %}$hex_colour{% endif %} solid;
 		padding: 0 .25em;
 		max-width: 100%;
 		height: 1em;
-		color: {% if page.invert %}$fg_colour{% else %}$hex_colour{% endif %};
-		background: {% if page.invert %}$hex_colour{% else %}$bg_colour{% endif %};
+		color: {% if issue.invert %}$fg_colour{% else %}$hex_colour{% endif %};
+		background: {% if issue.invert %}$hex_colour{% else %}$bg_colour{% endif %};
 		font: bold italic 3em / 1 sans-serif;
 		letter-spacing: .125em;
 		text-transform: uppercase;
