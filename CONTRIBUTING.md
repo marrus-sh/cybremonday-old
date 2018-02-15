@@ -18,7 +18,7 @@ Guidelines for contributions and other information follows.
  +  The goal of <cite class="monogr"><b class="cybremonday">CYBREMONDAY</b></cite> is to shed light on critical queer perspectives, experiences, and culture, in networked digital space.
 
  +  The goal of <cite class="monogr"><b class="cybremonday">CYBREMONDAY</b></cite> is *not* to shed light (critical or otherwise) on mainstream, straight, normative perspectives.
-    There is a lot to be said about heteronermativity et al.
+    There is alot to be said about heteronermativity et al.
     This is not the zine for it.
     Pure critiques of what mainstream corporation <var>Y</var> or straight person <var>W</var> is saying or doing will probably not fly.
     Make queer people your focus.

@@ -1,2 +1,2 @@
-<code {% if include.id %}id={{ include.id | replace: " ", "_" | xml_escape }} {% endif %}class=colour style="{% if include.light %}color: black; {% endif %}background-color: {{ include.colour }}">{{ include.colour }}</code>
+<code {% if include.id %}id={{ include.id | replace: " ", "_" | xml_escape }} {% endif %}class={% if include.light %}"light colour"{% else %}colour{% endif %} style="background-color: {{ include.colour }}">{{ include.colour }}</code>
 {%- comment %}[Strip whitespace]{% endcomment -%}

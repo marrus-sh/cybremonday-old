@@ -104,18 +104,26 @@
 	time { font-weight: bold }
 	u { text-decoration: none;
 
-		&.bloc,
-		&.event,
-		&.placeName { font-weight: bold }
-		&.country,
-		&.district,
+		&.bloc {
+			font-family: monospace;
+			font-weight: bold;
+			font-variant: small-caps;
+		}
+		&.district { font-style: italic }
+		&.event { font-weight: bold }
+		&.placeName,
+		&.country {
+			font-family: monospace;
+			font-variant: small-caps;
+		}
+		&.forename,
 		&.orgName,
-		&.persName { font-variant: small-caps }
+		&.persName,
+		&.settlement, { font-variant: small-caps }
 		&.name { font-family: sans-serif }
 		&.lang,
 		&.region,
 		&.surname { text-transform: uppercase }
-		&.settlement { /*  No styling  */ }
 	}
 {% endcapture %}{{ styling | scssify }}</style>
 

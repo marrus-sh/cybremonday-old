@@ -1,0 +1,237 @@
+{% capture styling %}
+{% if include.print %}{% assign invert = page.invert %}{% elsif include.invert and page.invert %}{% assign invert = false %}{% elsif include.invert or page.invert %}{% assign invert = true %}{% else %}{% assign invert = false %}{% endif %}
+$bg_colour: {% if include.print %}white{% elsif include.invert %}#1f1a14{% else %}#faf8f7{% endif %};
+$fg_colour: {% if include.print %}black{% elsif include.invert %}#faf8f7{% else %}#1f1a14{% endif %};
+$cur_colour: {% if include.print %}$fg_colour{% elsif include.user_set %}currentColor{% else %}$fg_colour{% endif %};
+$trans_colour: {% if include.print %}$bg_colour{% elsif include.user_set %}transparent{% else %}$bg_colour{% endif %};
+$hex_colour: {% if invert %}{{ page.hex_colour | default: '$bg_colour' }}{% else %}{{ page.hex_colour | default: '$fg_colour' }}{% endif %};
+$aside_colour: rgba({{ page.hex_colour | default: "$fg_colour" }}, .36);
+
+//  Special print styling
+{% if include.print %}
+body {
+	padding: 3em 0 0;
+	min-width: 0;
+
+	&::before,
+	&::after { display: none }
+	& > #topbar { position: absolute }
+	& > #content {
+		padding: 0 1em;
+		max-width: none;
+		box-shadow: none;
+
+		& > #article {
+			& > #title { margin: 0 -1em }
+			& > #playlist { display: none }
+			& > #warnings,
+			& > #endmatter { margin: 0 -1.25em }
+			& > section {
+				& > nav {
+					margin: 0 -2em;
+					padding: 0 2em;
+				}
+			}
+		}
+	}
+	#appx { margin: 0 }
+}
+{% endif %}
+
+%aside {
+	color: $cur_colour;
+	background-color: $aside_colour;
+}
+%bar {
+	color: {% if invert %}$cur_colour{% else %}$bg_colour{% endif %};
+	background-color: $hex_colour;
+}
+%block {
+	color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %};
+	background-color: {% if invert %}$hex_colour{% else %}transparent{% endif %};
+}
+%borderbt { border-bottom-color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %} }
+%borderlf { border-left-color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %} }
+%borderrt { border-right-color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %} }
+%bordertp { border-top-color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %} }
+%bordered {
+	@extend %bordertp;
+	@extend %borderbt;
+	@extend %borderrt;
+	@extend %borderlf;
+}
+%clear {
+	color: currentColor;
+	background-color: transparent;
+}
+%cyblock {
+	color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %};
+	background-color: {% if invert %}$hex_colour{% else %}$bg_colour{% endif %};
+}
+%hextext {
+	color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %};
+	background-color: {% if invert %}$hex_colour{% else %}transparent{% endif %};
+}
+%invert {
+	color: $bg_colour;
+	background: $fg_colour;
+}
+%link {
+	color: {% if invert %}$cur_colour{% else %}$fg_colour{% endif %};
+	background: transparent;
+}
+%linkborder { border-color: {% if invert %}$hex_colour{% else %}$aside_colour{% endif %}}
+%plain {
+	color: $fg_colour;
+	background: $bg_colour;
+}
+%setoff {
+	color: $cur_colour;
+	background-color: {% if invert %}$hex_colour{% else %}transparent{% endif %};
+}
+%weakblock {
+	color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %};
+	background-color: {% if invert %}$aside_colour{% else %}transparent{% endif %};
+}
+body {
+	color: $cur_colour;
+	background-color: $trans_colour;
+
+	{% if page.background %}&::before,
+	&::after {
+		//  We use `include.invert` here because we assume that `page.invert`
+		//  was already taken into account when designing the background.
+		color: {% if include.invert %}white{% else %}black{% endif %};
+		background-blend-mode: hue, difference;
+	}
+	{% endif %}& > #topbar { @extend %bar;
+
+		h1 { @extend %cyblock }
+	}
+	& > #content {
+		& > #article {
+			& > #title { @extend %bar;
+
+				& > h2#issuetitle {
+					& > cite { @extend %cyblock }
+				}
+				& > p { @extend %cyblock }
+			}
+			& > #warnings {
+				@extend %aside;
+				@extend %borderbt;
+			}
+			& > section {
+				&#introduction > a.sectionlink > h3,
+				&#introduction > h3 { @extend %hextext }
+				&:not(#introduction) > a.sectionlink > h3,
+				&:not(#introduction) > h3 {
+					color: $bg_colour;
+					background: radial-gradient(ellipse farthest-corner at -13% -13%, $fg_colour 69%, {% if invert %}mix($fg_colour, $hex_colour, 75%) 69%, mix($fg_colour, $hex_colour, 75%) 74%, mix($fg_colour, $hex_colour, 50%) 74%,  mix($fg_colour, $hex_colour, 50%) 79%,  mix($fg_colour, $hex_colour, 25%) 79%, mix($fg_colour, $hex_colour, 25%) 84%, {% endif %}$hex_colour 84%), $fg_colour;
+
+					&::before {
+						color: $fg_colour;
+						background-color: $hex_colour;
+					}
+					&::after { color: $hex_colour }
+				}
+				& > aside { @extend %aside }
+				& > nav {
+					@extend %aside;
+					@extend %bordertp;
+					@extend %borderbt;
+
+					& > ol,
+					& > ul {
+						& > li {
+							& + li { @extend %bordertp }
+						}
+					}
+				}
+				blockquote {
+					@extend %bordertp;
+					@extend %borderbt;
+					@extend %setoff;
+
+					& > p {
+						&:first-of-type::before,
+						&:last-of-type::after { @extend %block }
+					}
+					& > footer:last-child {
+						&::before { @extend %block }
+					}
+				}
+				div.p,
+				p {
+					& + div.p,
+					& + p {
+						&::before { @extend %block }
+					}
+				}
+				ol,
+				ul {
+					li {
+						&::before { @extend %block }
+					}
+				}
+				table {
+					&.split {
+						@extend %bordered;
+						@extend %setoff;
+
+						col {
+							@extend %borderlf;
+							@extend %borderrt;
+						}
+					}
+				}
+			}
+			& > #endmatter {
+				@extend %aside;
+				@extend %bordertp;
+
+				h3 { @extend %bar;
+
+					code.hashtag,
+					dfn,
+					em,
+					q { @extend %clear }
+					strong { @extend %cyblock }
+				}
+				p {
+					& + p::before { @extend %block }
+				}
+			}
+			a[href]:not(.sectionlink) { @extend %link;
+
+				&:hover { @extend %block }
+				&.block { @extend %linkborder }
+			}
+			code.hashtag,
+			dfn,
+			em,
+			q,
+			strong { @extend %weakblock }
+			b {
+				code.hashtag,
+				dfn,
+				em,
+				q,
+				strong { @extend %clear }
+			}
+		}
+	}
+	& > #appx { @extend %bar }
+}
+b {
+	@extend %bordered;
+	@extend %bar;
+}
+code {
+	&.colour { @extend %invert;
+
+		&.light { @extend %plain }
+	}
+}
+{% endcapture %}{{ styling | scssify }}
+{%- comment %}[Strip whitespace]{% endcomment -%}

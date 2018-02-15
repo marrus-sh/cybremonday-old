@@ -20,6 +20,8 @@ collections:
     output: true
 kramdown:
     smart_quotes: ["apos", "apos", "quot", "quot"]
+sass:
+    style: compressed
 plugins:
   - jekyll-coffeescript
   - jekyll-redirect-from

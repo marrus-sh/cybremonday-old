@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
-<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
+<title>{% if page.slug %}[{{ page.slug }}] {% endif %}{{ page.title }}{% if page.slug or page.title %} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
 <meta charset=utf-8>
-<meta name=viewport content="width=device-width">
+<meta name=viewport content=width&#x3D;device-width>
 <base target=_top>
 
 <style type=text/css>
@@ -169,18 +169,26 @@
 		time { font-weight: bold }
 		u { text-decoration: none;
 
-			&.bloc,
-			&.event,
-			&.placeName { font-weight: bold }
-			&.country,
-			&.district,
+			&.bloc {
+				font-family: monospace;
+				font-weight: bold;
+				font-variant: small-caps;
+			}
+			&.district { font-style: italic }
+			&.event { font-weight: bold }
+			&.placeName,
+			&.country {
+				font-family: monospace;
+				font-variant: small-caps;
+			}
+			&.forename,
 			&.orgName,
-			&.persName { font-variant: small-caps }
+			&.persName,
+			&.settlement, { font-variant: small-caps }
 			&.name { font-family: sans-serif }
 			&.lang,
 			&.region,
 			&.surname { text-transform: uppercase }
-			&.settlement { /*  No styling  */ }
 		}
 	}
 {% endcapture %}{{ styling | scssify }}</style>
@@ -189,7 +197,7 @@
 
 <nav id=playlist>
 	{% assign trackmax = page.tracks.size | minus: 1 %}{% for trackno in (0..trackmax) %}{% assign track = page.tracks[trackno] %}
-	<a href="{% assign trackstart = track.src | slice: 0, 7 %}{% if trackstart == "http://" or trackstart == "https:/" %}{{ track.src }}{% else %}{{ track.src | relative_url }}{% endif %}" target=_blank><span class=trackno>{% if 9 > trackno %}0{% endif %}{{ trackno | plus: 1 }}</span> <cite class=track>{{ track.title | strip_html }}</cite> | <u class=artist>{{ track.artist | strip_html }}</u> {% if track.license %}[<cite class=license>{{ track.license | strip_html }}</cite>]{% endif %}</a>
+	<a href="{% assign trackstart = track.src | slice: 0, 7 %}{% if trackstart == "http://" or trackstart == "https:/" %}{{ track.src }}{% else %}{{ track.src | relative_url }}{% endif %}" rel="external nofollow noopener noreferrer" referrerpolicy=no-referrer target=_blank><span class=trackno>{% if 9 > trackno %}0{% endif %}{{ trackno | plus: 1 }}</span> <cite class=track>{{ track.title | strip_html }}</cite> | <u class=artist>{{ track.artist | strip_html }}</u> {% if track.license %}[<cite class=license>{{ track.license | strip_html }}</cite>]{% endif %}</a>
 	{% endfor %}
 </nav>
 <footer id=info>
@@ -202,7 +210,7 @@
 				{% if track.title %}<cite class=analytic>{{ track.title }}</cite>.{% endif %}
 				{% if track.album %}In <cite class=monogr>{{ track.album }}</cite>.{% endif %}
 				{% if track.publisher %}{{ track.publisher }}{% if track.datetime %},{% else %}.{% endif %}{% endif %}
-				{% if track.datetime %}<time datetime="{{ track.datetime | date: "%Y-%m-%d" }}">{{ track.datetime | date: "%d %B %Y" }}</time>.{% endif %}
+				{% if track.datetime %}<time datetime={{ track.datetime | date: "%Y-%m-%d" }}>{{ track.datetime | date: "%d %B %Y" }}</time>.{% endif %}
 				{% if track.license %}<cite class=monogr>{{ track.license }}</cite>.{% endif %}{% endfor %}
 		</ol>
 	</section>
