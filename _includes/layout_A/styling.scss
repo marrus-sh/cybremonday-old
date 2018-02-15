@@ -228,7 +228,10 @@ b {
 	@extend %bar;
 }
 code {
-	{% if invert %}&.colour { @extend %plain;
+	{% if include.print %}&.colour { @extend %invert;
+
+		&.light { @extend %plain }
+	}{% elsif include.invert %}&.colour { @extend %plain;
 
 		&.light { @extend %invert }
 	}{% else %}&.colour { @extend %invert;
