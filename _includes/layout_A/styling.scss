@@ -228,10 +228,13 @@ b {
 	@extend %bar;
 }
 code {
-	&.colour { @extend %invert;
+	{% if invert %}&.colour { @extend %plain;
+
+		&.light { @extend %invert }
+	}{% else %}&.colour { @extend %invert;
 
 		&.light { @extend %plain }
-	}
+	}{% endif %}
 }
 {% endcapture %}{{ styling | scssify }}
 {%- comment %}[Strip whitespace]{% endcomment -%}
