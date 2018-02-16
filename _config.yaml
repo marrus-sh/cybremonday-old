@@ -74,33 +74,32 @@ defaults:
       type: CGST
     values:
       permalink: "/:collection:name/"
+      series: CYBREMONDAY Guest Issue
   -
     scope:
       path: ""
       type: CMBD
     values:
       permalink: "/:collection:name/"
+      series: CYBREMBED
   -
     scope:
       path: ""
       type: CMON
     values:
       permalink: "/:collection:name/"
+      series: CYBREMONDAY
   -
     scope:
       path: ""
       type: CNTR
     values:
       permalink: "/:collection:name/"
+      series: CYBREINTERLUDE
   -
     scope:
       path: ""
       type: CPLA
     values:
       permalink: "/:collection:name/"
-  -
-    scope:
-      path: ""
-      type: CPLB
-    values:
-      permalink: "/:collection:name/"
+      series: CYBREPLAY

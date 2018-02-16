@@ -775,7 +775,7 @@
 		    <p id=weekno>The Week of {% include datetime.html datetime=page.date %}</p>
 		</header>
 		{% if pla %}
-		<aside id=playlist><iframe id=playlist.embed src="{{ pla.url }}">Playlist: {{ pla.url }}</iframe></aside>
+		<aside id=playlist><iframe id=playlist.embed src="{{ pla.url | relative_url }}">Playlist: {{ pla.url }}</iframe></aside>
 		{% endif %}{% if page.warnings and page.warnings.size > 0 %}<aside id=warnings><abbr title="Content Warning">CW</abbr>: {% if page.warnings.size > 2 %}{{ page.warnings | first | capitalize }}, {{ page.warnings | shift | pop | join: ", " }}, and {{ page.warnings | last }}{% else %}{{ page.warnings | first | capitalize }}{% if page.warnings.size > 1 %} and {{ page.warnings | last }}{% endif %}{% endif %}.</aside>{% endif %}
 		{% endunless %}
 <!--  [{{ page.slug }}]  -->
