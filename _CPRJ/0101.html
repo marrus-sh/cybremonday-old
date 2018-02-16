@@ -7,26 +7,16 @@ image:
   description: The GlitchSoc logo.
   path: /cvr/CPRJ0101.png
 slug: CPRJ0101
-credits:
-  -
-    id: bea
-    name: <u class=persName><u class=forename>beatrix</u> <u class=surname>bitrot</u></u>
-    social:
-      title: G L I T C H
-      handle: '@bea@glitch.social'
-      url: https://glitch.social/@bea
-      federated: true
-    description: project manager
 ---
-
+{% assign bea = site.data.people.bea %}
 <p>
 	Trans girls and enbies have always played a significant role in the development of the social&#x2010;networking software <u class=name>Mastodon</u>, making up a significant portion of the original userbase, providing some of the earliest critiques on its approaches to things like privacy, accessibility, and moderation, and contributing code and resources to a number of important features—<abbr title="Content Warnings">CWs</abbr>, mutes (in a number of respects), onboarding, documentation, and more.
 	After <u class=event>the <time datetime="2017-04" title="2017-04">April</time> influx of users</u>, however, the amount of room and patience for such critical voices in upstream development has decreased, and shifting demographics has meant that the active trans presence in <u class=name>Mastodon</u> development today pales in comparison to what it once was.
 <p>
-	Noticing that a number of prominent trans voices had grown disillusioned with upstream development, <u class=persName><u class=forename>beatrix</u> <u class=surname>bitrot</u></u> [{% assign bea = page.credits | where: "id", "bea" | first %}{% include handle.html social=bea.social %}] created her own fork, {% include link.html href="https://glitch-soc.github.io/docs" title="Mastodon Glitch Edition" content="<u class=orgName>GlitchSoc</u>" %} as a way to give people somewhere to test and develop features that weren't finding much support elsewhere.
-	<q>I started it so trans women would have somewhere other than mainline to work on <span class=reg><u class=name>Mastodon</u></span></q>, <u class=persName><u class=forename>bea</u></u> told <cite class=series><b class=cybremonday>CYBREMONDAY</b></cite>.
+	Noticing that a number of prominent trans voices had grown disillusioned with upstream development, {{ bea.name.full }} [{% include handle.html social=bea.social %}] created her own fork, {% include link.html href="https://glitch-soc.github.io/docs" title="Mastodon Glitch Edition" content="<u class=orgName>GlitchSoc</u>" %} as a way to give people somewhere to test and develop features that weren't finding much support elsewhere.
+	<q>I started it so trans women would have somewhere other than mainline to work on <span class=reg><u class=name>Mastodon</u></span></q>, {{ bea.name.short }} told <cite class=series><b class=cybremonday>CYBREMONDAY</b></cite>.
 	<q>It's not an exclusive space or project.
 	I just have my priorities.</q>
-	Since the fork's founding, a number of people (including myself) have worked under <u class=persName><u class=forename>bea</u></u>'s direction to implement a number of new things, and <u class=orgName>GlitchSoc</u>'s <u class=name>Mastodon Glitch Edition</u> is now the software of choice for such instances as {% include link.html href="https://awoo.space" content="<u class=settlement>Awoo.space</u>" %}, {% include link.html href="https://monsterpit.net" content="<u class=settlement>Monsterpit</u>" %}, and {% include link.html href="https://donphan.social" content="<u class=settlement>donphan.social</u>" %}.
+	Since the fork's founding, a number of people (including myself) have worked under {{ bea.name.short }}'s direction to implement a number of new things, and <u class=orgName>GlitchSoc</u>'s <u class=name>Mastodon Glitch Edition</u> is now the software of choice for such instances as {% include link.html href="https://awoo.space" content="<u class=settlement>Awoo.space</u>" %}, {% include link.html href="https://monsterpit.net" content="<u class=settlement>Monsterpit</u>" %}, and {% include link.html href="https://donphan.social" content="<u class=settlement>donphan.social</u>" %}.
 <p>
 	You can learn more about <u class=orgName>GlitchSoc</u> on its documentation website, {% include link.html href="https://glitch-soc.github.io/docs/" content="glitch-soc.github.io/docs" %}.

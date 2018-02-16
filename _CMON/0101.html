@@ -26,36 +26,12 @@ upcoming:
 credits:
   -
     id: kibi
-    name: <u class=persName><u class=forename>Gô</u> <u class=surname>Shoemake</u></u>
     description: writing, editing, layout, design
-    social:
-      title: G L I T C H
-      handle: '@kibi@glitch.social'
-      url: https://glitch.social/@kibi
-      federated: true
-    website:
-      title: Gô ~
-      url: http://marrus.xyz/
   -
     id: shel
-    name: <u class=persName><u class=forename>Shel</u> <u class=surname>Raphen</u></u>
     description: author, <cite class=analytic>Hooking up to the Cybre</cite>
-    social:
-      title: Cybrespace
-      handle: '@shel@cybre.space'
-      url: https://cybre.space/@shel
-      federated: true
-    website:
-      title: DataPup
-      url: https://datapup.info/
   -
     id: bea
-    name: <u class=persName><u class=forename>beatrix</u> <u class=surname>bitrot</u></u>
-    social:
-      title: G L I T C H
-      handle: '@bea@glitch.social'
-      url: https://glitch.social/@bea
-      federated: true
     description: hosting, technical support
 ---
 
@@ -363,7 +339,7 @@ credits:
 			<li> <a class=block href=#models><strong><cite class=analytic>Role Modelling Queer</cite></strong></a>
 			<li>
 				<a class=block href=#hookups><strong><cite class=analytic>Hooking up to the Cybre</cite></strong></a>
-				{% assign author = page.credits | where: "id", "shel" | first %}{% include layout_A/credit.html credit=author %}
+				{% include layout_A/credit.html id="shel" %}
 			<li> <a class=block href=#drama><strong><cite class=analytic>Cybre Drama</cite></strong></a>
 		</ol>
 	</nav>
@@ -411,7 +387,7 @@ credits:
 <section id=hookups>
 	{% include layout_A/sectionlink.html id="hookups" title="Hooking up to the Cybre" %}
 	<aside>
-		{% assign author = page.credits | where: "id", "shel" | first %}{% include layout_A/credit.html credit=author %}
+		{% include layout_A/credit.html id="shel" %}
 	</aside>
 	<p>
 		As a teen gay boy (where <i class=mentioned>boy</i> is only a homonym) in a rural community, <strong>the only representation I could find</strong> for other gays like me were:

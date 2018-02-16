@@ -1,0 +1,51 @@
+amphetamine:
+  name:
+    full: <u class=persName><u class=addName>amphetamine</u></u>
+    short: <u class=persName><u class=addName>A</u></u>
+  social:
+    federated: true
+    handle: '@amphetamine@social.wxcafe.net'
+    title: Mastocafé
+    url: https://social.wxcafe.net/@amphetamine
+bea:
+  name:
+    full: <u class=persName><u class=forename>beatrix</u> <u class=surname>bitrot</u></u>
+    short: <u class=persName><u class=forename>bea</u></u>
+  social:
+    federated: true
+    handle: '@bea@glitch.social'
+    title: G L I T C H
+    url: https://glitch.social/@bea
+kibi:
+  name:
+    full: <u class=persName><u class=forename>Gô</u> <u class=surname>Shoemake</u></u>
+    short: <u class=persName><u class=forename>Gô</u></u>
+  social:
+    federated: true
+    handle: '@kibi@glitch.social'
+    title: G L I T C H
+    url: https://glitch.social/@kibi
+  website:
+    title: Gô ~
+    url: http://marrus.xyz/
+KitRedgrave:
+  name:
+    full: <u class=persName><u class=forename>Kit</u> <u class=surname>Redgrave</u></u>
+    short: <u class=persName><u class=forename>Kit</u></u>
+  social:
+    federated: true
+    handle: '@KitRedgrave@glitch.social'
+    title: G L I T C H
+    url: https://glitch.social/@KitRedgrave
+shel:
+  name:
+    full: <u class=persName><u class=forename>Shel</u> <u class=surname>Raphen</u></u>
+    short: <u class=persName><u class=forename>Shel</u></u>
+  social:
+    federated: true
+    handle: '@shel@cybre.space'
+    title: Cybrespace
+    url: https://cybre.space/@shel
+  website:
+    title: DataPup
+    url: https://datapup.info/
