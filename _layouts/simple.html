@@ -4,6 +4,8 @@
 <title>{% if page.title %}{{ page.title }} | {% endif %}{{ series }}</title>
 <meta charset=utf-8>
 
+{% seo title=false %}
+
 <style type=text/css>
 {% capture styling %}
 	$bg_colour: {% if hex.light %}{{ hex.title | default: '#faf8f7' }}{% else %}{{ hex.title | default: '#1f1a14' }}{% endif %};

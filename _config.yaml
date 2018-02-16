@@ -1,10 +1,12 @@
 title: CYBREMONDAY
-author: CYBREMONDAY Staff
-description: A weekly cybrezine
+author: CYBREMONDAY
+description: A casual webzine aimed at elucidating conversations and ideas, questioning existing narratives, and promoting discussion regarding life and culture in (cyber/cybre)space.
+url: https://cybremonday.net/
+logo: /img/siri.png
 lang: en
 permalink: /:slug/
 timezone: US/Pacific
-markdown: kramdown
+markdown: CommonMarkGhPages
 collections:  #  Order matters!  Liquid in collections is parsed sequentially.
 
   #  Freeform content
@@ -26,21 +28,21 @@ collections:  #  Order matters!  Liquid in collections is parsed sequentially.
     output: true
   CNTR:  #  CYBREMONDAY interludes; tracks *previous* CMON
     output: true
-exclude:
+exclude:  #  LICENSE.txt does not give the license for the rendered content
   - Gemfile
   - Gemfile.lock
   - LICENSE.txt
 include:  #  Not handled by default by jekyll-optional-front-matter
   - CONTRIBUTING.md
   - README.md
-kramdown:
-    smart_quotes: ["apos", "apos", "quot", "quot"]
 sass:
     style: compressed
 plugins:
   - jekyll-coffeescript
-  - jekyll-redirect-from
   - jekyll-optional-front-matter
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-titles-from-headings
 defaults:
   -
     scope:
@@ -74,6 +76,8 @@ defaults:
       type: CGST
     values:
       permalink: "/:collection:name/"
+      seo:
+        type: PublicationIssue
       series: CYBREMONDAY Guest Issue
   -
     scope:
@@ -81,6 +85,8 @@ defaults:
       type: CMBD
     values:
       permalink: "/:collection:name/"
+      seo:
+        type: WebPage
       series: CYBREMBED
   -
     scope:
@@ -88,6 +94,8 @@ defaults:
       type: CMON
     values:
       permalink: "/:collection:name/"
+      seo:
+        type: PublicationIssue
       series: CYBREMONDAY
   -
     scope:
@@ -95,6 +103,8 @@ defaults:
       type: CNTR
     values:
       permalink: "/:collection:name/"
+      seo:
+        type: RadioEpisode
       series: CYBREINTERLUDE
   -
     scope:
@@ -102,4 +112,15 @@ defaults:
       type: CPLA
     values:
       permalink: "/:collection:name/"
+      seo:
+        type: MusicPlaylist
       series: CYBREPLAY
+  -
+    scope:
+      path: ""
+      type: CPLB
+    values:
+      permalink: "/:collection:name/"
+      seo:
+        type: MusicPlaylist
+      series: CYBREPLAY Guest Playlist

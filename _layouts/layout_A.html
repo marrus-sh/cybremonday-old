@@ -5,6 +5,7 @@
 <meta charset=utf-8>
 <meta name=viewport content=width&#x3D;384>
 
+{% seo title=false %}
 <link rel=license href=https://creativecommons.org/licenses/by-sa/4.0/>
 
 <style type=text/css>
@@ -727,11 +728,11 @@
 			text-decoration: none;
 			z-index: 90;
 
-			&.foreign:hover {
+			&[rel~="external"]:hover {
 				text-decoration: underline;
 				text-decoration-style: wavy;
 			}
-			&:not(.foreign):hover {
+			&:not([rel~="external"]):hover {
 				text-decoration: underline;
 				text-decoration-style: dashed;
 			}

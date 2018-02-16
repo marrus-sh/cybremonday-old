@@ -8,8 +8,8 @@ a[href] {
 	text-decoration: underline;
 	text-decoration-style: dashed;
 
-	&.foreign:not(:hover) { text-decoration-style: wavy }
-	&:not(.foreign):hover { text-decoration: none }
+	&[rel~="external"]:not(:hover) { text-decoration-style: wavy }
+	&:not([rel~="external"]):hover { text-decoration: none }
 }
 b {
 	display: inline;
@@ -49,6 +49,7 @@ code {
 		padding: .25em;
 		font: normal 1em / 1 monospace;
 	}
+	&.handle { /*  No special styling  */ }
 	&.hashtag { font: bold 1em / 1 monospace }
 }
 del {
@@ -96,22 +97,16 @@ small {
 	em { font-style: normal }
 }
 span {
-	&.list,
+	&.pre { white-space: pre-wrap }
 	&.reg {
 		&::before,
 		&::after { opacity: .5 }
-	}
-	&.list {
-		&::before { content: "{" }
-		&::after { content: "}" }
-	}
-	&.pre { white-space: pre-wrap }
-	&.reg {
 		&::before { content: "[" }
 		&::after { content: "]" }
 	}
 }
 strong { font-weight: bold }
+span.time,
 time { font-weight: bold }
 u { text-decoration: none;
 
@@ -133,13 +128,22 @@ u { text-decoration: none;
 	&.event { font-weight: bold }
 	&.forename,
 	&.genName,
+	&.geogName,
 	&.orgName,
 	&.persName,
 	&.roleName,
 	&.settlement, { font-variant: small-caps }
 	&.lang,
 	&.region,
-	&.surname { text-transform: uppercase }
+	&.surname {
+		font-variant-caps: titling-caps;
+		text-transform: uppercase;
+
+		abbr {
+			font-variant: small-caps;
+			text-transform: none;
+		}
+	}
 	&.name { font-family: sans-serif }
 	&.nameLink { font: italic 1em / 1.5 serif }
 }
