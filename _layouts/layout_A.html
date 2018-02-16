@@ -3,7 +3,7 @@
 
 <title>{% if page.slug %}[{{ page.slug }}] {% endif %}{{ page.title }}{% if page.slug or page.title %} | {% endif %}{{ series }}</title>
 <meta charset=utf-8>
-<meta name=viewport content=width&#x3D;384>
+<meta name=viewport content=width&equal;384>
 
 {% seo title=false %}
 <link rel=license href=https://creativecommons.org/licenses/by-sa/4.0/>
@@ -763,7 +763,7 @@
 {% include layout_A/colours.scss colour=hex invert=false user_set=false print=true %}</style>
 
 <header id=topbar>
-	<h1><a href="{{ '/' | relative_url }}" target=_self>{{ series }}</a></h1>
+	<h1><a href={% assign path = '/' | relative_url %}{% include attr.html text=path %} target=_self>{{ series }}</a></h1>
 </header>
 
 <main id=content>
@@ -772,13 +772,13 @@
 		<header id=title>
 		    <p id=journaltitle>{{ series }}</p>
 		    {% if page.issue_no %}<p id=issueno>Issue {% if 10 > page.issue_no %}0{% endif %}{{ page.issue_no }}</p>{% endif %}
-		    <img id=cover alt="{{ page.image.description | xml_escape }}" src="{% if page.image.data_uri %}{{ page.image.path | default: "about:blank" }}{% else %}{{ page.image.path | relative_url | default: "about:blank" }}{% endif %}">
+		    <img id=cover alt={% include attr.html text=page.image.description %} src={% assign path = page.image.path | relative_url | default: "about:blank" %}{% include attr.html text=path %}>
 		    {% if page.title %}<h2 id=issuetitle><cite class=monogr>{{ page.title }}</cite></h2>{% endif %}
 		    {% if page.caption %}<p id=caption>{{ page.caption }}</p>{% endif %}
 		    <p id=weekno>The Week of {% include datetime.html datetime=page.date %}</p>
 		</header>
 		{% if pla %}
-		<aside id=playlist><iframe id=playlist.embed src="{{ pla.url | relative_url }}">Playlist: {{ pla.url }}</iframe></aside>
+		<aside id=playlist><iframe id=playlist.embed src={% assign path = pla.url | relative_url %}{% include attr.html text=path %}>Playlist: {{ path | xml_escape }}</iframe></aside>
 		{% endif %}{% if page.warnings and page.warnings.size > 0 %}<aside id=warnings><abbr title="Content Warning">CW</abbr>: {% if page.warnings.size > 2 %}{{ page.warnings | first | capitalize }}, {{ page.warnings | shift | pop | join: ", " }}, and {{ page.warnings | last }}{% else %}{{ page.warnings | first | capitalize }}{% if page.warnings.size > 1 %} and {{ page.warnings | last }}{% endif %}{% endif %}.</aside>{% endif %}
 		{% endunless %}
 <!--  [{{ page.slug }}]  -->
@@ -789,7 +789,7 @@
 			<section id=featured>
 				<h3>Featured project – <strong>{{ prj.title }}</strong></h3>
 				{% if prj.image %}
-				<img id=featured.logo src="{{ prj.image.path | relative_url }}" alt="{{ prj.image.description }}" title="{{ prj.image.description }}">
+				<img id=featured.logo src={% assign path = prj.image.path | relative_url %}{% include attr.html text=path %} alt={% include attr.html text=prj.image.description %} title={% include attr.html text=prj.image.description %}>
 				{% endif %}
 <!--  [{{ prj.slug }}]  -->
 {{ prj.content }}<!--  [/{{ prj.slug }}]  -->

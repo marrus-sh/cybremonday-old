@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}">{% assign hex = site.CHEX | where: "vol_no", page.vol_no | where: "issue_no", page.issue_no | last %}{% assign series = page.series | default: site.title | default: site.github.repository_name %}
+<html lang={{ page.lang | default: site.lang | default: "en" }}>{% assign hex = site.CHEX | where: "vol_no", page.vol_no | where: "issue_no", page.issue_no | last %}{% assign series = page.series | default: site.title | default: site.github.repository_name %}
 
 <title>{% if page.slug %}[{{ page.slug }}] {% endif %}{{ page.title }}{% if page.slug or page.title %} | {% endif %}{{ series }}</title>
 <meta charset=utf-8>
-<meta name=viewport content=width&#x3D;device-width>
+<meta name=viewport content=width&equal;device-width>
 <base target=_top>
 
 {% seo title=false %}
@@ -122,7 +122,7 @@
 
 <nav id=playlist>
 	{% assign trackmax = page.tracks.size | minus: 1 %}{% for trackno in (0..trackmax) %}{% assign track = page.tracks[trackno] %}
-	<a href="{% assign trackstart = track.src | slice: 0, 7 %}{% if trackstart == "http://" or trackstart == "https:/" %}{{ track.src }}{% else %}{{ track.src | relative_url }}{% endif %}" rel="external nofollow noopener noreferrer" target=_blank><span class=trackno>{% if 9 > trackno %}0{% endif %}{{ trackno | plus: 1 }}</span> <cite class=track>{{ track.title | strip_html }}</cite> | <u class=artist>{{ track.artist | strip_html }}</u> {% if track.license %}[<cite class=license>{{ track.license | strip_html }}</cite>]{% endif %}</a>
+	<a href={% assign trackstart = track.src | slice: 0, 7 %}{% if trackstart == "http://" or trackstart == "https:/" %}{% assign src = track.src %}{% else %}{% assign src = track.src | relative_url %}{% endif %}{% include attr.html text=src %} rel="external noopener noreferrer" target=_blank><span class=trackno>{% if 9 > trackno %}0{% endif %}{{ trackno | plus: 1 }}</span> <cite class=track>{{ track.title | strip_html }}</cite> | <u class=artist>{{ track.artist | strip_html }}</u> {% if track.license %}[<cite class=license>{{ track.license | strip_html }}</cite>]{% endif %}</a>
 	{% endfor %}
 </nav>
 <footer id=info>

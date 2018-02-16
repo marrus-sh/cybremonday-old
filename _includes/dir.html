@@ -1,4 +1,4 @@
-<ul {% if include.id %}id={{ include.id | replace: " ", "_" | xml_escape }} {% endif %}class=dir>{% for file in include.files %}
-	<li> <a href="{{ file.path | relative_url }}">{{ file.name }}</a>{% endfor %}
+<ul {% if include.id %}{% assign id = include.id | replace: " ", "_" %}id={% include attr.html text=id kramdown=include.kramdown %} {% endif %}class={% if include.kramdown %}"dir"{% else %}dir{% endif %}>{% for file in include.files %}
+	<li> <a href={{ assign path = file.path | relative_url }}{% include attr.html text=path kramdown=include.kramdown %}>{{ file.name }}</a>{% endfor %}
 </ul>
 {%- comment %}[Strip whitespace]{% endcomment -%}

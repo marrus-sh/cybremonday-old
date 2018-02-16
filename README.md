@@ -11,7 +11,7 @@ redirect_from:
 ##  Origin  ##
 
 The spelling <i class="mentioned">cybre</i> originates from <a href="https://cybre.space/"><u class="placeName">cybre.space</u></a>, a retro-themed <u class="name">Mastodon</u> instance.
-The idea of a <i class="mentioned">cybre theory</i> was first (to my knowledge) put forward by [<code class="handle">@amphetamine@social.wxcafe.net</code>](https://social.wxcafe.net/@amphetamine), as a way of conceiving of an internet which exceeded the limits of capitalism to the point where it left them behind completely.
+The idea of a <i class="mentioned">cybre theory</i> was first (to my knowledge) put forward by {% include handle.html social=site.data.people.amphetamine.social kramdown=true %}, as a way of conceiving of an internet which exceeded the limits of capitalism to the point where it left them behind completely.
 
 Originally, I had planned for <cite class="monogr"><b class="cybremonday">CYBREMONDAY</b></cite> to be less a theoryzine and more an educational resource, connecting people on <u class="placeName">Mastodon</u> with past conversations about cybre issues and providing them with some informative reading as they went through the week.
 However, after reviewing what I was familiar with from the existing material, I found it to be sorely out-of-date and with clear gaps to be filled, especially given all that has happened online in the past year (<time>2017</time>) and the lessons learned from projects like <u class="orgName">Mastodon</u>.

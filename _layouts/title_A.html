@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang={{ page.lang | default: site.lang | default: 'en' }}>{% assign issue = site.CMON | sort: 'date' | last %}{% assign hex = site.CHEX | where: "vol_no", issue.vol_no | where: "issue_no", issue.issue_no | last %}{% assign series = page.series | default: site.title | default: site.github.repository_name %}
+<html lang={{ page.lang | default: site.lang | default: "en" }}>{% assign issue = site.CMON | sort: "date" | last %}{% assign hex = site.CHEX | where: "vol_no", issue.vol_no | where: "issue_no", issue.issue_no | last %}{% assign series = page.series | default: site.title | default: site.github.repository_name %}
 
 <title>{{ series }}</title>
 <meta charset=utf-8>
-<meta name=viewport content=width&#x3D;480>
+<meta name=viewport content=width&equal;480>
 
 <style type=text/css>
-{% capture styling %}{% assign issue = site.CMON | sort: 'date' | last %}
+{% capture styling %}
 	$bg_colour: #faf8f7;
 	$fg_colour: #1f1a14;
 	$hex_colour: {% if hex.light %}{{ hex.colour | default: '$bg_colour' }}{% else %}{{ hex.colour | default: '$fg_colour' }}{% endif %};

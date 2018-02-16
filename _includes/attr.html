@@ -1,0 +1,2 @@
+{% assign split = include.text | split: " " %}{% if split.size > 1 or include.kramdown %}"{{ include.text | replace: '"', "&quot;" }}"{% else %}{{ include.text | replace: "=", "&equal;" | replace: "<", "&lt;" | replace: ">", "&gt;" | replace: "'", "&apos;" | replace: '"', "&quot;" | replace: "`", "&#x0060;" }}{% endif %}
+{%- comment %}[Strip whitespace]{% endcomment -%}
