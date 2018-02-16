@@ -784,7 +784,7 @@
 		<footer id=endmatter>
 			{% if prj %}
 			<section id=featured>
-				<h3>Featured project – {{ prj.title }}</h3>
+				<h3>Featured project – <strong>{{ prj.title }}</strong></h3>
 				{% if prj.image %}
 				<img id=featured.logo src="{{ prj.image.path | relative_url }}" alt="{{ prj.image.description }}" title="{{ prj.image.description }}">
 				{% endif %}
