@@ -1,0 +1,7 @@
+---
+title: Interludes | CYBREMONDAY
+layout: nada
+---
+<h1>Interludes</h1>
+<!--  CYBREMONDAY interlude audio files.  See CNTR---- for the actual pages lol.  -->
+{% assign interludes = site.static_files | where: "type", "interlude" | sort: "name" %}{% include dir.html files=interludes %}

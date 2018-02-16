@@ -1,7 +1,6 @@
 ---
-permalink: /CONTRIBUTING/
-title: Contributing
-layout: simple
+redirect_from:
+- /submit/
 ---
 
 #  CONTRIBUTING  #

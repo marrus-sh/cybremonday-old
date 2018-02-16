@@ -6,12 +6,10 @@ layout: layout_A
 date: 2018-02-12
 caption: Special <time datetime="2018-02-14" title="2018-02-14">Valentine's Day</time> Issue!!
 image:
-  description:
+  description: A black outline of a heart on a white background with a grid. Distorted cybre images appear across the image.
   path: /cvr/CMON0101.png
 background: /bkg/CMON0101.png
 slug: CMON0101
-hex_colour: '#FFFFFF'
-invert: true
 warnings:
   - erasure of queer relationships/identity
   - <u class=country>Facebook</u>
@@ -20,6 +18,11 @@ warnings:
   - unhealthy relationship structures
   - abuse
 excerpt:
+upcoming:
+  theme: bodies
+  hex:
+    title: '#3399CC'
+    light: false
 credits:
   -
     id: kibi
@@ -71,7 +74,7 @@ credits:
 		The <strong>norms and structures surrounding love</strong>—and their enforcement—are a big part of <b>what</b> <strong>marginalizes queer people in the first place</strong>, <b>what</b> <strong>drives them online</strong>, and <b>what</b> <strong>makes a cybre politic necessary</strong> once they get there.
 	<p>
 		When attempting to <strong>trace a history</strong> of <strong>love on <u class=bloc>the Internet</u></strong>, the narrative one finds can usually be reduced to a <strong>short two&#x2010;sentence quip</strong> like the following:
-		<i class=q><b>Once upon a time,</b> people <strong>looked for love</strong> through <strong>{% include layout_A/link.html href="https://en.wikipedia.org/wiki/Personal_advertisement" title="Personal advertisement | Wikipedia" content="newspaper personals" %}</strong>.
+		<i class=q><b>Once upon a time,</b> people <strong>looked for love</strong> through <strong>{% include link.html href="https://en.wikipedia.org/wiki/Personal_advertisement" title="Personal advertisement | Wikipedia" content="newspaper personals" %}</strong>.
 		<b>Then</b> <strong><u class=country>Match.com</u> was founded</strong>, and people <strong>looked for it online</strong>.</i>
 	<p>
 		<strong>This narrative is troubling</strong>—and not just for its simplicity—because it makes <strong>two dangerous assumptions</strong>: <b>first,</b> that <strong>all love manifests itself through <i class=soCalled>dating</i></strong>, and <b>second,</b> that <strong>the only forms of dating</strong> which deserve recognition are <strong>those which occur in public spaces</strong>—especially when talking about dating online.
@@ -508,41 +511,3 @@ credits:
 	<p>
 		Social media is—<abbr title="to be honest">tbh</abbr>—sometimes <strong>not the greatest</strong> for talking about or dealing with relationships—but for queer folks on <u class=bloc>the Internet</u> <strong>our options can sometimes be limited</strong>, and it's up to us to <strong>keep those spaces inviting and warm</strong>.
 </section>
-
-<footer id=endmatter>
-	<section id=featured>
-		<h3>Featured project – <strong><u class=orgName>GlitchSoc</u></strong></h3>
-		<img id=featured.logo src="{{ "/img/logo-glitched-alt.png" | relative_url }}" alt="GlitchSoc logo" title="GlitchSoc logo" width=200 height=200>
-		<p>
-			Trans girls and enbies have always played a significant role in the development of the social&#x2010;networking software <u class=name>Mastodon</u>, making up a significant portion of the original userbase, providing some of the earliest critiques on its approaches to things like privacy, accessibility, and moderation, and contributing code and resources to a number of important features—<abbr title="Content Warnings">CWs</abbr>, mutes (in a number of respects), onboarding, documentation, and more.
-			After <u class=event>the <time datetime="2017-04" title="2017-04">April</time> influx of users</u>, however, the amount of room and patience for such critical voices in upstream development has decreased, and shifting demographics has meant that the active trans presence in <u class=name>Mastodon</u> development today pales in comparison to what it once was.
-		<p>
-			Noticing that a number of prominent trans voices had grown disillusioned with upstream development, <u class=persName><u class=forename>beatrix</u> <u class=surname>bitrot</u></u> [{% assign bea = page.credits | where: "id", "bea" | first %}{% include layout_A/handle.html social=bea.social %}] created her own fork, {% include layout_A/link.html href="https://glitch-soc.github.io/docs" title="Mastodon Glitch Edition" content="<u class=orgName>GlitchSoc</u>" %} as a way to give people somewhere to test and develop features that weren't finding much support elsewhere.
-			<q>I started it so trans women would have somewhere other than mainline to work on <span class=reg><u class=name>Mastodon</u></span></q>, <u class=persName><u class=forename>bea</u></u> told <cite class=series><b class=cybremonday>CYBREMONDAY</b></cite>.
-			<q>It's not an exclusive space or project.
-			I just have my priorities.</q>
-			Since the fork's founding, a number of people (including myself) have worked under <u class=persName><u class=forename>bea</u></u>'s direction to implement a number of new things, and <u class=orgName>GlitchSoc</u>'s <u class=name>Mastodon Glitch Edition</u> is now the software of choice for such instances as {% include layout_A/link.html href="https://awoo.space" content="<u class=settlement>Awoo.space</u>" %}, {% include layout_A/link.html href="https://monsterpit.net" content="<u class=settlement>Monsterpit</u>" %}, and {% include layout_A/link.html href="https://donphan.social" content="<u class=settlement>donphan.social</u>" %}.
-		<p>
-			You can learn more about <u class=orgName>GlitchSoc</u> on its documentation website, {% include layout_A/link.html href="https://glitch-soc.github.io/docs/" content="glitch-soc.github.io/docs" %}.
-	</section>
-
-	<section id=hex>
-		<h3>This week's hex colour</h3>
-		{% include layout_A/colour.html id="hex.colour" colour="#FFFFFF" light=true %}
-		<p>
-			The default background colour of the internet since, like, forever, this week's hex colour—{% include layout_A/colour.html colour="#FFFFFF" light=true %}—was chosen to put a spotlight on the ways in which whiteness <strong>can and has been used</strong> as an <strong>active and intentional part of design</strong>, too.
-			Fronted by <u class=orgName>Apple</u> for years, {% include layout_A/colour.html colour="#FFFFFF" light=true %} quickly replaced black as a colour of sleekness, elegance, and high design—now making a resurgence in <u class=orgName>Google</u>'s <u class=orgName>Apple</u>&#x2010;esque branding for their <u class=name>Pixel</u>, <u class=name>Home</u>, <u class=name>Pixelbook</u>, and <u class=name>Assistaint</u>.
-			It has also been used by <u class=orgName>Facebook</u> for their <i class=soCalled>thumbs&#x2010;up hand</i>, <u class=orgName>tumblr.</u>'s <i class=soCalled>white <i class=mentioned>t</i></i>, <u class=orgName>Snapchat</u>'s <i class=soCalled>ghost</i>, <u class=orgName>Instagram</u>'s {% include layout_A/link.html href="http://blog.instagram.com/post/144198429587/160511-a-new-look" content="entire freaking redesign" %}… I don't think it's that much of a leap to say that {% include layout_A/colour.html colour="#FFFFFF" light=true %} is the <strong>de&#x2010;facto colour of the modern corporate <u class=bloc>'net</u></strong>.
-		<p>
-			This, of course, gives it lots of potential for coöption and subversion by radical and anti&#x2010;normative designers and groups.
-			By drawing attention to {% include layout_A/colour.html colour="#FFFFFF" light=true %}, we at the same time draw attention to all of the companies and organizations currently standing behind its elitist veneer, <strong>disallowing them from merely fading into the background</strong> by emphasizing the political and very&#x2010;much&#x2010;<em>not</em>&#x2010;default nature of their design choice.
-			<strong>Highlighting and contesting</strong> the corporate use of this colour helps to threaten elite control over design sensibilities and jam the deployment of these tactics towards—literally—whitewashing their more nefarious sides.
-	</section>
-
-	<section id=upcoming>
-		<h3>Upcoming</h3>
-		<p>
-			The theme for the next issue is <strong id=upcoming.theme>bodies</strong>.
-			The hex colour will be <strong id=upcoming.colour>{% include layout_A/colour.html colour="#3399CC" %}</strong>.
-	</section>
-</footer>

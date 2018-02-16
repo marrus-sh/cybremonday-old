@@ -1,0 +1,145 @@
+a[href] {
+	display: inline;
+	position: static;
+	margin: 0;
+	border: none;
+	padding: 0;
+	color: inherit;
+	text-decoration: underline;
+	text-decoration-style: dashed;
+
+	&.foreign:not(:hover) { text-decoration-style: wavy }
+	&:not(.foreign):hover { text-decoration: none }
+}
+b {
+	display: inline;
+	position: static;
+	margin: 0;
+	border: thin currentColor solid;
+	padding: 0 .125em;
+	font: inherit;
+
+	&.cybremonday {
+		border: thin currentColor solid;
+		padding: 0 .25em;
+		font: bold italic 1em / 1.5 sans-serif;
+		letter-spacing: .125em;
+		text-transform: uppercase;
+	}
+}
+cite { font: inherit;
+
+	&.analytic {
+		&::before { content: open-quote }
+		&::after { content: close-quote }
+	}
+	&.monogr { font-style: italic }
+	&.series {
+		font-style: italic;
+		font-variant: small-caps;
+	}
+}
+code {
+	&.colour {
+		display: inline-block;
+		position: static;
+		margin: 0;
+		border: thin currentColor solid;
+		border-radius: .25em;
+		padding: .25em;
+		font: normal 1em / 1 monospace;
+	}
+	&.hashtag { font: bold 1em / 1 monospace }
+}
+del {
+	text-decoration: line-through;
+	text-decoration-style: double;
+	opacity: .5;
+}
+dfn,
+em { font-style: italic;
+
+	dfn,
+	em { font-style: normal }
+}
+i { font: inherit;
+
+	&.distinct,
+	&.foreign,
+	&.mentioned,
+	&.term,
+	&.thought { font-style: italic }
+	&.emph { text-transform: capitalize }
+	&.q,
+	&.soCalled,
+	&.spoken {
+		&::before { content: open-quote }
+		&::after { content: close-quote }
+	}
+	&.written { font-style: italic;
+
+		&::before { content: open-quote }
+		&::after { content: close-quote }
+	}
+}
+img { border: none }
+ins {
+	text-decoration: underline;
+	text-decoration-style: double;
+}
+small {
+	font-size: .8em;
+	font-style: italic;
+	line-height: 1.5;
+
+	dfn,
+	em { font-style: normal }
+}
+span {
+	&.list,
+	&.reg {
+		&::before,
+		&::after { opacity: .5 }
+	}
+	&.list {
+		&::before { content: "{" }
+		&::after { content: "}" }
+	}
+	&.pre { white-space: pre-wrap }
+	&.reg {
+		&::before { content: "[" }
+		&::after { content: "]" }
+	}
+}
+strong { font-weight: bold }
+time { font-weight: bold }
+u { text-decoration: none;
+
+	&.addName {
+		font-style: italic;
+		font-variant: small-caps;
+	}
+	&.bloc {
+		font-family: monospace;
+		font-weight: bold;
+		font-variant: small-caps;
+	}
+	&.country,
+	&.placeName {
+		font-family: monospace;
+		font-variant: small-caps;
+	}
+	&.district { font-style: italic }
+	&.event { font-weight: bold }
+	&.forename,
+	&.genName,
+	&.orgName,
+	&.persName,
+	&.roleName,
+	&.settlement, { font-variant: small-caps }
+	&.lang,
+	&.region,
+	&.surname { text-transform: uppercase }
+	&.name { font-family: sans-serif }
+	&.nameLink { font: italic 1em / 1.5 serif }
+}

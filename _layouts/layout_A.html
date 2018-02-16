@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang={{ page.lang | default: site.lang | default: "en" }}>
+<html lang={{ page.lang | default: site.lang | default: "en" }}>{% assign hex = site.CHEX | where: "vol_no", page.vol_no | where: "issue_no", page.issue_no | last %}{% assign pla = site.CPLA | where: "vol_no", page.vol_no | where: "issue_no", page.issue_no | last %}{% assign prj = site.CPRJ | where: "vol_no", page.vol_no | where: "issue_no", page.issue_no | last %}{% assign series = page.series | default: site.title | default: site.github.repository_name %}
 
-<title>{% if page.slug %}[{{ page.slug }}] {% endif %}{{ page.title }}{% if page.slug or page.title %} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
+<title>{% if page.slug %}[{{ page.slug }}] {% endif %}{{ page.title }}{% if page.slug or page.title %} | {% endif %}{{ series }}</title>
 <meta charset=utf-8>
 <meta name=viewport content=width&#x3D;384>
 
@@ -716,15 +716,6 @@
 		}
 	}
 	a[href] {
-		display: inline;
-		position: static;
-		margin: 0;
-		border: none;
-		padding: 0;
-		color: inherit;
-		text-decoration: underline;
-		text-decoration-style: dashed;
-
 		&.block {
 			display: block;
 			position: relative;
@@ -743,193 +734,93 @@
 				text-decoration-style: dashed;
 			}
 		}
-		&.foreign:not(:hover) { text-decoration-style: wavy }
-		&:not(.foreign):hover { text-decoration: none }
 		&.sectionlink {
 			display: block;
 			text-decoration: none;
 		}
 	}
-	b {
-		display: inline;
-		position: static;
-		margin: 0;
-		border: thin currentColor solid;
-		padding: 0 .125em;
-		font: inherit;
-
-		&.cybremonday {
-			border: thin currentColor solid;
-			padding: 0 .25em;
-			font: bold italic 1em / 1.5 sans-serif;
-			letter-spacing: .125em;
-			text-transform: uppercase;
-		}
-	}
-	cite { font: inherit;
-
-		&.analytic {
-			&::before { content: open-quote }
-			&::after { content: close-quote }
-		}
-		&.monogr { font-style: italic }
-		&.series {
-			font-style: italic;
-			font-variant: small-caps;
-		}
-	}
-	code {
-		&.colour {
-			display: inline-block;
-			position: static;
-			margin: 0;
-			border: thin currentColor solid;
-			border-radius: .25em;
-			padding: .25em;
-			font: normal 1em / 1 monospace;
-		}
-		&.hashtag { font: bold 1em / 1 monospace }
-	}
-	del {
-		text-decoration: line-through;
-		text-decoration-style: double;
-		opacity: .5;
-	}
-	dfn,
-	em { font-style: italic;
-
-		dfn,
-		em { font-style: normal }
-	}
-	i { font: inherit;
-
-		&.distinct,
-		&.foreign,
-		&.mentioned,
-		&.term,
-		&.thought { font-style: italic }
-		&.emph { text-transform: capitalize }
-		&.q,
-		&.soCalled,
-		&.spoken {
-			&::before { content: open-quote }
-			&::after { content: close-quote }
-		}
-		&.written { font-style: italic;
-
-			&::before { content: open-quote }
-			&::after { content: close-quote }
-		}
-	}
-	img { border: none }
-	ins {
-		text-decoration: underline;
-		text-decoration-style: double;
-	}
-	small {
-		font-size: .8em;
-		font-style: italic;
-		line-height: 1.5;
-
-		dfn,
-		em { font-style: normal }
-	}
-	span {
-		&.list,
-		&.reg {
-			&::before,
-			&::after { opacity: .5 }
-		}
-		&.list {
-			&::before { content: "{" }
-			&::after { content: "}" }
-		}
-		&.pre { white-space: pre-wrap }
-		&.reg {
-			&::before { content: "[" }
-			&::after { content: "]" }
-		}
-	}
-	strong { font-weight: bold }
-	time { font-weight: bold }
-	u { text-decoration: none;
-
-		&.addName {
-			font-style: italic;
-			font-variant: small-caps;
-		}
-		&.bloc {
-			font-family: monospace;
-			font-weight: bold;
-			font-variant: small-caps;
-		}
-		&.country,
-		&.placeName {
-			font-family: monospace;
-			font-variant: small-caps;
-		}
-		&.district { font-style: italic }
-		&.event { font-weight: bold }
-		&.forename,
-		&.genName,
-		&.orgName,
-		&.persName,
-		&.roleName,
-		&.settlement, { font-variant: small-caps }
-		&.lang,
-		&.region,
-		&.surname { text-transform: uppercase }
-		&.name { font-family: sans-serif }
-		&.nameLink { font: italic 1em / 1.5 serif }
-	}
+	{% include corefmt.scss %}
 {% endcapture %}{{ styling | scssify }}</style>
 
 <!--  Our named stylesheets provide different colouring schemes  -->
 <style type=text/css title=Normal>
-{% include layout_A/styling.scss invert=false user_set=false %}</style>
+{% include layout_A/colours.scss colour=hex invert=false user_set=false %}</style>
 <style type=text/css title=Inverted>
-{% include layout_A/styling.scss invert=true user_set=false %}</style>
+{% include layout_A/colours.scss colour=hex invert=true user_set=false %}</style>
 <style type=text/css title=User-set>
-{% include layout_A/styling.scss invert=false user_set=true %}</style>
+{% include layout_A/colours.scss colour=hex invert=false user_set=true %}</style>
 <style type=text/css title="User-set Inverted">
-{% include layout_A/styling.scss invert=true user_set=true %}</style>
+{% include layout_A/colours.scss colour=hex invert=true user_set=true %}</style>
 <style type=text/css title=Print>
-{% include layout_A/styling.scss invert=false user_set=false print=true %}</style>
+{% include layout_A/colours.scss colour=hex invert=false user_set=false print=true %}</style>
 <style type=text/css title=Clear>/*  No colouring whatsoëver  */</style>
 
 <!--  These printing rules will override any previous scheme  -->
 <style type=text/css media=print>
-{% include layout_A/styling.scss invert=false user_set=false print=true %}</style>
+{% include layout_A/colours.scss colour=hex invert=false user_set=false print=true %}</style>
 
 <header id=topbar>
-	<h1><a href="{{ '/' | relative_url }}" target=_self>{{ site.title | default: site.github.repository_name }}</a></h1>
+	<h1><a href="{{ '/' | relative_url }}" target=_self>{{ series }}</a></h1>
 </header>
 
 <main id=content>
 	<article id=article>
-
-		{% unless page.solo %}<header id=title>
-		    <p id=journaltitle>{{ site.title | default: site.github.repository_name }}</p>
+		{% unless page.solo %}
+		<header id=title>
+		    <p id=journaltitle>{{ series }}</p>
 		    {% if page.issue_no %}<p id=issueno>Issue {% if 10 > page.issue_no %}0{% endif %}{{ page.issue_no }}</p>{% endif %}
 		    <img id=cover alt="{{ page.image.description | xml_escape }}" src="{% if page.image.data_uri %}{{ page.image.path | default: "about:blank" }}{% else %}{{ page.image.path | relative_url | default: "about:blank" }}{% endif %}">
 		    {% if page.title %}<h2 id=issuetitle><cite class=monogr>{{ page.title }}</cite></h2>{% endif %}
 		    {% if page.caption %}<p id=caption>{{ page.caption }}</p>{% endif %}
-		    <p id=weekno>The Week of {% include layout_A/datetime.html datetime=page.date %}</p>
+		    <p id=weekno>The Week of {% include datetime.html datetime=page.date %}</p>
 		</header>
+		{% if pla %}
+		<aside id=playlist><iframe id=playlist.embed src="{{ pla.url }}">Playlist: {{ pla.url }}</iframe></aside>
+		{% endif %}{% if page.warnings and page.warnings.size > 0 %}<aside id=warnings><abbr title="Content Warning">CW</abbr>: {% if page.warnings.size > 2 %}{{ page.warnings | first | capitalize }}, {{ page.warnings | shift | pop | join: ", " }}, and {{ page.warnings | last }}{% else %}{{ page.warnings | first | capitalize }}{% if page.warnings.size > 1 %} and {{ page.warnings | last }}{% endif %}{% endif %}.</aside>{% endif %}
+		{% endunless %}
+<!--  [{{ page.slug }}]  -->
+{{ content }}<!--  [/{{ page.slug }}]  -->
 
-		{% capture playlist %}/CPLA{% if 10 > page.vol_no %}0{% endif %}{{ page.vol_no }}{% if 10 > page.issue_no %}0{% endif %}{{ page.issue_no }}/{% endcapture %}<aside id=playlist><iframe id=playlist.embed src="{{ playlist  | relative_url }}">Playlist: {{ playlist | relative_url }}</iframe></aside>
+		<footer id=endmatter>
+			{% if prj %}
+			<section id=featured>
+				<h3>Featured project – {{ prj.title }}</h3>
+				{% if prj.image %}
+				<img id=featured.logo src="{{ prj.image.path | relative_url }}" alt="{{ prj.image.description }}" title="{{ prj.image.description }}">
+				{% endif %}
+<!--  [{{ prj.slug }}]  -->
+{{ prj.content }}<!--  [/{{ prj.slug }}]  -->
 
-		{% if page.warnings and page.warnings.size > 0 %}<aside id=warnings><abbr title="Content Warning">CW</abbr>: {% if page.warnings.size > 2 %}{{ page.warnings | first | capitalize }}, {{ page.warnings | shift | pop | join: ", " }}, and {{ page.warnings | last }}{% else %}{{ page.warnings | first | capitalize }}{% if page.warnings.size > 1 %} and {{ page.warnings | last }}{% endif %}{% endif %}.</aside>{% endif %}
+			</section>
+			{% endif %}{% if hex %}
+			<section id=hex>
+				<h3>This week's hex colour</h3>
 
-		{% endunless %}{{ content }}
+				{% include colour.html id="hex.colour" colour=hex.title light=hex.light %}
+
+<!--  [{{ hex.slug }}]  -->
+{{ hex.content }}<!--  [/{{ hex.slug }}]  -->
+
+			</section>
+			{% endif %}{% if page.upcoming %}
+			<section id=upcoming>
+				<h3>Upcoming</h3>
+				<p>{% if page.upcoming.theme %}
+					The theme for the next issue is <strong id=upcoming.theme>{{ page.upcoming.theme }}</strong>.{% endif %}{% if page.upcoming.hex and page.upcoming.hex.title %}
+					The hex colour will be <strong id=upcoming.colour>{% include colour.html colour=page.upcoming.hex.title light=page.upcoming.hex.light %}</strong>.{% endif %}
+			</section>
+			{% endif %}
+		</footer>
 	</article>
 </main>
 
 <footer id=appx>
-	<p id=pubdate> Published {% include layout_A/datetime.html datetime=page.date %}.
-	{% if page.credits and page.credits.size > 0 %}<p id=credits>
-		<strong>Credits:</strong>{% assign creditmax = page.credits.size | minus: 1 %}{% for creditno in (0..creditmax) %}{% assign credit = page.credits[creditno] %}
-		{% if credit.name %}{% if credit.website %}{% include layout_A/link.html href=credit.website.url title=credit.website.title content=credit.name %}{% else %}{{ credit.name }}{% endif %} {% endif %}{% assign socialcredit = credit.social %}{% unless socialcredit.handle %}{% assign socialcredit = socialcredit | first %}{% endunless %}{% if socialcredit %}{% if credit.name %}[{% endif %}{% include layout_A/handle.html social=socialcredit %}{% if credit.name %}]{% endif %}{% endif %}{% if credit.description %}: {{ credit.description }}{% endif %}{% unless creditno == creditmax %}; {% endunless %}{% endfor %}.
-	{% endif %}
-	<p id=license> <cite class=series><b class=cybremonday>{{ site.title | default: site.github.repository_name }}</b></cite> is licensed under a <a class=foreign rel="external license noopener noreferrer" referrerpolicy=no-referrer href=https://creativecommons.org/licenses/by-sa/4.0/ title="Creative Commons Attribution-ShareAlike 4.0 International License"><cite class=monogr>CC BY-SA 4.0 license</cite></a>.<br><a class=foreign rel="external noopener noreferrer" referrerpolicy=no-referrer href=https://creativecommons.org/licenses/by-sa/4.0/><img width=80 height=15 src=https://i.creativecommons.org/l/by-sa/4.0/80x15.png alt="(CC) BY-SA"></a>
+	<p id=pubdate>
+		Published {% include datetime.html datetime=page.date %}.
+		{% if page.credits and page.credits.size > 0 %}<p id=credits>
+			<strong>Credits:</strong>{% assign creditmax = page.credits.size | minus: 1 %}{% for creditno in (0..creditmax) %}{% assign credit = page.credits[creditno] %}
+			{% if credit.name %}{% if credit.website %}{% include link.html href=credit.website.url title=credit.website.title content=credit.name %}{% else %}{{ credit.name }}{% endif %} {% endif %}{% assign socialcredit = credit.social %}{% unless socialcredit.handle %}{% assign socialcredit = socialcredit | first %}{% endunless %}{% if socialcredit %}{% if credit.name %}[{% endif %}{% include handle.html social=socialcredit %}{% if credit.name %}]{% endif %}{% endif %}{% if credit.description %}: {{ credit.description }}{% endif %}{% unless creditno == creditmax %}; {% endunless %}{% endfor %}.
+		{% endif %}
+	<p id=license>
+		<cite class=series><b class=cybremonday>{{ series }}</b></cite> is licensed under a <a class=foreign rel="external license noopener noreferrer" href=https://creativecommons.org/licenses/by-sa/4.0/ title="Creative Commons Attribution-ShareAlike 4.0 International License"><cite class=monogr>CC BY-SA 4.0 license</cite></a>.<br><a class=foreign rel="external noopener noreferrer" href=https://creativecommons.org/licenses/by-sa/4.0/><img width=80 height=15 src=https://i.creativecommons.org/l/by-sa/4.0/80x15.png alt="(CC) BY-SA"></a>
 </footer>

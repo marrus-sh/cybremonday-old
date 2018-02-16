@@ -1,11 +1,11 @@
 {% capture styling %}
-{% if include.print %}{% assign invert = page.invert %}{% elsif include.invert and page.invert %}{% assign invert = false %}{% elsif include.invert or page.invert %}{% assign invert = true %}{% else %}{% assign invert = false %}{% endif %}
+{% if include.print %}{% assign invert = include.colour.light %}{% elsif include.invert and include.colour.light %}{% assign invert = false %}{% elsif include.invert or include.colour.light %}{% assign invert = true %}{% else %}{% assign invert = false %}{% endif %}
 $bg_colour: {% if include.print %}white{% elsif include.invert %}#1f1a14{% else %}#faf8f7{% endif %};
 $fg_colour: {% if include.print %}black{% elsif include.invert %}#faf8f7{% else %}#1f1a14{% endif %};
 $cur_colour: {% if include.print %}$fg_colour{% elsif include.user_set %}currentColor{% else %}$fg_colour{% endif %};
 $trans_colour: {% if include.print %}$bg_colour{% elsif include.user_set %}transparent{% else %}$bg_colour{% endif %};
-$hex_colour: {% if invert %}{{ page.hex_colour | default: '$bg_colour' }}{% else %}{{ page.hex_colour | default: '$fg_colour' }}{% endif %};
-$aside_colour: rgba({{ page.hex_colour | default: "$fg_colour" }}, .36);
+$hex_colour: {% if invert %}{{ include.colour.title | default: '$bg_colour' }}{% else %}{{ include.colour.title | default: '$fg_colour' }}{% endif %};
+$aside_colour: rgba({{ include.colour.title | default: "$fg_colour" }}, .36);
 
 //  Special print styling
 {% if include.print %}
@@ -99,7 +99,7 @@ body {
 
 	{% if page.background %}&::before,
 	&::after {
-		//  We use `include.invert` here because we assume that `page.invert`
+		//  We use `include.invert` here because we assume that `hex.light`
 		//  was already taken into account when designing the background.
 		color: {% if include.invert %}white{% else %}black{% endif %};
 		background-blend-mode: hue, difference;

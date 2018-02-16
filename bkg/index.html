@@ -4,4 +4,4 @@ layout: nada
 ---
 <h1>Backgrounds</h1>
 <!--  Each issue may have a single background image, whose name should match the issue's slug.  -->
-{% assign backgrounds = site.static_files | where: "type", "background" | sort: "name" %}{% include nada/file_list.html files=backgrounds %}
+{% assign backgrounds = site.static_files | where: "type", "background" | sort: "name" %}{% include dir.html files=backgrounds %}

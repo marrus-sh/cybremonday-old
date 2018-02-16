@@ -2,22 +2,37 @@ title: CYBREMONDAY
 author: CYBREMONDAY Staff
 description: A weekly cybrezine
 lang: en
-permalink: /0:year:month:day/:slug.html
-paginate: 7
-paginate_path: /archive/:num/
+permalink: /:slug/
 timezone: US/Pacific
 markdown: kramdown
-collections:
-  CGST:  #  CYBREMONDAY guest issues
+collections:  #  Order matters!  Liquid in collections is parsed sequentially.
+
+  #  Freeform content
+  CPLB:  #  CYBREMONDAY alternate playlists; freeform
     output: true
-  CMBD:  #  CYBREMONDAY embedded content
+  CMBD:  #  CYBREMONDAY embedded content; freeform
     output: true
-  CMON:  #  CYBREMONDAY original numbered issues
+  CGST:  #  CYBREMONDAY guest issues; freeform
     output: true
-  CPLA:  #  CYBREMONDAY issue playlists; numbering tracks CMON
+
+  #  Numbered content
+  CHEX:  #  CYBREMONDAY hex colours; tracks CMON
+    output: false
+  CPLA:  #  CYBREMONDAY issue playlists; tracks CMON
     output: true
-  CPLB:  #  CYBREMONDAY alternate playlists; numbering is freeform
+  CPRJ:  #  CYBREMONDAY featured projects; tracks CMON
     output: true
+  CMON:  #  CYBREMONDAY original numbered issues; VVNN (V = Volume; N = Issue №)
+    output: true
+  CNTR:  #  CYBREMONDAY interludes; tracks *previous* CMON
+    output: true
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE.txt
+include:  #  Not handled by default by jekyll-optional-front-matter
+  - CONTRIBUTING.md
+  - README.md
 kramdown:
     smart_quotes: ["apos", "apos", "quot", "quot"]
 sass:
@@ -25,12 +40,14 @@ sass:
 plugins:
   - jekyll-coffeescript
   - jekyll-redirect-from
+  - jekyll-optional-front-matter
 defaults:
   -
     scope:
       path: ""
     values:
       author: CYBREMONDAY Staff
+      layout: simple
   -
     scope:
       path: bkg
@@ -48,6 +65,11 @@ defaults:
       type: image
   -
     scope:
+      path: ntr
+    values:
+      type: interlude
+  -
+    scope:
       path: ""
       type: CGST
     values:
@@ -62,6 +84,12 @@ defaults:
     scope:
       path: ""
       type: CMON
+    values:
+      permalink: "/:collection:name/"
+  -
+    scope:
+      path: ""
+      type: CNTR
     values:
       permalink: "/:collection:name/"
   -

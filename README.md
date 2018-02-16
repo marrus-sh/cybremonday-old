@@ -1,7 +1,7 @@
 ---
-permalink: /README/
-title: About
-layout: simple
+redirect_from:
+  - /about/
+  - /info/
 ---
 
 #  CYBREMONDAY  #

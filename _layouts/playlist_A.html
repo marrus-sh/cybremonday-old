@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">{% assign hex = site.CHEX | where: "vol_no", page.vol_no | where: "issue_no", page.issue_no | last %}{% assign series = page.series | default: site.title | default: site.github.repository_name %}
 
-<title>{% if page.slug %}[{{ page.slug }}] {% endif %}{{ page.title }}{% if page.slug or page.title %} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
+<title>{% if page.slug %}[{{ page.slug }}] {% endif %}{{ page.title }}{% if page.slug or page.title %} | {% endif %}{{ series }}</title>
 <meta charset=utf-8>
 <meta name=viewport content=width&#x3D;device-width>
 <base target=_top>
 
 <style type=text/css>
 {% capture styling %}
-	$bg_colour: #1f1a14;  //  Inverted from layout_A
-	$fg_colour: #faf8f7;  //  Inverted from layout_A
-	$hex_colour: {% if page.invert %}{{ page.hex_colour | default: '$fg_colour' }}{% else %}{{ page.hex_colour | default: '$bg_colour' }}{% endif %};
+	$bg_colour: #1f1a14;
+	$fg_colour: #faf8f7;
+	$hex_colour: {% if hex.light %}{{ hex.title | default: '$fg_colour' }}{% else %}{{ hex.title | default: '$bg_colour' }}{% endif %};
 
 	html,
 	body {
@@ -112,92 +112,15 @@
 				padding: 0;
 			}
 		}
-		a[href] {
-			color: inherit;
-			text-decoration: underline;
-			text-decoration-style: dashed;
-
-			&:hover { text-decoration: none }
-		}
-		b {
-			display: inline;
-			position: static;
-			margin: 0;
-			border: none;
-			padding: 0 .125em;
-			font: inherit;
-			color: white;
-			background: $hex_colour;
-		}
-		cite,
-		i { font: inherit;
-
-			&.analytic,
-			&.soCalled,
-			&.track {
-				&::before { content: open-quote }
-				&::after { content: close-quote }
-			}
-			&.monogr,
-			&.mentioned { font-style: italic }
-			&.series {
-				font-style: italic;
-				font-variant: small-caps;
-			}
-		}
-		code {
-			&.hashtag { font: bold 1em / 1 monospace }
-		}
-		dfn,
-		em { font-style: italic;
-
-			dfn,
-			em { font-style: normal }
-		}
-		small {
-			font-size: .8em;
-			font-style: italic;
-			line-height: 1.5;
-
-			dfn,
-			em { font-style: normal }
-		}
-		span {
-			&.pre { white-space: pre-wrap }
-		}
-		strong { font-weight: bold }
-		time { font-weight: bold }
-		u { text-decoration: none;
-
-			&.bloc {
-				font-family: monospace;
-				font-weight: bold;
-				font-variant: small-caps;
-			}
-			&.district { font-style: italic }
-			&.event { font-weight: bold }
-			&.placeName,
-			&.country {
-				font-family: monospace;
-				font-variant: small-caps;
-			}
-			&.forename,
-			&.orgName,
-			&.persName,
-			&.settlement, { font-variant: small-caps }
-			&.name { font-family: sans-serif }
-			&.lang,
-			&.region,
-			&.surname { text-transform: uppercase }
-		}
 	}
+	{% include corefmt.scss %}
 {% endcapture %}{{ styling | scssify }}</style>
 
 <script type=text/javascript src="{{ "/src/playlist_A.js" | relative_url }}"></script>
 
 <nav id=playlist>
 	{% assign trackmax = page.tracks.size | minus: 1 %}{% for trackno in (0..trackmax) %}{% assign track = page.tracks[trackno] %}
-	<a href="{% assign trackstart = track.src | slice: 0, 7 %}{% if trackstart == "http://" or trackstart == "https:/" %}{{ track.src }}{% else %}{{ track.src | relative_url }}{% endif %}" rel="external nofollow noopener noreferrer" referrerpolicy=no-referrer target=_blank><span class=trackno>{% if 9 > trackno %}0{% endif %}{{ trackno | plus: 1 }}</span> <cite class=track>{{ track.title | strip_html }}</cite> | <u class=artist>{{ track.artist | strip_html }}</u> {% if track.license %}[<cite class=license>{{ track.license | strip_html }}</cite>]{% endif %}</a>
+	<a href="{% assign trackstart = track.src | slice: 0, 7 %}{% if trackstart == "http://" or trackstart == "https:/" %}{{ track.src }}{% else %}{{ track.src | relative_url }}{% endif %}" rel="external nofollow noopener noreferrer" target=_blank><span class=trackno>{% if 9 > trackno %}0{% endif %}{{ trackno | plus: 1 }}</span> <cite class=track>{{ track.title | strip_html }}</cite> | <u class=artist>{{ track.artist | strip_html }}</u> {% if track.license %}[<cite class=license>{{ track.license | strip_html }}</cite>]{% endif %}</a>
 	{% endfor %}
 </nav>
 <footer id=info>
@@ -210,7 +133,7 @@
 				{% if track.title %}<cite class=analytic>{{ track.title }}</cite>.{% endif %}
 				{% if track.album %}In <cite class=monogr>{{ track.album }}</cite>.{% endif %}
 				{% if track.publisher %}{{ track.publisher }}{% if track.datetime %},{% else %}.{% endif %}{% endif %}
-				{% if track.datetime %}<time datetime={{ track.datetime | date: "%Y-%m-%d" }}>{{ track.datetime | date: "%d %B %Y" }}</time>.{% endif %}
+				{% if track.datetime %}{% include datetime.html datetime=track.datetime %}.{% endif %}
 				{% if track.license %}<cite class=monogr>{{ track.license }}</cite>.{% endif %}{% endfor %}
 		</ol>
 	</section>

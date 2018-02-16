@@ -1,4 +1,4 @@
-<ul>{% for file in include.files %}
+<ul class=dir>{% for file in include.files %}
 	<li> <a href="{{ file.path | relative_url }}">{{ file.name }}</a>{% endfor %}
 </ul>
 {%- comment %}[Strip whitespace]{% endcomment -%}
