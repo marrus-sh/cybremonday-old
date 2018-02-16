@@ -6,7 +6,7 @@ logo: /img/siri.png
 lang: en
 permalink: /:slug/
 timezone: US/Pacific
-markdown: CommonMarkGhPages
+markdown: kramdown
 collections:  #  Order matters!  Liquid in collections is parsed sequentially.
 
   #  Freeform content
@@ -35,8 +35,10 @@ exclude:  #  LICENSE.txt does not give the license for the rendered content
 include:  #  Not handled by default by jekyll-optional-front-matter
   - CONTRIBUTING.md
   - README.md
+kramdown:
+  smart_quotes: ["apos", "apos", "quot", "quot"]
 sass:
-    style: compressed
+  style: compressed
 plugins:
   - jekyll-coffeescript
   - jekyll-optional-front-matter
