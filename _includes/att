@@ -1,0 +1,5 @@
+{% comment %}
+Finds the appropriate attribute name for the given name and tag, with
+colons replaced with pipes for use in (S)CSS.
+{% endcomment %}{% assign ext = page.path | split: "." | last %}{% if ext == "tei" %}{{ include.name | replace: ":", "|" }}{% else %}{% if include.tag %}{% assign attr = site.data.tags[include.tag].attrs[include.name] %}{% else %}{% assign attr = nil %}{% endif %}{% unless attr %}{% assign attr = site.data.tags["*"].attrs[include.name] %}{% endunless %}{% if attr %}{{ attr }}{% else %}{{ include.name | capitalize | prepend: "Data-" }}{% endif %}{% endif %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

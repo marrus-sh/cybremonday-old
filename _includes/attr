@@ -1,0 +1,5 @@
+{% comment %}
+Formats an attribute value by wrapping it in quotes or escaping it as
+necessary for the page type.
+{% endcomment %}{% if include.value.size > 0 %}{% assign ext = page.path | split: "." | last %}{% assign split = include.value | split: " " %}{% if split.size > 1 or ext == "md" or ext == "tei" or ext == "xml" or ext == "xhtml" or ext == "atom" %}"{{ include.value | replace: '"', "&quot;" }}"{% else %}{{ include.value | replace: "=", "&equals;" | replace: "<", "&lt;" | replace: ">", "&gt;" | replace: "'", "&apos;" | replace: '"', "&quot;" | replace: "`", "&#x0060;" }}{% endif %}{% else %}""{% endif %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

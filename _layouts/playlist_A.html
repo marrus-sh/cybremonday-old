@@ -1,142 +1,126 @@
-<!DOCTYPE html>
-<html lang={{ page.lang | default: site.lang | default: "en" }}>{% assign hex = site.CHEX | where: "vol_no", page.vol_no | where: "issue_no", page.issue_no | last %}{% assign series = page.series | default: site.title | default: site.github.repository_name %}
+---
+target: _top
+---
 
-<title>{% if page.slug %}[{{ page.slug }}] {% endif %}{{ page.title }}{% if page.slug or page.title %} | {% endif %}{{ series }}</title>
-<meta charset=utf-8>
-<meta name=viewport content=width&equal;device-width>
-<base target=_top>
+<!DoCtYpE HTML>{% assign lang = page.lang | default: site.lang | default: "en" %}
+<HTML Lang={% include attr value=lang %}>{% assign hex = site.CHEX | where: "vol_no", page.vol_no | where: "issue_no", page.issue_no | last %}{% assign series = page.series | default: site.title | default: site.github.repository_name %}{% capture catalogue_no %}{% include catalogue for=this %}{% endcapture %}
 
-{% seo title=false %}
+<!--  [META]  -->
+{% include meta.html %}
+<!--  [/META]  -->
 
-<style type=text/css>
+<STYLE Type=text/css>
 {% capture styling %}
 	$bg_colour: #1f1a14;
 	$fg_colour: #faf8f7;
-	$hex_colour: {% if hex.light %}{{ hex.title | default: '$fg_colour' }}{% else %}{{ hex.title | default: '$bg_colour' }}{% endif %};
+	$hex_colour: {% if hex.light %}{{ hex.title | strip_html | default: '$fg_colour' }}{% else %}{{ hex.title | strip_html | default: '$bg_colour' }}{% endif %};
 
-	html,
-	body {
-		display: block;
-		position: static;
-		margin: 0;
-		border: none;
-		padding: 0;
-		color: $fg_colour;
-		background: $hex_colour;
-		font: normal medium / 1.5 serif;
+	HTML,
+	BODY {
+		Display: block;
+		Position: static;
+		Margin: 0;
+		Border: none;
+		Padding: 0;
+		Color: $fg_colour;
+		Background: $hex_colour;
+		Font: normal medium / 1.5 serif;
 	}
-	audio#player {
-		display: block;
-		position: static;
-		box-sizing: border-box;
-		margin: 0;
-		border-style: groove;
-		border-color: $hex_colour;
-		border-width: thick;
-		width: 100%;
+	AUDIO#player {
+		Display: block;
+		Position: static;
+		Box-Sizing: border-box;
+		Margin: 0;
+		Border-Style: groove;
+		Border-Color: $hex_colour;
+		Border-Width: thick;
+		Width: 100%;
 	}
-	nav#playlist {
-		display: block;
-		position: static;
-		margin: 0;
-		border: none;
-		padding: 0;
+	NAV#playlist {
+		Display: block;
+		Position: static;
+		Margin: 0;
+		Border: none;
+		Padding: 0;
 
-		& > a[href] {
-			display: block;
-			margin: 0;
-			border-style: none none solid;
-			border-color: transparent transparent currentColor;
-			border-width: 0 0 thin;
-			padding: .75em 1.5em;
-			color: inherit;
-			background: linear-gradient(to right, $bg_colour 69%, $hex_colour) 0 0 / 110% 100% no-repeat, $hex_colour;
-			text-decoration: none;
-			transition: background-position .3s;
+		& > A[Href] {
+			Display: block;
+			Margin: 0;
+			Border-Style: none none solid;
+			Border-Color: transparent transparent currentColor;
+			Border-Width: 0 0 thin;
+			Padding: .75em 1.5em;
+			Color: inherit;
+			Background: linear-gradient(to right, $bg_colour 69%, $hex_colour) 0 0 / 110% 100% no-repeat, $hex_colour;
+			Text-Decoration: none;
+			Transition: background-position .3s;
 
-			&:hover { background-position: 100% 0 }
-			&.playing::before { content: "▶ " }
-			&.paused::before { content: "… " }
-			span.trackno { font: normal 1em / 1.5 serif }
-			cite.track { font: italic 1em / 1.5 serif }
-			u.artist {
-				font: bold 1em / 1.5 serif;
-				text-decoration: none;
+			&:Hover { Background-Position: 100% 0 }
+			&.playing::BEFORE { Content: "▶ " }
+			&.paused::BEFORE { Content: "… " }
+			SPAN.trackno { Font: normal 1em / 1.5 serif }
+			CITE.track { Font: italic 1em / 1.5 serif }
+			U.artist {
+				Font: bold 1em / 1.5 serif;
+				Text-Decoration: none;
 			}
-			cite.license {
-				display: inline-block;
-				position: static;
-				margin: 0;
-				border: none;
-				padding: 0 .125em;
-				font: normal .8em / 1 monospace;
-				text-transform: lowercase;
-				vertical-align: .125em;
+			CITE.license {
+				Display: inline-block;
+				Position: static;
+				Margin: 0;
+				Border: none;
+				Padding: 0 .125em;
+				Font: normal .8em / 1 monospace;
+				Text-Transform: lowercase;
+				Vertical-Align: .125em;
 			}
 		}
 	}
-	footer#info {
-		display: block;
-		position: static;
-		margin: 0;
-		border: none;
-		padding: 0;
-		color: $fg_colour;
-		background: $bg_colour;
-		font: normal .8em / 1.875 serif;
-		text-align: center;
-		overflow: auto;
+	FOOTER#info {
+		Display: block;
+		Position: static;
+		Margin: 0;
+		Border: none;
+		Padding: 0;
+		Color: $fg_colour;
+		Background: $bg_colour;
+		Font: normal .8em / 1.875 serif;
+		Text-Align: center;
+		Overflow: auto;
 
-		h3 {
-			display: block;
-			position: static;
-			margin: .5em auto;
-			border: none;
-			padding: 0;
-			font: bold 1.25em / 1.5 serif;
-			text-align: center;
-			text-decoration: underline;
+		H3 {
+			Display: block;
+			Position: static;
+			Margin: .5em auto;
+			Border: none;
+			Padding: 0;
+			Font: bold 1.25em / 1.5 serif;
+			Text-Align: center;
+			Text-Decoration: underline;
 
-			&::after { content: ":" }
+			&::AFTER { Content: ":" }
 		}
-		ol {
-			display: block;
-			position: static;
-			margin: 0;
-			border: none;
-			padding: 0;
+		OL {
+			Display: block;
+			Position: static;
+			Margin: 0;
+			Border: none;
+			Padding: 0;
 
-			li {
-				display: block;
-				position: static;
-				margin: 0;
-				border: none;
-				padding: 0;
+			LI {
+				Display: block;
+				Position: static;
+				Margin: 0;
+				Border: none;
+				Padding: 0;
 			}
 		}
 	}
 	{% include corefmt.scss %}
-{% endcapture %}{{ styling | scssify }}</style>
+{% endcapture %}{{ styling | scssify }}</STYLE>
 
-<script type=text/javascript src="{{ "/src/playlist_A.js" | relative_url }}"></script>
+<SCRIPT Type=text/javascript Src="{{ "/src/playlist_A.js" | relative_url }}"></SCRIPT>
 
-<nav id=playlist>
-	{% assign trackmax = page.tracks.size | minus: 1 %}{% for trackno in (0..trackmax) %}{% assign track = page.tracks[trackno] %}
-	<a href={% assign trackstart = track.src | slice: 0, 7 %}{% if trackstart == "http://" or trackstart == "https:/" %}{% assign src = track.src %}{% else %}{% assign src = track.src | relative_url %}{% endif %}{% include attr.html text=src %} rel="external noopener noreferrer" target=_blank><span class=trackno>{% if 9 > trackno %}0{% endif %}{{ trackno | plus: 1 }}</span> <cite class=track>{{ track.title | strip_html }}</cite> | <u class=artist>{{ track.artist | strip_html }}</u> {% if track.license %}[<cite class=license>{{ track.license | strip_html }}</cite>]{% endif %}</a>
-	{% endfor %}
-</nav>
-<footer id=info>
-	{{ content }}
-	<section id=credits>
-		<h3>Credits</h3>
-		<ol>{% for track in page.tracks %}
-			<li>
-				{% if track.artist %}{{ track.artist }}.{% endif %}
-				{% if track.title %}<cite class=analytic>{{ track.title }}</cite>.{% endif %}
-				{% if track.album %}In <cite class=monogr>{{ track.album }}</cite>.{% endif %}
-				{% if track.publisher %}{{ track.publisher }}{% if track.datetime %},{% else %}.{% endif %}{% endif %}
-				{% if track.datetime %}{% include datetime.html datetime=track.datetime %}.{% endif %}
-				{% if track.license %}<cite class=monogr>{{ track.license }}</cite>.{% endif %}{% endfor %}
-		</ol>
-	</section>
-</footer>
+<!--  [{{ catalogue_no }}]  -->
+{% include content %}
+<!--  [/{{ catalogue_no }}]  -->

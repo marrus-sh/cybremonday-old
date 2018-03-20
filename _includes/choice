@@ -1,0 +1,4 @@
+{% comment %}
+Renders a reg/orig choice, used with variants.
+{% endcomment %}{% if include.orig.size > 0 and include.reg.size > 0 %}{% capture hatts %}Title={% include _ c=include.reg p=1 %}{% endcapture %}{% if include.h %}{% assign hatts = hatts | append: "`" | append: include.h %}{% endif %}{% include _ o="choice" a=inlude.a h=hatts %}{% include _ o="seg" c="{" h="Aria-Hidden=true`Style=Display:none" %}{% include _ o="orig" c=include.orig h="Aria-Hidden=true" %}{% include _ o="seg" c=", " h="Aria-Hidden=true`Style=Display:none" %}{% include _ o="reg" c=include.reg r="presentation" h="Style=Display:none" %}{% include _ o="seg" c="}" h="Aria-Hidden=true`Style=Display:none" %}{% include _ x="choice" %}{% elsif include.orig.size > 0 %}{% include _ o="orig|SPAN" c=include.orig %}{% elsif include.reg.size > 0 %}{% include _ o="reg|SPAN" c=include.reg %}{% endif %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

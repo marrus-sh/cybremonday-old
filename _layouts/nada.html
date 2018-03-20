@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html lang={{ page.lang | default: site.lang | default: "en" }}>
+<!DoCtYpE HTML>{% assign lang = page.lang | default: site.lang | default: "en" %}
+<HTML lang={% include attr value=lang %}>
 
-<title>{{ page.title | default: site.title | default: site.github.repository_name }}</title>
-<meta charset=utf-8>
+<TITLE>{{ page.title | default: site.title | default: site.github.repository_name | strip_html }}</TITLE>
+<META charset={% include attr value="utf-8" %}>
 
 {{ content }}

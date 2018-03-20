@@ -1,0 +1,78 @@
+---
+vol_no: 1
+issue_no: 0
+title: The Cybre Manifesto
+layout: layout_A
+date: 2018-02-05
+cover:
+  description: "A greyed\u2010out man sits in a purple chair. An enormous semi\u2010transparent tweet with a pixellated texture floats in front of him, facing away, blocking his face. In the background, a distorted Facebook \"Trending\" pane is visible."
+  height: 600
+  width: 600
+warnings:
+  - capitalism
+  - militarism
+  - current events
+  - - the
+    -
+    - v:
+      - c: 2016
+        o: date
+        a: when=2016
+      -
+      - c: US
+        o: abbr
+        h: title=United States
+      -
+      - presidential election
+      o: rs
+      a: type=event
+  - white supremacy
+  - harrassment
+  -
+    - v:
+      - c: 90s
+      - c: "\u2010"
+      - era trans webpages
+  - appropriation of queer culture
+  - suicide
+  - homelessness
+  - sexual assault
+description:
+  - c: 2017
+    o: date
+    a: when=2017
+  -
+  - was the year of the cyber
+  - c: .
+  -
+  - Now
+  - c: ","
+  -
+  - c: 2018
+    o: date
+    a: when=2018
+  -
+  - is the year of the cybre
+  - c: .
+upcoming:
+  theme: love
+  hex:
+    title: '#FFFFFF'
+    light: true
+credits:
+  - id: kibi
+    for:
+      - writing
+      - editing
+      - layout
+      - design
+  - id: amphetamine
+    for:
+      - subtoots
+      - inspiration
+      - support
+  - id: KitRedgrave
+    for:
+      - v: encouraging the kibi
+        o: soCalled
+---

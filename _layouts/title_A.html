@@ -1,95 +1,99 @@
-<!DOCTYPE html>
-<html lang={{ page.lang | default: site.lang | default: "en" }}>{% assign issue = site.CMON | sort: "date" | last %}{% assign hex = site.CHEX | where: "vol_no", issue.vol_no | where: "issue_no", issue.issue_no | last %}{% assign series = page.series | default: site.title | default: site.github.repository_name %}
+---
+width: 480
+---
 
-<title>{{ series }}</title>
-<meta charset=utf-8>
-<meta name=viewport content=width&equal;480>
+<!DoCtYpE HTML>{% assign lang = page.lang | default: site.lang | default: "en" %}
+<HTML Lang={% include attr value=lang %}>{% assign issue = site.CMON | sort: "date" | last %}{% assign hex = site.CHEX | where: "vol_no", issue.vol_no | where: "issue_no", issue.issue_no | last %}{% assign series = page.series | default: site.title | default: site.github.repository_name %}
 
-<style type=text/css>
+<!--  [META]  -->
+{% include meta.html %}
+<!--  [/META]  -->
+
+<STYLE Type={% include attr value="text/css" %}>
 {% capture styling %}
 	$bg_colour: #faf8f7;
 	$fg_colour: #1f1a14;
-	$hex_colour: {% if hex.light %}{{ hex.colour | default: '$bg_colour' }}{% else %}{{ hex.colour | default: '$fg_colour' }}{% endif %};
+	$hex_colour: {% if hex.light %}{{ hex.colour | strip_html | default: '$bg_colour' }}{% else %}{{ hex.colour | strip_html | default: '$fg_colour' }}{% endif %};
 
-	html {
-		display: block;
-		position: static;
-		margin: 0;
-		border: none;
-		padding: 0;
-		font: normal 1em / 1.5 serif;
+	HTML {
+		Display: block;
+		Position: static;
+		Margin: 0;
+		Border: none;
+		Padding: 0;
+		Font: normal 1em / 1.5 serif;
 	}
 
-	body {
-		display: block;
-		position: static;
-		margin: 0;
-		border: none;
-		padding: 0;
-		min-width: 30em;
-		height: 100vh;
-		color: {% if hex.light %}$fg_colour{% else %}$bg_colour{% endif %};
-		background: $hex_colour;
-		text-align: center;
+	BODY {
+		Display: block;
+		Position: static;
+		Margin: 0;
+		Border: none;
+		Padding: 0;
+		Min-Width: 30em;
+		Height: 100vh;
+		Color: {% if hex.light %}$fg_colour{% else %}$bg_colour{% endif %};
+		Background: $hex_colour;
+		Text-Align: center;
 	}
 
 	#portal {
-		display: block;
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		margin: auto;
-		border: none;
-		padding: 1.5em;
-		outline: thin transparent dashed;
-		outline-offset: 1.5em;
-		width: 30em;
-		height: 7.5em;
-		color: inherit;
-		box-shadow: 0 0 0 0 $fg_colour;
-		text-decoration: none;
-		transition: outline-color .3s, outline-offset .3s, box-shadow .3s;
+		Display: block;
+		Position: absolute;
+		Top: 0;
+		Bottom: 0;
+		Left: 0;
+		Right: 0;
+		Margin: auto;
+		Border: none;
+		Padding: 1.5em;
+		Outline: thin transparent dashed;
+		Outline-Offset: 1.5em;
+		Width: 30em;
+		Height: 7.5em;
+		Color: inherit;
+		Box-Shadow: 0 0 0 0 $fg_colour;
+		Text-Decoration: none;
+		Transition: outline-color .3s, outline-offset .3s, box-shadow .3s;
 
-		body:hover > & {
-			outline-color: {% if hex.light %}$fg_colour{% else %}$bg_colour{% endif %};
-			outline-offset: 0;
+		BODY:Hover > & {
+			Outline-Color: {% if hex.light %}$fg_colour{% else %}$bg_colour{% endif %};
+			Outline-Offset: 0;
 		}
 
-		&:hover { box-shadow: .25em .25em .75em 0 $fg_colour }
+		&:hover { Box-Shadow: .25em .25em .75em 0 $fg_colour }
 	}
 
 	#title {
-		display: inline-block;
-		position: static;
-		margin: -3px;
-		border: 3px {% if hex.light %}$fg_colour{% else %}$hex_colour{% endif %} solid;
-		padding: 0 .25em;
-		max-width: 100%;
-		height: 1em;
-		color: {% if hex.light %}$fg_colour{% else %}$hex_colour{% endif %};
-		background: {% if hex.light %}$hex_colour{% else %}$bg_colour{% endif %};
-		font: bold italic 3em / 1 sans-serif;
-		letter-spacing: .125em;
-		text-transform: uppercase;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;
+		Display: inline-block;
+		Position: static;
+		Margin: -3px;
+		Border: 3px {% if hex.light %}$fg_colour{% else %}$hex_colour{% endif %} solid;
+		Padding: 0 .25em;
+		Max-Width: 100%;
+		Height: 1em;
+		Color: {% if hex.light %}$fg_colour{% else %}$hex_colour{% endif %};
+		Background: {% if hex.light %}$hex_colour{% else %}$bg_colour{% endif %};
+		Font: bold italic 3em / 1 sans-serif;
+		Letter-Spacing: .125em;
+		Text-Transform: uppercase;
+		Text-Overflow: ellipsis;
+		White-Space: nowrap;
+		Overflow: hidden;
 	}
 
 	#latest {
-		display: block;
-		position: static;
-		margin: .75em 0 0;
-		border: none;
-		padding: 0;
-		height: 1.5em;
-		font: normal 2em / 1.5 serif;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;
+		Display: block;
+		Position: static;
+		Margin: .75em 0 0;
+		Border: none;
+		Padding: 0;
+		Height: 1.5em;
+		Font: normal 2em / 1.5 serif;
+		Text-Overflow: ellipsis;
+		White-Space: nowrap;
+		Overflow: hidden;
 	}
-{% endcapture %}{{ styling | scssify }}</style>
+{% endcapture %}{{ styling | scssify }}</STYLE>
 
 {{ content }}

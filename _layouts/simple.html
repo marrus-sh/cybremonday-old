@@ -1,38 +1,32 @@
-<!DOCTYPE html>
-<html lang={{ page.lang | default: site.lang | default: 'en' }}>{% assign issue = site.CMON | sort: 'date' | last %}{% assign hex = site.CHEX | where: "vol_no", issue.vol_no | where: "issue_no", issue.issue_no | last %}{% assign series = page.series | default: site.title | default: site.github.repository_name %}
+<!DoCtYpE HTML>{% assign LANG = page.lang | default: site.lang | default: "en" %}{% assign attrs = LANG | prepend: "xml:lang=" %}
+{% include _ o="TEI" a=attrs %}{% assign ISSUE = site.CMON | sort: 'date' | last %}{% assign HEX = site.CHEX | where: "vol_no", ISSUE.vol_no | where: "issue_no", ISSUE.issue_no | last %}{% assign TITLE = page.title %}{% assign SERIES = page.series %}
 
-<title>{% if page.title %}{{ page.title }} | {% endif %}{{ series }}</title>
-<meta charset=utf-8>
+<!--  [META]  -->
+{% include meta.html %}
+<!--  [/META]  -->
 
-{% seo title=false %}
-
-<style type=text/css>
+<STYLE Type={% include attr value="text/css" %}>
 {% capture styling %}
-	$bg_colour: {% if hex.light %}{{ hex.title | default: '#faf8f7' }}{% else %}{{ hex.title | default: '#1f1a14' }}{% endif %};
-	$fg_colour: {% if hex.light %}#1f1a14{% else %}#faf8f7{% endif %};
+	$bg_colour: {% if HEX.light %}{{ HEX.title | strip_html | default: '#faf8f7' }}{% else %}{{ HEX.title | strip_html | default: '#1f1a14' }}{% endif %};
+	$fg_colour: {% if HEX.light %}#1f1a14{% else %}#faf8f7{% endif %};
 
-	html {
-		display: block;
-		position: static;
-		margin: 0;
-		border: none;
-		padding: 0;
-		color: $fg_colour;
-		background: $bg_colour;
-		font: normal 1em / 1.5 serif;
-	}
-	body {
-		display: block;
-		position: static;
-		margin: auto;
-		border: none;
-		padding: 0;
-		max-width: 31em;
+	HTML {
+		Color: $fg_colour;
+		Background: $bg_colour;
 	}
 	{% include corefmt.scss %}
-{% endcapture %}{{ styling | scssify }}</style>
+{% endcapture %}{{ styling | scssify }}</STYLE>
 
-<article id=content>
+{% include _ o="text" %}{% if TITLE.size > 0 or SERIES.size > 0 %}
+	{% include _ o="front" a="xml:id=front" %}
+		{% include _ o="docTitle" a="xml:id=title" %}
+			{% include _ o="titlePart" %}{% if SERIES.size > 0 %}{% include _ v=SERIES %}{% if TITLE != empty %}:
+				{% endif %}{% endif %}{% if TITLE.size > 0 %}{% if SERIES.size > 0 %}{% include _ o="emph|STRONG" a="rend=strong" %}{% endif %}{% include _ v=TITLE %}{% if SERIES.size > 0 %}{% include _ x="emph|STRONG" %}{% endif %}{% endif %}{% include _ x="titlePart" %}
+		{% include _ x="docTitle" %}
+	{% include _ x="front" %}{% endif %}
+	{% include _ o="body" a="xml:id=content" %}
 
-{{ content }}
-</article>
+{% include content %}
+
+	{% include _ x="body" %}
+{% include _ x="text" %}

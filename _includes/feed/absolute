@@ -1,0 +1,2 @@
+{% assign url = include.url | absolute_url %}{% include attr value=url %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

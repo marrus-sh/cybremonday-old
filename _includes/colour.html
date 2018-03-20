@@ -1,2 +1,0 @@
-<code {% if include.id %}{% assign id = include.id | replace: " ", "_" %}id={% include attr.html text=id kramdown=include.kramdown %} {% endif %}class={% if include.light %}"light colour"{% elsif include.kramdown %}"colour"{% else %}colour{% endif %} style={% if include.kramdown %}"background-color:{{ include.colour }}"{% else %}background-color:{{ include.colour }}>{{ include.colour }}{% endif %}</code>
-{%- comment %}[Strip whitespace]{% endcomment -%}

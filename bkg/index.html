@@ -3,5 +3,5 @@ title: Backgrounds | CYBREMONDAY
 layout: nada
 ---
 <h1>Backgrounds</h1>
-<!--  Each issue may have a single background image, whose name should match the issue's slug.  -->
+<!--  Each issue may have a single background image, whose name should match the issue's catalogue number.  -->
 {% assign backgrounds = site.static_files | where: "type", "background" | sort: "name" %}{% include dir.html files=backgrounds %}

@@ -1,0 +1,349 @@
+'*':
+  attrs:
+    style: Style
+    xml:id: Id
+    xml:lang: Lang
+    xml:space: Data-space
+ab:
+  html: DIV
+abbr:
+  html: ABBR
+actor:
+  html: DD
+add:
+  html: INS
+addName:
+  html: U
+  attrs:
+    ref: About
+address:
+  html: ADDRESS
+addrLine:
+  html: SPAN
+am:
+  html: SPAN
+anchor:
+  html: SPAN
+argument:
+  html: HEADING
+att:
+  html: CODE
+author:
+  html: SPAN
+  attrs:
+    ref: About
+back:
+  html: FOOTER
+bibl:
+  html: P
+bloc:
+  html: U
+  attrs:
+    ref: about
+body:
+  html: SECTION
+byline:
+  html: P
+c:
+  html: SPAN
+caesura:
+  html: BR
+  void: true
+camera:
+  html: P
+caption:
+  html: P
+castGroup:
+  html: SECTION
+castItem:
+  html: DL
+castList:
+  html: ASIDE
+cell:
+  html: TD
+choice:
+  html: SPAN
+cit:
+  html: BLOCKQUOTE
+  attrs:
+    source: Cite
+citedRange:
+  html: SPAN
+closer:
+  html: FOOTER
+code:
+  html: CODE
+corr:
+  html: INS
+country:
+  html: U
+  attrs:
+    ref: about
+date:
+  html: TIME
+  attrs:
+    when: Datetime
+dateline:
+  html: ASIDE
+del:
+  html: DEL
+desc:
+  html: FOOTER
+distinct:
+  html: I
+district:
+  html: U
+  attrs:
+    ref: about
+div:
+  html: SECTION
+div1:
+  html: SECTION
+div2:
+  html: SECTION
+div3:
+  html: SECTION
+div4:
+  html: SECTION
+div5:
+  html: SECTION
+div6:
+  html: SECTION
+div7:
+  html: SECTION
+docAuthor:
+  html: SPAN
+  attrs:
+    ref: About
+docDate:
+  html: SPAN
+docEdition:
+  html: P
+docImprint:
+  html: P
+docTitle:
+  html: H1
+  attrs:
+    ref: About
+editor:
+  html: SPAN
+  attrs:
+    ref: About
+eg:
+  html: PRE
+egXML:
+  html: PRE
+email:
+  html: CODE
+emph:
+  html: EM
+epigraph:
+  html: ASIDE
+epilogue:
+  html: SECTION
+ex:
+  html: INS
+expan:
+  html: SPAN
+figDesc:
+  html: FIGCAPTION
+figure:
+  html: FIGURE
+floatingText:
+  html: ARTICLE
+foreign:
+  html: I
+forename:
+  html: U
+formula:
+  html: SPAN
+front:
+  html: HEADER
+g:
+  html: I
+genName:
+  html: U
+geo:
+  html: SPAN
+geogFeat:
+  html: SPAN
+geogName:
+  html: U
+  attrs:
+    ref: about
+gi:
+  html: CODE
+gloss:
+  html: I
+graphic:
+  html: IMG
+  attrs:
+    url: Src
+  void: true
+group:
+  html: ARTICLE
+head:
+  html: H1
+headItem:
+  html: LI
+headLabel:
+  html: LI
+hi:
+  html: B
+ident:
+  html: CODE
+imprimatur:
+  html: P
+item:
+  html: LI
+l:
+  html: P
+label:
+  html: STRONG
+lang:
+  html: U
+lb:
+  html: BR
+  void: true
+lg:
+  html: P
+list:
+  html: UL
+listBibl:
+  html: FOOTER
+media:
+  html: VIDEO
+  attrs:
+    url: Src
+meeting:
+  html: CITE
+mentioned:
+  html: I
+move:
+  html: P
+name:
+  html: U
+note:
+  html: ASIDE
+  role: note
+num:
+  html: SPAN
+  attrs:
+    value: Content
+opener:
+  html: HEADING
+orig:
+  html: DEL
+p:
+  html: P
+performance:
+  html: SECTION
+persName:
+  html: U
+  attrs:
+    ref: About
+placeName:
+  html: U
+  attrs:
+    ref: About
+postBox:
+  html: SPAN
+postCode:
+  html: SPAN
+postscript:
+  html: FOOTER
+prologue:
+  html: SECTION
+ptr:
+  html: OBJECT
+  attrs:
+    target: Data
+    mimeType: Type
+publisher:
+  html: SPAN
+  attrs:
+    ref: About
+pubPlace:
+  html: SPAN
+  attrs:
+    ref: About
+q:
+  html: I
+quote:
+  html: Q
+  attrs:
+    source: Cite
+ref:
+  html: A
+  attrs:
+    target: Href
+reg:
+  html: INS
+role:
+  html: DT
+roleDesc:
+  html: SPAN
+row:
+  html: TR
+rs:
+  html: SPAN
+  attrs:
+    ref: About
+said:
+  html: I
+salute:
+  html: P
+seg:
+  html: SPAN
+set:
+  html: DIV
+settlement:
+  html: U
+  attrs:
+    ref: About
+sic:
+  html: SPAN
+signed:
+  html: P
+soCalled:
+  html: I
+sound:
+  html: P
+sp:
+  html: SECTION
+spGrp:
+  html: SECTION
+speaker:
+  html: H6
+street:
+  html: SPAN
+surname:
+  html: U
+table:
+  html: TABLE
+tag:
+  html: CODE
+tech:
+  html: P
+TEI:
+  html: HTML
+term:
+  html: DFN
+text:
+  html: ARTICLE
+time:
+  html: TIME
+  attrs:
+    when: Datetime
+title:
+  html: CITE
+titlePage:
+  html: SECTION
+titlePart:
+  html: SPAN
+trailer:
+  html: H2
+val:
+  html: CODE
+view:
+  html: P

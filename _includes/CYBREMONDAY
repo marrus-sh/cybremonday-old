@@ -1,0 +1,4 @@
+{% comment %}
+The CYBREMONDAY tag.
+{% endcomment %}{% assign attrs = "level=j" %}{% if include.a %}{% assign attrs = attrs | append: "`" | append: include.a %}{% endif %}{% include _ o="title" p=include.p a=attrs h=include.h %}{% include _ o="hi" p=include.p a="rend=highlight" c="CYBREMONDAY" %}{% include _ p=include.p x="title" %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

@@ -1,0 +1,2 @@
+{% assign ext = page.path | split: "." | last %}{% if include.name %}{% if ext == "tei" %}{{ include.name }}{% else %}*.{{ include.name }}{% endif %}{% endif %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

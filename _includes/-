@@ -1,0 +1,4 @@
+{% comment %}
+Inserts a genuine Unicode (U+2010) hyphen.
+{% endcomment %}‐
+{%- comment %}[Strip whitespace]{% endcomment -%}

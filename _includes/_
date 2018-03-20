@@ -1,0 +1,24 @@
+{% comment %}
+Inserts a TEI/HTML tag depending on the extension of the page.
+
+Usage:
+    {% include _ o="openingTag" %}
+    {% include _ o="openingTeiTag|openingHtmlTag" %}
+    {% include _ o="openingTagWithAttrs" a="attr=some value`att2=another" %}
+    {% include _ o="openingTagWithHTMLAttrs" h="Htmlattr=same format" %}
+    {% include _ o="openingTagWithARIARole" r="role" %}
+    {% include _ o="selfClosingTag" x=1 %}
+    {% include _ o="selfClosingTagWithContent" c="Formatted Content" %}
+    {% include _ o="selfClosingTagWithCapitalizedContent" c="uppercase the first letter of this" u=1 %}
+    {% include _ o="selfClosingTagWithVariance" v="Varying Content" %}
+    {% include _ o="selfClosingTagWithCapitalizedVariance" v="uppercase the first letter of this" u=1 %}
+    {% include _ x="endTag" %}
+    {% include _ x="noEndTag" n=1 %}
+{% endcomment %}{% comment %}
+==  BEGIN TAG PROCESSING  ==
+{% endcomment %}{% unless include.p %}{% assign name = include.o | default: include.x %}{% if name %}{% assign open = false %}{% assign close = false %}{% if include.o %}{% assign open = true %}{% endif %}{% if include.x %}{% unless include.c or include.v %}{% assign close = true %}{% endunless %}{% endif %}{% include -_-/tag.liquid name=name open=open close=close n=n role=include.r a=include.a h=include.h %}{% endif %}{% endunless %}{% comment %}
+==  BEGIN CONTENT PROCESSING  ==
+{% endcomment %}{% assign items = include.v | default: include.c %}{% if items %}{% unless items.first %}{% assign items = "" | split: " " | push: items %}{% endunless %}{% for item in items %}{% assign upper = false %}{% assign variant = false %}{% if include.v %}{% assign variant = true %}{% endif %}{% if forloop.first and include.u %}{% assign upper = true %}{% endif %}{% include -_-/content.liquid content=item upper=upper variant=variant plain=include.p %}{% endfor %}{% endif %}{% comment %}
+==  BEGIN END TAG PROCESSING  ==
+{% endcomment %}{% unless include.p %}{% if include.o %}{% if include.c or include.v %}{% unless ext != "tei" and include.n %}{% include -_-/tag.liquid name=include.o close=true %}{% endunless %}{% endif %}{% endif %}{% endunless %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

@@ -1,0 +1,66 @@
+---
+vol_no: 1
+issue_no: 1
+title: Cybre Love
+layout: layout_A
+date: 2018-02-12
+caption:
+  - Special
+  -
+  - v:
+    - Valentine
+    - "'s"
+    -
+    - Day
+    o: date
+    a: when=2018-02-14
+  -
+  - Issue
+  - c: "!!"
+cover:
+  description: A black outline of a heart on a white background with a grid. Distorted cybre images appear across the image.
+  height: 600
+  width: 600
+warnings:
+  - - erasure of queer relationships
+    - c: /
+    - identity
+  - - c: Facebook
+      o: country
+  - homophobia
+  - discrimination
+  - unhealthy relationship structures
+  - abuse
+description:
+  - Discussing experiences of love on
+  - v: the Internet
+    o: bloc
+  - c: .
+upcoming:
+  theme: bodies
+  hex:
+    title: '#3399CC'
+    light: false
+credits:
+  -
+    id: kibi
+    for:
+      - writing
+      - editing
+      - layout
+      - design
+  -
+    id: shel
+    for:
+      - - author
+        - c: ","
+        -
+        - c: Hooking up to the Cybre
+          o: title
+          a: level=a
+  -
+    id: bea
+    for:
+      - hosting
+      - technical support
+---

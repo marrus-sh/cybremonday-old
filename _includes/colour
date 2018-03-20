@@ -1,0 +1,4 @@
+{% comment %}
+Creates a colour tag
+{% endcomment %}{% if include.light %}{% assign attrs = "type=colour`subtype=light" %}{% else %}{% assign attrs = "type=colour`subtype=dark" %}{% endif %}{% if include.a %}{% assign attrs = attrs | append: "`" | append: include.a %}{% endif %}{% assign hatts = "style=background-color:" | append: include.colour %}{% if include.h %}{% assign hatts = hatts | append: "`" | append: include.h %}{% endif %}{% include _ o="ident" a=attrs h=hatts c=include.colour %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

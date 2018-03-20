@@ -1,0 +1,4 @@
+{% comment %}
+Provides a date given a datetime or a when.
+{% endcomment %}{% if include.datetime %}{% assign date = include.datetime | date: "%Y-%m-%d" %}{% else %}{% assign date = include.when %}{% endif %}{% assign attrs = date | prepend: "when=" %}{% if include.a %}{% assign attrs = attrs | append: "`" | append: include.a %}{% endif %}{% if include.content or include.vcontent %}{% assign hatts = date | prepend: "title=" %}{% else %}{% assign hatts = "" %}{% endif %}{% if include.h %}{% assign hatts = hatts | append: "`" | append: include.h %}{% endif %}{% include _ o="date" a=attrs h=hatts %}{% if include.vcontent %}{% include _ v=include.vcontent %}{% elsif include.content %}{{ include.content }}{% elsif include.datetime %}{{ include.datetime | date: "%d %B %Y" }}{% else %}{{ date }}{% endif %}{% include _ x="date" %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

@@ -4,56 +4,54 @@ $bg_colour: {% if include.print %}white{% elsif include.invert %}#1f1a14{% else 
 $fg_colour: {% if include.print %}black{% elsif include.invert %}#faf8f7{% else %}#1f1a14{% endif %};
 $cur_colour: {% if include.print %}$fg_colour{% elsif include.user_set %}currentColor{% else %}$fg_colour{% endif %};
 $trans_colour: {% if include.print %}$bg_colour{% elsif include.user_set %}transparent{% else %}$bg_colour{% endif %};
-$hex_colour: {% if invert %}{{ include.colour.title | default: '$bg_colour' }}{% else %}{{ include.colour.title | default: '$fg_colour' }}{% endif %};
-$aside_colour: rgba({{ include.colour.title | default: "$fg_colour" }}, .36);
+$hex_colour: {% if invert %}{{ include.colour.title | strip_html | default: '$bg_colour' }}{% else %}{{ include.colour.title | strip_html | default: '$fg_colour' }}{% endif %};
+$aside_colour: rgba({{ include.colour.title | strip_html | default: "$fg_colour" }}, .36);
 
 //  Special print styling
 {% if include.print %}
-body {
-	padding: 3em 0 0;
-	min-width: 0;
+BODY {
+	Padding: 3em 0 0;
+	Min-Width: 0;
 
-	&::before,
-	&::after { display: none }
-	& > #topbar { position: absolute }
-	& > #content {
-		padding: 0 1em;
-		max-width: none;
-		box-shadow: none;
+	&::BEFORE,
+	&::AFTER { Display: none }
+	#topbar { Position: absolute }
+	#content {
+		Padding: 0 1em;
+		Max-Width: none;
+		Box-Shadow: none;
 
-		& > #article {
-			& > #title { margin: 0 -1em }
-			& > #playlist { display: none }
-			& > #warnings,
-			& > #endmatter { margin: 0 -1.25em }
-			& > section {
-				& > nav {
-					margin: 0 -2em;
-					padding: 0 2em;
-				}
+		#title { Margin: 0 -1em }
+		#playlist { Display: none }
+		#warnings,
+		#endmatter { Margin: 0 -1.25em }
+		SECTION.div2 {
+			& > NAV {
+				Margin: 0 -2em;
+				Padding: 0 2em;
 			}
 		}
 	}
-	#appx { margin: 0 }
+	#appx { Margin: 0 }
 }
 {% endif %}
 
 %aside {
-	color: $cur_colour;
-	background-color: $aside_colour;
+	Color: $cur_colour;
+	Background-Color: $aside_colour;
 }
 %bar {
-	color: {% if invert %}$cur_colour{% else %}$bg_colour{% endif %};
-	background-color: $hex_colour;
+	Color: {% if invert %}$cur_colour{% else %}$bg_colour{% endif %};
+	Background-Color: $hex_colour;
 }
 %block {
-	color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %};
-	background-color: {% if invert %}$hex_colour{% else %}transparent{% endif %};
+	Color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %};
+	Background-Color: {% if invert %}$hex_colour{% else %}transparent{% endif %};
 }
-%borderbt { border-bottom-color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %} }
-%borderlf { border-left-color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %} }
-%borderrt { border-right-color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %} }
-%bordertp { border-top-color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %} }
+%borderbt { Border-Bottom-Color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %} }
+%borderlf { Border-Left-Color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %} }
+%borderrt { Border-Right-Color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %} }
+%bordertp { Border-Top-Color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %} }
 %bordered {
 	@extend %bordertp;
 	@extend %borderbt;
@@ -61,182 +59,184 @@ body {
 	@extend %borderlf;
 }
 %clear {
-	color: currentColor;
-	background-color: transparent;
+	Color: currentColor;
+	Background-Color: transparent;
 }
 %cyblock {
-	color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %};
-	background-color: {% if invert %}$hex_colour{% else %}$bg_colour{% endif %};
+	Color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %};
+	Background-Color: {% if invert %}$hex_colour{% else %}$bg_colour{% endif %};
 }
 %hextext {
-	color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %};
-	background-color: {% if invert %}$hex_colour{% else %}transparent{% endif %};
+	Color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %};
+	Background-Color: {% if invert %}$hex_colour{% else %}transparent{% endif %};
 }
 %invert {
-	color: $bg_colour;
-	background: $fg_colour;
+	Color: $bg_colour;
+	Background: $fg_colour;
 }
 %link {
-	color: {% if invert %}$cur_colour{% else %}$fg_colour{% endif %};
-	background: transparent;
+	Color: {% if invert %}$cur_colour{% else %}$fg_colour{% endif %};
+	Background: transparent;
 }
-%linkborder { border-color: {% if invert %}$hex_colour{% else %}$aside_colour{% endif %}}
+%linkborder { Border-Color: {% if invert %}$hex_colour{% else %}$aside_colour{% endif %}}
 %plain {
-	color: $fg_colour;
-	background: $bg_colour;
+	Color: $fg_colour;
+	Background: $bg_colour;
 }
 %setoff {
-	color: $cur_colour;
-	background-color: {% if invert %}$hex_colour{% else %}transparent{% endif %};
+	Color: $cur_colour;
+	Background-Color: {% if invert %}$hex_colour{% else %}transparent{% endif %};
 }
 %weakblock {
-	color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %};
-	background-color: {% if invert %}$aside_colour{% else %}transparent{% endif %};
+	Color: {% if invert %}$cur_colour{% else %}$hex_colour{% endif %};
+	Background-Color: {% if invert %}$aside_colour{% else %}transparent{% endif %};
 }
-body {
-	color: $cur_colour;
-	background-color: $trans_colour;
-
-	{% if page.background %}&::before,
-	&::after {
+BODY {
+	Color: $cur_colour;
+	Background-Color: $trans_colour;
+	{% if page.background %}
+	&::BEFORE,
+	&::AFTER {
 		//  We use `include.invert` here because we assume that `hex.light`
 		//  was already taken into account when designing the background.
-		color: {% if include.invert %}white{% else %}black{% endif %};
-		background-blend-mode: hue, difference;
-	}
-	{% endif %}& > #topbar { @extend %bar;
+		Color: {% if include.invert %}white{% else %}black{% endif %};
+		Background-Blend-Mode: hue, difference;
+	}{% endif %}
+	#topbar { @extend %bar }
+	#content {
+		#title { @extend %bar;
 
-		h1 { @extend %cyblock }
-	}
-	& > #content {
-		& > #article {
-			& > #title { @extend %bar;
-
-				& > h2#issuetitle {
-					& > cite { @extend %cyblock }
-				}
-				& > p { @extend %cyblock }
+			H2#issuetitle {
+				SPAN { @extend %cyblock }
 			}
-			& > #warnings {
-				@extend %aside;
-				@extend %borderbt;
-			}
-			& > section {
-				&#introduction > a.sectionlink > h3,
-				&#introduction > h3 { @extend %hextext }
-				&:not(#introduction) > a.sectionlink > h3,
-				&:not(#introduction) > h3 {
-					color: $bg_colour;
-					background: radial-gradient(ellipse farthest-corner at -13% -13%, $fg_colour 69%, {% if invert %}mix($fg_colour, $hex_colour, 75%) 69%, mix($fg_colour, $hex_colour, 75%) 74%, mix($fg_colour, $hex_colour, 50%) 74%,  mix($fg_colour, $hex_colour, 50%) 79%,  mix($fg_colour, $hex_colour, 25%) 79%, mix($fg_colour, $hex_colour, 25%) 84%, {% endif %}$hex_colour 84%), $fg_colour;
+			P { @extend %cyblock }
+		}
+		#warnings {
+			@extend %aside;
+			@extend %borderbt;
+		}
+		SECTION.div1 {
+			& > SECTION {
+				&#introduction > A[Data-Subtype="sectionlink"] > H3,
+				&#introduction > H3 { @extend %hextext }
+				&:not(#introduction) > A[Data-Subtype="sectionlink"] > H3,
+				&:not(#introduction) > H3 {
+					Color: $bg_colour;
+					Background: radial-gradient(ellipse farthest-corner at -13% -13%, $fg_colour 69%, {% if invert %}mix($fg_colour, $hex_colour, 75%) 69%, mix($fg_colour, $hex_colour, 75%) 74%, mix($fg_colour, $hex_colour, 50%) 74%,  mix($fg_colour, $hex_colour, 50%) 79%,  mix($fg_colour, $hex_colour, 25%) 79%, mix($fg_colour, $hex_colour, 25%) 84%, {% endif %}$hex_colour 84%), $fg_colour;
 
-					&::before {
-						color: $fg_colour;
-						background-color: $hex_colour;
+					&::BEFORE {
+						Color: $fg_colour;
+						Background-Color: $hex_colour;
 					}
-					&::after { color: $hex_colour }
+					&::AFTER { Color: $hex_colour }
 				}
-				& > aside { @extend %aside }
-				& > nav {
+				& > ASIDE { @extend %aside }
+				& > NAV {
 					@extend %aside;
 					@extend %bordertp;
 					@extend %borderbt;
 
-					& > ol,
-					& > ul {
-						& > li {
-							& + li { @extend %bordertp }
+					& > OL,
+					& > UL {
+						& > LI {
+							& + LI { @extend %bordertp }
 						}
 					}
 				}
-				blockquote {
+				BLOCKQUOTE {
 					@extend %bordertp;
 					@extend %borderbt;
 					@extend %setoff;
 
-					& > p {
-						&:first-of-type::before,
-						&:last-of-type::after { @extend %block }
+					& > P {
+						&:First-Of-Type::BEFORE,
+						&:Last-Of-Type::AFTER { @extend %block }
 					}
-					& > footer:last-child {
-						&::before { @extend %block }
-					}
-				}
-				div.p,
-				p {
-					& + div.p,
-					& + p {
-						&::before { @extend %block }
+					& > FOOTER:last-child {
+						&::BEFORE { @extend %block }
 					}
 				}
-				ol,
-				ul {
-					li {
-						&::before { @extend %block }
+				DIV.p,
+				P {
+					& + DIV.p,
+					& + P {
+						&::BEFORE { @extend %block }
 					}
 				}
-				table {
-					&.split {
+				OL,
+				UL {
+					LI {
+						&::BEFORE { @extend %block }
+					}
+				}
+				TABLE {
+					&[Data-Type="split"] {
 						@extend %bordered;
 						@extend %setoff;
 
-						col {
+						COL {
 							@extend %borderlf;
 							@extend %borderrt;
 						}
 					}
 				}
 			}
-			& > #endmatter {
-				@extend %aside;
-				@extend %bordertp;
+		}
+		#endmatter {
+			@extend %aside;
+			@extend %bordertp;
 
-				h3 { @extend %bar;
+			H3 { @extend %bar;
 
-					code.hashtag,
-					dfn,
-					em,
-					q { @extend %clear }
-					strong { @extend %cyblock }
-				}
-				p {
-					& + p::before { @extend %block }
-				}
+				CODE.ident[Data-Type="hashtag"],
+				DFN,
+				EM,
+				Q { @extend %clear }
+				STRONG { @extend %cyblock }
 			}
-			a[href]:not(.sectionlink) { @extend %link;
+			P {
+				& + P::BEFORE { @extend %block }
+			}
+		}
+		SECTION.body {
+			A[Href]:Not([Data-Subtype="sectionlink"]) { @extend %link;
 
-				&:hover { @extend %block }
+				&:Hover { @extend %block }
 				&.block { @extend %linkborder }
 			}
-			code.hashtag,
-			dfn,
-			em,
-			q,
-			strong { @extend %weakblock }
-			b {
-				code.hashtag,
-				dfn,
-				em,
-				q,
-				strong { @extend %clear }
+			CODE.ident[Data-Type="hashtag"],
+			DFN,
+			EM,
+			Q,
+			STRONG { @extend %weakblock }
+			B {
+				CODE.ident[Data-Type="hashtag"],
+				DFN,
+				EM,
+				Q,
+				STRONG { @extend %clear }
 			}
 		}
 	}
-	& > #appx { @extend %bar }
+	#appx { @extend %bar }
 }
-b {
+B {
 	@extend %bordered;
 	@extend %bar;
+
+	&[Data-Rend="highlight"] { @extend %cyblock }
 }
-code {
-	{% if include.print %}&.colour { @extend %invert;
+CODE,
+VAR {
+	{% if include.print %}&.ident[Data-Type="colour"] { @extend %invert;
 
-		&.light { @extend %plain }
-	}{% elsif include.invert %}&.colour { @extend %plain;
+		&.ident[Data-Subtype="light"] { @extend %plain }
+	}{% elsif include.invert %}&.ident[Data-Type="colour"]{ @extend %plain;
 
-		&.light { @extend %invert }
-	}{% else %}&.colour { @extend %invert;
+		&.ident[Data-Subtype="light"] { @extend %invert }
+	}{% else %}&.ident[Data-Type="colour"] { @extend %invert;
 
-		&.light { @extend %plain }
+		&.ident[Data-Subtype="light"] { @extend %plain }
 	}{% endif %}
 }
 {% endcapture %}{{ styling | scssify }}

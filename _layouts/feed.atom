@@ -1,0 +1,28 @@
+---
+variants: none
+---
+<?xml version="1.0" encoding="utf-8"?>{% comment %}
+This feed code is *inspired by* jekyll-feed's template code;
+available at https://github.com/jekyll/jekyll-feed/ under an MIT
+license.  But it's redesigned to work with collections.
+{% endcomment %}{% assign label = page.title | default: "posts" %}{% assign collection = site.collections | where: "label", label | first %}{% assign dir = label | prepend: "/" | append: "----/" %}
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:thr="http://purl.org/syndication/thread/1.0" xmlns:activity="http://activitystrea.ms/spec/1.0/" xmlns:poco="http://portablecontacts.net/spec/1.0" xmlns:media="http://purl.org/syndication/atommedia" xmlns:ostatus="http://ostatus.org/schema/1.0" xmlns:mastodon="http://mastodon.social/schema/1.0"{% if site.lang %} xml:lang="{{ site.lang }}"{% endif %} >
+	<generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
+	<link href={% include feed/absolute url=page.url %} rel="self" type="application/atom+xml" />
+	<link href={% include feed/absolute url=dir %} rel="alternate" type="text/html"{% if site.lang %} hreflang="{{ site.lang }}"{% endif %} />{% assign license = page.license | default: site.license %}{% if license.size > 0 %}
+	<link href={% include attr value=license %} rel="license" type="text/html" />{% endif %}
+	<updated>{{ site.time | date_to_xmlschema }}</updated>
+
+	<!--  Series Information  -->
+	<id>{{ dir | absolute_url | xml_escape }}</id>{% if site.title or site.name %}
+	<title type="html">{{ site.title | default: site.name | xml_escape }}</title>{% endif %}{% if site.description %}
+	<subtitle type="html">{{ site.description | xml_escape }}</subtitle>{% endif %}{% assign icnpath = page.icon | default: site.icon %}{% if icnpath %}{% capture icon %}{% include url for=icnpath absolute=true %}{% endcapture %}{% if icon.size > 0 %}
+	<icon>{{ icon | xml_escape }}</icon>{% endif %}{% endif %}
+{% assign author = site.author | default: site.authors[0] %}{% if author %}
+	<!--  Author Information  -->
+{% include feed/author.atom author=author %}
+{% endif %}
+	<!--  Issue Information  -->{% if collection.output %}{% assign issues = collection.docs | group_by: "vol_no" | sort: "name" | last %}{% assign issues = issues.items | where_exp: "issue", "issue.draft != true" %}{% for issue in issues %}
+{% include feed/entry.atom issue=issue %}
+	{% endfor %}{% endif %}
+</feed>

@@ -3,16 +3,24 @@ redirect_from:
 - /guide/
 - /style/
 - /style_guide/
+layout:
 ---
 
-#  CONVENTIONS  #
+#  CONVENTIONS
 
 ##  HTML Coding Style  ##
 
 1.  Tabs are used for indentation.
+
 2.  Each sentence should be written on exactly one line.
-3.  The unquoted style should be used for attributes which do not contain spaces. The double-quoted style should be used for attributes which do contain spaces. Other special characters (eg, equals signs) should be escaped as necessary.
-4.  Hyphens, nonstandard whitespace (other than spaces or tabs), and the less-than and greater-than signs should be escaped. All other characters should be used literally where allowed.
+
+3.  The unquoted style should be used for attributes which do not contain spaces.
+    The double&#x2010;quoted style should be used for attributes which <em>do</em> contain spaces.
+    Other special characters (eg, equals signs) should be escaped as necessary.
+
+4.  Hyphens, nonstandard whitespace (other than spaces or tabs), and the less&#x2010;than and greater&#x2010;than signs should be escaped.
+    All other characters should be used literally where allowed.
+
 5.  Tags should be omitted where possible.
 
 ##  Spelling, Punctuation, and Typography  ##
@@ -25,75 +33,80 @@ redirect_from:
     - <i class="mentioned">&#x2010;ize</i>–variants are preferred over <i class="mentioned">&#x2010;ise</i>–variants.
     - <i class="mentioned">&#x2010;yse</i>–variants are preferred over <i class="mentioned">&#x2010;yze</i>–variants.
     - <i class="mentioned">&#x2010;ogue</i>–variants are preferred over <i class="mentioned">&#x2010;og</i>–variants.
-    - <i class="mentioned">e</i> should not be dropped unless pronunciation requires otherwise.
-    - Consonant doubling should happen liberally where possible and sensible.
+    - <i class="mentioned">&#x2010;l</i> is preferred over <i class="mentioned">&#x2010;ll</i> except in the case of <i class="mentioned">&#x2010;all</i>.
+    - <i class="mentioned">&#x2010;y&#x2010;*&#x2010;e</i> is preferred over <i class="mentioned">&#x2010;i&#x2010;*&#x2010;e</i>.
+    - <i class="mentioned">&#x2010;v</i> is preferred over <i class="mentioned">&#x2010;ve</i> after short vowels.
     - <i class="mentioned">æ</i> and <i class="mentioned">œ</i> should be used where conventional or the pronunciation is as expected—these should always be written as single letters and not as digraphs.
 
-2.  A diæresis should be placed over the second letter in any of the following vowel combinations when they are not pronounced in the same syllable:
+2.  A diæresis should be placed over any vowel (including <i class="mentioned">y</i>) which:
 
-    - <i class="mentioned">ae</i>
-    - <i class="mentioned">ai</i>
-    - <i class="mentioned">ao</i>
-    - <i class="mentioned">au</i>
-    - <i class="mentioned">ay</i>
-    - <i class="mentioned">ea</i>
-    - <i class="mentioned">ee</i>
-    - <i class="mentioned">ei</i>
-    - <i class="mentioned">eu</i>
-    - <i class="mentioned">ey</i>
-    - <i class="mentioned">ie</i>
-    - <i class="mentioned">iy</i>
-    - <i class="mentioned">oa</i>
-    - <i class="mentioned">oe</i>
-    - <i class="mentioned">oi</i>
-    - <i class="mentioned">oo</i>
-    - <i class="mentioned">ou</i>
-    - <i class="mentioned">oy</i>
-    - <i class="mentioned">ua</i>
-    - <i class="mentioned">ue</i>
-    - <i class="mentioned">ui</i>
-    - <i class="mentioned">uo</i>
-    - <i class="mentioned">uu</i>
-    - <i class="mentioned">uy</i>
+    - Does not begin a sentence
+    - Is definitively not a part of the same syllable as the preceding letter (vowel or consonant)
+    - Does not, with the preceding letter, form one of the following combinations:
+        - <i class="mentioned">aa</i>
+        - <i class="mentioned">eo</i>
+        - <i class="mentioned">ia</i> (except as part of the sequences <i class="mentioned">cial</i> or <i class="mentioned">tial</i>)
+        - <i class="mentioned">ii</i>
+        - <i class="mentioned">io</i> (except as part of the sequences <i class="mentioned">sion</i>, <i class="mentioned">xion</i> or <i class="mentioned">tion</i>)
+        - <i class="mentioned">iu</i>
+        - <i class="mentioned">yy</i>
+    - Is not <i class="mentioned">æ</i> or <i class="mentioned">œ</i>, and
+    - Is not the second <i class="mentioned">o</i> in a <i class="mentioned">ool</i>
 
-    A diæresis should *not* be placed over the second letter in any of the following vowel combinations:
+3.  <i class="mentioned">y</i> should *not* change to <i class="mentioned">i</i> when adding *any* suffix.
 
-    - <i class="mentioned">aa</i>
-    - <i class="mentioned">eo</i>
-    - <i class="mentioned">ia</i>
-    - <i class="mentioned">ii</i>
-    - <i class="mentioned">io</i>
-    - <i class="mentioned">iu</i>
+4.  Silent <i class="mentioned">e</i>s should be dropped when *any* suffix is added, regardless of whether the suffix begins with a vowel, *except* when the preceding consonant is being softened, <i class="mentioned">l</i>, or <i class="mentioned">r</i>.
+    Silent <i class="mentioned">e</i>s should be dropped for <i class="mentioned">c</i> *even when* it is being softened (and in other cases the <i class="mentioned">c</i> should be written <i class="mentioned">ck</i>)
 
-    When three vowels appear in sequence, these considerations should only be made for the *final two*.
+5.  A *silent* <i class="mentioned">e</i> should *not* be added to form the suffixes <i class="mentioned">&#x2010;ed</i> or <i class="mentioned">&#x2010;es</i>—an <i class="mentioned">e</i> should only be written if the suffix is pronounced as a distinct syllable.
 
-3.  Unicode characters should be used for dashes (<i class="mentioned">–</i>, <i class="mentioned">—</i>), ellipses (<i class="mentioned">…</i>), and hyphens (<i class="mentioned">&#x2010;</i>)—the last of these should be escaped in the source to distinguish it from a hyphen&#x2010;minus (<i class="mentioned">-</i>).
+6.  For words which end in a consonant, that consonant should be doubled when:
+
+    - It is the only consonant in the coda
+    - The preceding vowel is not a digraph
+    - It is not a semivowel (<i class="mentioned">w</i> or <i class="mentioned">y</i>), <i class="mentioned">x</i>, or <i class="soCalled">softened</i>
+
+    These rules only apply to *suffixes* (which do not have lexical meaning on their own).
+    For compound words, silent <i class="mentioned">e</i>s should be preserved but written with a stroke (<i class="mentioned">ɇ</i>) and final consonants should not be doubled.
+
+7.  A grave accent should be written over any <i class="mentioned">e</i> which:
+
+    - Is word&#x2010;final
+    - Is not silent, and
+    - Belongs to a word of more than one syllable
+
+8.  The suffix <i class="mentioned">&#x2010;ally</i> should be shortened to <i class="mentioned">&#x2010;ly</i> *except* when it is preceded by another vowel.
+    Note, however, that this does not apply to words which end in a nonsuffixal <i class="mentioned">&#x2010;al</i> and then have a <i class="mentioned">&#x2010;ly</i> applied.
+
+9.  Unicode characters should be used for dashes (<i class="mentioned">–</i>, <i class="mentioned">—</i>), ellipses (<i class="mentioned">…</i>), and hyphens (<i class="mentioned">&#x2010;</i>)—the last of these should be escaped in the source to distinguish it from a hyphen&#x2010;minus (<i class="mentioned">-</i>).
     Apostrophes (<i class="mentioned">'</i>) should be used rather than right single quotes (<i class="mentioned">’</i>) where required.
 
-4.  Præfixes and suffixes should not be hyphenated, even when they form nonstandard compounds.
-    (Diæreses should help with disambiguätion.)
+6.  Em&#x2010;dashes with no surrounding whitespace are preferred over en&#x2010;dashes for parenthetical or sentence&#x2010;level divisions.
 
-5.  Abbreviations—including newer <i class="soCalled">textspeak</i> abbreviations—should be written lowercase with no periods, with the following exceptions:
+7.  Præfixes and suffixes should not be hyphenated, even when they form nonstandard compounds.
+    (Diæreses should help with disabiguation.)
 
-    - When normal casing prefers an uppercase letter (eg at the beginning of a sentence), or when the abbreviation refers to a proper noun normally capitalized (eg for country names), the abbreviation should be written *entirely* in uppercase if it is an initialism, or *with a capitalized first letter* otherwise.
+8.  Abbreviations—including newer <i class="soCalled">textspeak</i> abbreviations—should be written lowercase with no periods, with the following exceptions:
+
+    - When normal casing prefers an uppercase letter (eg at the beginning of a sentence), or when the abbreviation refers to a proper noun normally capitalized (eg for country names), the abbreviation should be written <em>entirely</em> in uppercase if it is an initialism, or <em>with a capitalized first letter</em> otherwise.
     - The words <i class="mentioned">AM</i>, <i class="mentioned">PM</i>, <i class="mentioned">AD</i>, <i class="mentioned">CE</i>, <i class="mentioned">BC</i>, and <i class="mentioned">BCE</i>, as well as other unit names or systems of measure which are conventionally written uppercase (including currency signs), should always be capitalized.
     - Language names, when abbreviated, should be written using PascalCase and followed by a period; for example: <i class="mentioned"><u class="lang"><abbr title="Old English">OEn.</abbr></u></i>, <i class="mentioned"><u class="lang"><abbr title="Proto–Indo&#x2010;European">PIE.</abbr></u></i>, <i class="mentioned"><u class="lang"><abbr title="Proto&#x2010;German">PrGmn.</abbr></u></i>
 
-6.  When in doubt and as a last resort, follow <cite class="monogr">The Chicago Manual of Style</cite> (the provisions above notwithstanding).
+9.  When in doubt and as a last resort, follow <cite class="monogr">The Chicago Manual of Style</cite> (the provisions above notwithstanding).
 
 ##  Super-HTML Tagging  ##
 
-<cite class="monogr"><b class="cybremonday">CYBREMONDAY</b></cite> uses a variety of elements with `class`es to denote things which are not expressible easily in regular <abbr title="HyperText Markup Language">HTML</abbr>.
+<cite class="monogr"><b class="fill">CYBREMONDAY</b></cite> uses a variety of elements with `class`es to denote things which are not expressible easily in regular <abbr title="HyperText Markup Language">HTML</abbr>.
 Many of these are inspired by the [<cite class="monogr"><abbr title="Text Encoding Initiative">TEI</abbr></cite>](http://www.tei-c.org/).
 You can view the default styling for these elements [here](https://github.com/marrus-sh/cybremonday/blob/master/_includes/corefmt.scss).
 They are as follows:
 
 ###  Pop-out content: The `<b>` element
 
-Use the `<b>` element to make content <i class="soCalled">pop</i> out of the page without granting it any additional meaning (like the `<strong>` tag would).
+The `<b>` element is used to make content <i class="soCalled">pop</i> out of the page without granting it any additional meaning (like the `<strong>` tag would).
 This is a *purely visual* effect to make the page easier to read for sighted users.
 `<b>` is most frequently used to mark up the first word or words of each in a running list of items, to make skimming the list easier.
-It is also (with `class=cybremonday`) used to decoratively mark up the <cite class="monogr"><b class="cybremonday">CYBREMONDAY</b></cite> title.
+It is also (with `class=fill`) used to decoratively mark up the <cite class="monogr"><b class="fill">CYBREMONDAY</b></cite> title.
 
 Here is an example using the `<b>` tag:
 
@@ -164,7 +177,7 @@ For other forms of quotation (ie, rhetorical quotes), the `<i>` element should b
 	</dd>
 	<dt><code>emph</code></dt>
 	<dd>
-		<em>Rhetorically</em> emphasized text.
+		<em>rhetorically</em> emphasized text.
 		This differs from the usage of the <code>&lt;em&gt;</code> element because no <em>actual</em> emphasis is being given to the content.
 		(Don't use this if using an <code>&lt;em&gt;</code> element would make sense.)
 	</dd>
@@ -180,7 +193,7 @@ For other forms of quotation (ie, rhetorical quotes), the `<i>` element should b
 	</dd>
 	<dt><code>q</code></dt>
 	<dd>
-		A direct <i class="soCalled">quotation</i> of material not from another source (and thus not a true quotation).
+		A direct <i class="soCalled">quotation</i> of material not from another source (and thus not a *true* quotation).
 	</dd>
 	<dt><code>term</code></dt>
 	<dd>
@@ -210,9 +223,17 @@ The `<span>` element is used for tagging content for which another element doesn
 Its `class`es are as follows:
 
 <dl>
+	<dt><code>choice</code></dt>
+	<dd>
+		Denotes a span of text which has an alternate regularized form which is more likely to be supported by screenreader software.
+		Produced by {% raw %}<code>{% include choice.html reg="regularized form" orig="zine form" %}</code>{% endraw %} (you shouldn't use this directly).
+		Contains <code>orig</code> (original), <code>seg</code> (segment; a separator), and <code>reg</code> (regularized) spans.
+		Only the <code>orig</code> span is shown to sighted users, only the <code>reg</code> span is shown to screenreaders.
+	</dd>
 	<dt><code>reg</code></dt>
 	<dd>
 		Text which has been regularized in some fashion, eg for comprehension, eg in a quote.
+		Also used inside of <code>choice</code> spans to indicate the regular form of the text.
 	</dd>
 	<dt><code>pre</code></dt>
 	<dd>
@@ -227,7 +248,7 @@ Its `class`es are as follows:
 ###  Dates and times: The `<time>` element
 
 Dates and times are capitalized as per normal <u class="lang">English</u> conventions.
-If the datetime is renderable in a `YYYY-MM-DD` format, you should use {% raw %}`{% include datetime.html id="the.element.id" datetime="1970-01-01" content="If there is a special name for the date (eg, Valentine's Day), provide it here" %}`{% endraw %}, which will render a `<time>` element for you.
+If the datetime is renderable in a `YYYY-MM-DD` format, you should use {% raw %}`{% include date datetime="1970-01-01" content="If there is a special name for the date (eg, Valentine's Day), provide it here" %}`{% endraw %}, which will render a `<time>` element for you.
 Otherwise, use a `<time>` element with `datetime` attribute where possible, and a `<span class=time>` element where not.
 
 ###  Proper nouns: The `<u>` element
@@ -250,7 +271,7 @@ A `class` **must** be provided; it should be one of the following:
 	</dd>
 	<dt><code>country</code></dt>
 	<dd>
-		A single geo&#x2010;political unit, potentially containing multiple <code>region</code>s but not of the same size as a <code>bloc</code>.
+		A single geopolitical unit, potentially containing multiple <code>region</code>s but not of the same size as a <code>bloc</code>.
 		Also used to denote a network of sites under a single shared protocol (<u class="country">the Fediverse</u>) or particularly large, hegemonic sites with large numbers of users (<u class="country">Facebook</u>).
 	</dd>
 	<dt><code>district</code></dt>

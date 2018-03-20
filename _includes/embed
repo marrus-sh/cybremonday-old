@@ -1,0 +1,4 @@
+{% comment %}
+Includes an embed.
+{% endcomment %}{% assign attrs = include.src | prepend: "target=" %}{% if include.a %}{% assign attrs = attrs | append: "`" | append: include.a %}{% endif %}{% include _ o="ptr" r="document" a=attrs h=include.h x=1 %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

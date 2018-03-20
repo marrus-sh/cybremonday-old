@@ -1,0 +1,182 @@
+ads:
+  name:
+    full:
+      - c: American Dialect Society
+        o: orgName
+    short:
+      - c:
+        - c: ADS
+          o: abbr
+          h: title=American Dialect Society
+        o: orgName
+  website:
+    title:
+      - c: American Dialect Society
+        o: settlement
+    url: http://www.americandialect.org/
+amphetamine:
+  name:
+    full:
+      - c:
+        - c: amphetamine
+          o: addName
+          a: type=style
+        o: persName
+    short:
+      - c:
+        - c: A
+          o: addName
+          a: type=nick
+        o: persName
+  social:
+    federated: true
+    handle: '@amphetamine@social.wxcafe.net'
+    title:
+      - c: Mastocafé
+        o: settlement
+    url: https://social.wxcafe.net/@amphetamine
+bea:
+  name:
+    full:
+      - c:
+        - c: beatrix
+          o: forename
+        -
+        - c: bitrot
+          o: surname
+        o: persName
+    short:
+      - c:
+        - c: bea
+          o: forename
+        o: persName
+  social:
+    federated: true
+    handle: '@bea@glitch.social'
+    title:
+      - c: G L I T C H
+        o: settlement
+    url: https://glitch.social/@bea
+cybremonday:
+  name:
+    full:
+      - c:
+        - c: CYBREMONDAY
+          o: hi
+          a: rend=highlight
+        o: title
+        a: level=j
+      -
+      - staff
+    short:
+      - c:
+        - c: CYBREMONDAY
+          o: hi
+          a: rend=highlight
+        o: title
+        a: level=j
+  uri: https://cybremonday.net/
+  website:
+    title:
+      - c:
+        - c: CYBREMONDAY
+          o: hi
+          a: rend=highlight
+        o: title
+        a: level=j
+    url: https://cybremonday.net/
+god:
+  name:
+    full:
+      - v: the Lord
+        o: addName
+    short:
+      - v: God
+        o: roleName
+kibi:
+  name:
+    full:
+      - c:
+        - c: kibigo!
+          o: addName
+          a: type=style
+        o: persName
+    short:
+      - c:
+        - c: kibi!
+          o: addName
+          a: type=style
+        o: persName
+  social:
+    federated: true
+    handle: '@kibi@glitch.social'
+    title:
+      - c: G L I T C H
+        o: settlement
+    url: https://glitch.social/@kibi
+  website:
+    title: Gô ~
+    url: http://marrus.xyz/
+KitRedgrave:
+  name:
+    full:
+      - c:
+        - c: Kit
+          o: forename
+        -
+        - c: Redgrave
+          o: surname
+        o: persName
+    short:
+      - c:
+        - c: Kit
+          o: forename
+        o: persName
+  social:
+    federated: true
+    handle: '@KitRedgrave@glitch.social'
+    title:
+      - c: G L I T C H
+        o: settlement
+    url: https://glitch.social/@KitRedgrave
+realDonaldTrump:
+  name:
+    full:
+      - c:
+        - c: Donald
+          o: forename
+        -
+        - c: Trump
+          o: surname
+        o: persName
+    short:
+      - c:
+        - c: Trump
+          o: surname
+shel:
+  name:
+    full:
+      - c:
+        - c: Shel
+          o: forename
+        -
+        - c: Raphen
+          o: surname
+        o: persName
+    short:
+      - c:
+        - c: Shel
+          o: forename
+        o: persName
+  social:
+    federated: true
+    handle: '@shel@cybre.space'
+    title:
+      - c: Cybrespace
+        o: settlement
+    url: https://cybre.space/@shel
+  website:
+    title:
+      - c: DataPup
+        o: settlement
+    url: https://datapup.info/

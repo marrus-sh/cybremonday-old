@@ -1,0 +1,22 @@
+{% assign issue = include.issue %}<entry{% if issue.lang %} xml:lang="{{ issue.lang }}"{% endif %} xmlns="http://www.w3.org/2005/Atom" xmlns:thr="http://purl.org/syndication/thread/1.0" xmlns:activity="http://activitystrea.ms/spec/1.0/" xmlns:poco="http://portablecontacts.net/spec/1.0" xmlns:media="http://purl.org/syndication/atommedia" xmlns:ostatus="http://ostatus.org/schema/1.0" xmlns:mastodon="http://mastodon.social/schema/1.0">{% capture catalogue_no %}{% include catalogue for=issue %}{% endcapture %}{% capture title %}{% include _ v=issue.title %}{% endcapture %}{% assign title = title | default: catalogue_no %}
+	<activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+	<activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+	<title type="html">{{ title | xml_escape }}</title>
+	<link href={% include feed/absolute url=issue.url %} rel="alternate" type="text/html" title={% assign title_str = title | strip_html %}{% include attr value=title_str %} />
+	<published>{{ issue.date | date_to_xmlschema }}</published>
+	<updated>{{ issue.last_modified_at | default: issue.date | date_to_xmlschema }}</updated>
+	<id>{{ issue.url | absolute_url | xml_escape }}</id>
+{% assign author = issue.author | default: issue.authors[0] | default: site.author | default: site.authors[0] %}{% if author %}
+{% include feed/author.atom author=author %}
+{% endif %}{% if issue.category %}
+	<category term={% include attr value=post.category %} />{% endif %}{% for category in issue.categories %}
+	<category term={% include attr value=category %} />{% endfor %}{% for category in issue.tags %}
+	<category term={% include attr value=category %} />{% endfor %}{% capture content %}{% if issue.warnings.size > 2 %}{% for warning in issue.warnings %}{% if forloop.last %}and {% endif %}{% if forloop.first %}{% include _ v=warning u=1 %}{% else %}{% include _ v=warning %}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% elsif issue.warnings.size > 0 %}{% include _ v=issue.warnings.first u=1 %}{% if issue.warnings.size > 1 %} and {% include _ v=issue.warnings.last %}{% endif %}{% elsif issue.summary.size > 0 %}{% include _ v=issue.summary %}{% endif %}{% endcapture %}{% assign content = content | normalize_whitespace | strip | xml_escape %}{% if content.size > 0 %}
+	<summary type="html">{{ content }}</summary>{% endif %}{% assign cvrpath = catalogue_no | prepend: "/cvr/" | append: ".png" %}{% capture image %}{% include url for=cvrpath absolute=true %}{% endcapture %}{% if image.size > 0 %}
+	<link rel="enclosure" type="image/png" href={% include attr value=image %} />
+	<mrss:thumbnail xmlns:mrss="http://search.yahoo.com/mrss/" url={% include attr value=image %} />{% endif %}
+	<content type="html" xml:base={% include feed/absolute url=issue.url %}>{% capture content %}{% include content for=issue %}{% endcapture %}{{ content | normalize_whitespace | strip | xml_escape }}</content>
+	<link rel="mentioned" ostatus:object-type="http://activitystrea.ms/schema/1.0/collection" href="http://activityschema.org/collection/public" />
+	<mastodon:scope>public</mastodon:scope>
+</entry>
+{%- comment %}[Strip whitespace]{% endcomment -%}

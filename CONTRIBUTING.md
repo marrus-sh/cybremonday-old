@@ -1,11 +1,12 @@
 ---
 redirect_from:
 - /submit/
+layout:
 ---
 
-#  CONTRIBUTING  #
+#  CONTRIBUTING
 
-<cite class="monogr"><b class="cybremonday">CYBREMONDAY</b></cite> accepts contributions!!
+<cite class="monogr"><b class="fill">CYBREMONDAY</b></cite> accepts contributions!!
 We're entirely volunteer&#x2010;run, so submissions will not be directly compensated.
 However, if you have an account through <u class="orgName">LiberaPay</u>/<u class="orgName">Patreon</u>/etc, we'll be happy to pass it along to readers.
 
@@ -14,22 +15,22 @@ Guidelines for contributions and other information follows.
 
 ##  Goals and Scope  ##
 
- +  The goal of <cite class="monogr"><b class="cybremonday">CYBREMONDAY</b></cite> is to shed light on critical queer perspectives, experiences, and culture, in networked digital space.
+ +  The goal of <cite class="monogr"><b class="fill">CYBREMONDAY</b></cite> is to shed light on critical queer perspectives, experiences, and culture, in networked digital space.
 
- +  The goal of <cite class="monogr"><b class="cybremonday">CYBREMONDAY</b></cite> is *not* to shed light (critical or otherwise) on mainstream, straight, normative perspectives.
+ +  The goal of <cite class="monogr"><b class="fill">CYBREMONDAY</b></cite> is *not* to shed light (critical or otherwise) on mainstream, straight, normative perspectives.
     There is a lot to be said about heteronermativity et al.
     This is not the zine for it.
     Pure critiques of what mainstream corporation <var>Y</var> or straight person <var>W</var> is saying or doing will probably not fly.
     Make queer people your focus.
 
- +  Part of the ambition of <cite class="monogr"><b class="cybremonday">CYBREMONDAY</b></cite> is the proliferation of indie (queer) digital press, especially on <u class="placeName">Mastodon</u>.
+ +  Part of the ambition of <cite class="monogr"><b class="fill">CYBREMONDAY</b></cite> is the proliferation of indie (queer) digital press, especially on <u class="placeName">Mastodon</u>.
     That means we want people other than just us pushing out zines and issues.
     If we decide that your piece isn't right for our zine:
     That's okay—go start your own!
     (Seriously!!
     We'll help!!)
 
- +  <cite class="monogr"><b class="cybremonday">CYBREMONDAY</b></cite> currently only accepts submissions in <u class="lang">English</u>, because that's all we're equipped to edit properly.
+ +  <cite class="monogr"><b class="fill">CYBREMONDAY</b></cite> currently only accepts submissions in <u class="lang">English</u>, because that's all we're equipped to edit properly.
 
 ##  General Submission Info  ##
 
@@ -68,7 +69,7 @@ Guidelines for contributions and other information follows.
 
  +  We will work with you to help edit and polish your guest issue (including both its content and its layout/design), but (within reason) final decisions lie with you.
 
- +  It's okay for guest issues to stray a little bit from the overall <cite class="monogr"><b class="cybremonday">CYBREMONDAY</b></cite> focus, but try to keep them within the same ballpark (or else publish them elsewhere lol).
+ +  It's okay for guest issues to stray a little bit from the overall <cite class="monogr"><b class="fill">CYBREMONDAY</b></cite> focus, but try to keep them within the same ballpark (or else publish them elsewhere lol).
 
 ##  Poëtry  ##
 
@@ -86,7 +87,7 @@ Guidelines for contributions and other information follows.
 
  +  Prose (longform) content should target around 700 words, although this isn't a strict requirement.
 
- +  <cite class="monogr"><b class="cybremonday">CYBREMONDAY</b></cite> prose pieces are heavily marked up before publication, but you aren't expected to do this all yourself.
+ +  <cite class="monogr"><b class="fill">CYBREMONDAY</b></cite> prose pieces are heavily marked up before publication, but you aren't expected to do this all yourself.
     Mark what you think is important, and we'll take care of the rest.
 
  +  <u class="name">Markdown</u> or <u class="name">HTML</u> formats are preferred for prose content, although you can also submit as <u class="name">RTF</u> if that is easier.

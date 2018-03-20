@@ -1,0 +1,10 @@
+{% comment %}
+Includes a name from our contacts info.
+
+Usage:
+  {% include name of="short" %}
+  {% include name of="plain short" plain=1 %}
+  {% include name of="full name" full=1 %}
+  {% include name of="plain full name" full=1 plain=1 %}
+{% endcomment %}{% assign contact = site.data.contacts[include.of] | default: include.of %}{% if include.full %}{% assign name = contact.name.full | default: contact.name | default: contact %}{% else %}{% assign name = contact.name.short | default: contact.name.full | default: contact.name | default: contact %}{% endif %}{% if name %}{% include _ p=include.plain c=name %}{% endif %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

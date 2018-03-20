@@ -1,0 +1,9 @@
+<!DoCtYpE HTML>{% assign label = page.title | default: "posts" %}{% assign collection = site.collections | where: "label", label | first %}{% assign issue = collection.docs | sort: "date" | last %}{% assign url = issue.url | default: "/" | absolute_url %}
+<HTML Lang={% include attr value="en" %}>
+<META Charset={% include attr value="utf-8" %}>
+<TITLE>Redirecting…</TITLE>{% if collection %}{% assign feedpath = label | prepend: "/feed/" | append: ".atom" %}{% capture feed %}{% include url for=feedpath absolute=true %}{% endcapture %}{% if feed.size > 0 %}
+<LINK rel={% include attr value="alternate" %} Href={% include attr value=feed %} Type={% include attr value="application/atom+xml" %}>{% endif %}{% endif %}
+<META Http-Equiv={% include attr value="refresh" %} Content={% capture content %}0; url={{ url }}{% endcapture %}{% include attr value=content %}>
+<H1>Redirecting…</H1>
+<A Href={% include attr value=url %}>Click here if you are not redirected.</a>
+<SCRIPT>location="{{ url }}"</SCRIPT>

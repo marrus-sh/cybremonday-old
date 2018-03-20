@@ -1,0 +1,8 @@
+<DETAILS Id={% include attr value="transcript" %} Open>{% assign transcript = include.transcript | default: page.transcript %}
+	<SUMMARY><H4>Transcript</H4></SUMMARY>
+	<DL>{% for item in transcript %}
+		<DT><TIME>{{ item[0] }}</TIME>
+		<DD>{{ item[1] }}{% endfor %}
+	</DL>
+</DETAILS>
+{%- comment %}[Strip whitespace]{% endcomment -%}

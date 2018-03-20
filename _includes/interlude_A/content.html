@@ -1,0 +1,6 @@
+{% assign this = include.for | default: page %}{% if this.audio %}{% assign src = this.audio | prepend: "ntr/" %}{% capture src %}{% include url for=src %}{% endcapture %}<AUDIO Id={% include attr value="audio" %} Src={% include attr value=src %} Controls></AUDIO>
+{% endif %}{% if this.transcript %}
+{% include interlude_A/transcript.html transcript=this.transcript %}
+{% endif %}
+{{ this.content }}
+{%- comment %}[Strip whitespace]{% endcomment -%}

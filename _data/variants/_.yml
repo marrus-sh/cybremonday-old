@@ -1,0 +1,46 @@
+#  CYBREMONDAY Variant Lexicon
+
+#  Adds the following typographical marks:
+
+#  + diæreses
+#  + æ/œ letters for common spellings
+#  + grave accents on non-silent final e
+
+#  Also makes the following spelling changes:
+
+#  + -ve becomes -v unless the e is lengthening a vowel
+#  + y never changes to i on suffixation  #  Except -ily and -ied for now
+#  + silent e is dropped on suffixation when the preceding consonant is
+#    changed to an onset, and kept otherwise
+#  + a diæresis is written on the preceding letter when an e which softens a consonant is dropped
+#  + a diæresis is written over the r/l when the e in -re/-le (with the
+#    sense -er/-el) is dropped
+#  + silent e is never dropped before y
+#  + silent e is not added for -d, a · is used in its place  #  Except not right now
+#  + single, final, stressed consonants other than x/y are doubled
+#    when a suffix is added to change them into an onset
+#  + -ll is written -l  #  Except when stressed, right now
+#  + -all (and -oll when it makes the same sound) is written -ôl  #  Except not right now
+#  + the l in -al is never doubled to -all
+#  + -ff is written -f  #  Except not right now
+#  + -ss is written -s except for -oss  #  Except not right now
+#  + -ette is written -et
+#  + ck is the double form of c, and only written when used as such  #  Except not right now
+#  + xc is the double form of x
+#  + when a suffixal -al is followed by -ly, it is dropped
+#  + ch doubles to tch, sh doubles to sch, th doubles to dth, and this
+#    is reflected in the spellings  #  Except not right now
+#  + single, final ch is always doubled after single vowels except when
+#    it produces /x/  #  Except not right now
+#  + ô is used to signify /ɔː/ (as distinct from /ɒ/) except in the
+#    suffix -al or when tradition dictates a spelling of aw/au  #  Except not right now
+#  + when a vowel with a /j/ sound (long i or u) combines with the
+#    preceding consonant to create ch/sh/zh, a circumflex is written
+
+#  And the following abbreviations:  #  Except not right now
+
+#  + -ough is simplified as -o, -uf, or -ôf, depending. -ought and
+#    -aught are simplified -ôt.
+#  ##  QUESTIONABLE : + -ight is simplified as -ite
+#  + -eight is simplified as -eyt
+

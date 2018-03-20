@@ -1,2 +1,0 @@
-<time {% if include.id %}{% assign id = include.id | replace: " ", "_" %}id={% include attr.html text=id kramdown=include.kramdown %} {% endif %}{% if include.kramdown %}datetime="{{ include.datetime | date: "%Y-%m-%d" }}" title="{{ include.datetime | date: "%Y-%m-%d" }}"{% else %}datetime={{ include.datetime | date: "%Y-%m-%d" }} title={{ include.datetime | date: "%Y-%m-%d" }}{% endif %}>{% if include.content %}{{ include.content }}{% else %}{{ include.datetime | date: "%d %B %Y" }}{% endif %}</time>
-{%- comment %}[Strip whitespace]{% endcomment -%}

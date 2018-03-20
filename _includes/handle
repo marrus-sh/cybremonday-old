@@ -1,0 +1,4 @@
+{% comment %}
+Creates a handle which links to an external page.
+{% endcomment %}{% assign social = include.social | default: site.data.contacts[include.of].social %}{% if include.label and social.title %}{% if social.federated %}{% assign tag = "settlement" %}{% else %}{% assign tag = "country" %}{% endif %}{% capture content %}{% include _ o=tag c=social.title %}{% endcapture %}{% else %}{% capture content %}{% include _ o="ident" c=social.handle a="type=handle" %}{% endcapture %}{% endif %}{% if social.title %}{% assign hatts = "title=" | append: social.handle | append: " | " | append: social.title %}{% else %}{% assign hatts = "title=" | append: social.handle %}{% endif %}{% if include.h %}{% assign hatts = hatts | append: "`" | append: include.h %}{% endif %}{% include link href=social.url content=content a=include.a h=include.h %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

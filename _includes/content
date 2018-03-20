@@ -1,0 +1,4 @@
+{% comment %}
+Inserts the appropriate content for the given layout.
+{% endcomment %}{% assign this = include.for | default: page %}{% assign testcontent = this.content | strip %}{% capture incl %}{% case this.layout %}{% when "layout_A" %}layout_A/content{% when "playlist_A" %}playlist_A/content.html{% when "interlude_A" %}interlude_A/content.html{% endcase %}{% endcapture %}{% if incl.size > 0 %}{% include {{ incl }} for=this %}{% elsif testcontent.size > 0 %}{{ this.content }}{% else %}{% include text for=this %}{% endif %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

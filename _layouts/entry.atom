@@ -1,0 +1,5 @@
+---
+variants: none
+---
+<?xml version="1.0" encoding="utf-8"?>{% assign label = page.title | default: "posts" %}{% assign collection = site.collections | where: "label", label | first %}{% if collection.output %}{% assign issue = collection.docs | where: "vol_no", page.vol_no | where: "issue_no", page.issue_no %}
+{% include feed/entry.atom issue=issue %}

@@ -1,0 +1,12 @@
+{% assign this = include.for | default: page %}{% if this.warnings and this.warnings.size > 0 %}{% include _ o="note" a="xml:id=warnings" %}
+	{% include _ o="abbr" c="CW" t="Content Warning" %}: {% if this.warnings.size > 2 %}{% assign warnmax = this.warnings.size | minus: 1 %}{% for warnno in (0..warnmax) %}{% assign warning = this.warnings[warnno] %}{% if warnno == warnmax %}
+	{% include _ v="and" %}{% endif %}{% if warnno == 0 %}
+	{% include _ v=warning u=1 %}{% else %}
+	{% include _ v=warning %}{% endif %}{% if warnno != warnmax %}, {% endif %}{% endfor %}{% else %}
+	{% include _ v=this.warnings.first u=1 %}{% if this.warnings.size > 1 %}
+	{% include _ v="and" %}
+	{% include _ v=this.warnings.last %}{% endif %}{% endif %}.
+{% include _ x="note" %}{% endif %}
+{% capture catalogue_no %}{% include catalogue for=this %}{% endcapture %}
+{% include text of=catalogue_no %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

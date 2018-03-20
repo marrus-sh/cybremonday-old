@@ -1,0 +1,5 @@
+{% comment %}
+Formats a list as a comma-separated attribute value, wrapped in quotes
+if necessary.
+{% endcomment %}{% if include.values.size > 1 %}{% assign valmax = include.values.size | minus: 1 %}{% capture list %}{% for valno in (0..valmax) %}{{ include.values[valno] | strip_html | replace ",", ";" }}{% unless valno == valmax %},{% endunless %}{% endfor %}{% endcapture %}{% include attr value=list %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

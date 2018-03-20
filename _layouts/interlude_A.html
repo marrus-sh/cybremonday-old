@@ -1,0 +1,113 @@
+<!DOCTYPE html>{% assign attrs = page.lang | default: site.lang | default: "en" | prepend: "xml:lang=" %}
+{% include _ o="TEI" a=attrs %}{% assign SERIES = page.series | default: site.title | default: site.github.repository_name %}
+
+<!--  [META]  -->
+{% include meta.html %}
+<!--  [/META]  -->
+
+<STYLE Type={% include attr value="text/css" %}>
+{% capture styling %}
+	$bg_colour: {% if page.hex.light %}{{ page.hex.title | strip_html | default: '#faf8f7' }}{% else %}{{ page.hex.title | strip_html | default: '#1f1a14' }}{% endif %};
+	$fg_colour: {% if page.hex.light %}#1f1a14{% else %}#faf8f7{% endif %};
+
+	HTML {
+		Display: block;
+		Position: static;
+		Margin: 0;
+		Border: none;
+		Padding: 0;
+		Color: $fg_colour;
+		Background: $bg_colour;
+		Font: normal 1em / 1.5 serif;
+	}
+	BODY {
+		Display: block;
+		Position: static;
+		Margin: 0;
+		Border: none;
+		Padding: 0;
+	}
+	#content {
+		Display: block;
+		Position: static;
+		Margin: auto;
+		Border: none;
+		Padding: 0;
+		Max-Width: 31em;
+
+		#article {
+			#title {
+
+			}
+			#audio {
+				Display: block;
+				Margin: 1.5em 0;
+				Border: none;
+				Padding: 0;
+				Width: 100%;
+			}
+			#transcript {
+				Display: block;
+				Position: static;
+				Margin: 1.875em 0;
+				Border: thin currentColor solid;
+				Padding: .9375em;
+				Font: normal .8em / 1.875 serif;
+
+				SUMMARY {
+					Display: list-item;
+					Position: static;
+					Margin: 0;
+					Border: none;
+					Padding: 0;
+					List-Style-Position: inside;
+					Direction: rtl;
+					Font: normal 1.25em / 1.5 serif;
+					Text-Align: center;
+
+					H4 {
+						Display: inline;
+						Position: static;
+						Margin: 0;
+						Border: none;
+						Padding: 0;
+						Font: inherit;
+						Direction: ltr;
+						Unicode-Bidi: embed;
+						Unicode-Bidi: isolate;
+					}
+				}
+				&[Open] SUMMARY {
+					Margin-Bottom: .5em;
+					Border-Bottom: medium currentColor double;
+					Padding-Bottom: .5em;
+				}
+			}
+			H3 {
+				Display: block;
+				Position: static;
+				Margin: .5em auto;
+				Border: none;
+				Padding: 0;
+				Font: bold 1.5em / 1 serif;
+				Text-Align: center;
+				Text-Decoration: underline;
+
+				&::AFTER { Content: ":" }
+			}
+		}
+	}
+	{% include corefmt.scss %}
+{% endcapture %}{{ styling | scssify }}</STYLE>
+
+{% include _ o="text" %}
+	{% include _ o="front" %}
+		{% include _ o="titlePage" %}
+			{% capture content %}{{ SERIES }}{% if page.title %}: {{ page.title }}{% endif %}{% endcapture %}{% include _ o="docTitle" c=content %}
+			{% capture content %}The Week of {% include date datetime=page.date %}{% endcapture %}{% include _ o="docDate" c=content %}
+		{% include _ x="titlePage" %}
+	{% include _ x="front" %}
+	{% include _ o="body" %}
+		{% include content %}
+	{% include _ x="body" %}
+{% include _ x = "text" %}

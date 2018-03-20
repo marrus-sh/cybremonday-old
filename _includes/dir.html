@@ -1,4 +1,4 @@
-<ul {% if include.id %}{% assign id = include.id | replace: " ", "_" %}id={% include attr.html text=id kramdown=include.kramdown %} {% endif %}class={% if include.kramdown %}"dir"{% else %}dir{% endif %}>{% for file in include.files %}
-	<li> <a href={{ assign path = file.path | relative_url }}{% include attr.html text=path kramdown=include.kramdown %}>{{ file.name }}</a>{% endfor %}
-</ul>
+{% assign ext = page.path | split: "." | last %}<UL {% if include.id %}{% assign id = include.id | replace: " ", "_" %}Id={% include attr value=id %} {% endif %}Class={% include attr value="dir" %}>{% for file in include.files %}
+	<LI> <A Href={% assign path = file.url | default: file.path | relative_url %}{% include attr value=path %}>{{ file.name }}</A>{% endfor %}{% if ext == "xml" or ext == "xhtml" %} </LI>{% endif %}
+</UL>
 {%- comment %}[Strip whitespace]{% endcomment -%}

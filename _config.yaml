@@ -1,128 +1,222 @@
 title: CYBREMONDAY
-author: CYBREMONDAY
+author: cybremonday
+publisher: cybremonday
 description: A casual webzine aimed at elucidating conversations and ideas, questioning existing narratives, and promoting discussion regarding life and culture in (cyber/cybre)space.
+license: https://www.gnu.org/licenses/gpl-3.0
 url: https://cybremonday.net/
 logo: /img/siri.png
+icon: /img/siri_small.png
 lang: en
 permalink: /:slug/
 timezone: US/Pacific
 markdown: kramdown
+excerpt_separator: ""
 collections:  #  Order matters!  Liquid in collections is parsed sequentially.
 
   #  Freeform content
-  CPLB:  #  CYBREMONDAY alternate playlists; freeform
+  CPLB:  #  CYBREPLAY alternate playlists; freeform
     output: true
-  CMBD:  #  CYBREMONDAY embedded content; freeform
+  CMBD:  #  CYBREMBED embedded content; freeform
+    output: true
+  CDSP:  #  CYBREDISPATCH
     output: true
   CGST:  #  CYBREMONDAY guest issues; freeform
     output: true
 
   #  Numbered content
   CHEX:  #  CYBREMONDAY hex colours; tracks CMON
-    output: false
-  CPLA:  #  CYBREMONDAY issue playlists; tracks CMON
+    output:
+  CPLA:  #  CYBREPLAY playlists; tracks CMON
     output: true
   CPRJ:  #  CYBREMONDAY featured projects; tracks CMON
-    output: true
+    output:
   CMON:  #  CYBREMONDAY original numbered issues; VVNN (V = Volume; N = Issue №)
+    output: true
+  CMON-r:  #  CYBREMONDAY regularized issues; tracks CMON
     output: true
   CNTR:  #  CYBREMONDAY interludes; tracks *previous* CMON
     output: true
+
 exclude:  #  LICENSE.txt does not give the license for the rendered content
   - Gemfile
   - Gemfile.lock
   - LICENSE.txt
-include:  #  Not handled by default by jekyll-optional-front-matter
-  - CONTRIBUTING.md
-  - README.md
 kramdown:
   smart_quotes: ["apos", "apos", "quot", "quot"]
 sass:
-  style: compressed
+  style: compact
 plugins:
   - jekyll-coffeescript
-  - jekyll-optional-front-matter
   - jekyll-redirect-from
-  - jekyll-seo-tag
-  - jekyll-titles-from-headings
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
     values:
-      author: CYBREMONDAY Staff
+      author: cybremonday
       layout: simple
-  -
-    scope:
+      license: https://creativecommons.org/licenses/by-sa/4.0/
+      publisher: cybremonday
+      excerpt: ""
+  - scope:
       path: bkg
     values:
       type: background
-  -
-    scope:
+  - scope:
       path: cvr
     values:
       type: cover
-  -
-    scope:
+  - scope:
+      path: feed
+    values:
+      layout: feed
+  - scope:
       path: img
     values:
       type: image
-  -
-    scope:
+  - scope:
+      path: ndx
+    values:
+      layout: index
+  - scope:
       path: ntr
     values:
       type: interlude
-  -
-    scope:
+  - scope:
+      path: ""
+      type: CDSP
+    values:
+      permalink: /:collection:name/
+      seo:
+        type: PublicationIssue
+      series:
+        - c: CYBREDISPATCH
+          o: hi
+          a: rend=highlight
+      description:
+        - Dispatches from the cybre
+        - .
+  - scope:
       path: ""
       type: CGST
     values:
-      permalink: "/:collection:name/"
+      permalink: /:collection:name/
       seo:
         type: PublicationIssue
-      series: CYBREMONDAY Guest Issue
+      series:
+        - c: CYBREMONDAY
+          o: hi
+          a: rend=highlight
+        -
+        - Guest Issue
+      description:
+        - A
+        -
+        - c: CYBREMONDAY
+          o: hi
+          a: rend=highlight
+        -
+        - guest issue
+        - .
   -
     scope:
       path: ""
       type: CMBD
     values:
-      permalink: "/:collection:name/"
-      seo:
+      permalink: /:collection:name/
+      schema:
         type: WebPage
-      series: CYBREMBED
+      series:
+        - c: CYBREMBED
+          o: hi
+          a: rend=highlight
+      description: ""
   -
     scope:
       path: ""
       type: CMON
     values:
-      permalink: "/:collection:name/"
-      seo:
+      permalink: /:collection:name/
+      schema:
         type: PublicationIssue
-      series: CYBREMONDAY
+      series:
+        - c: CYBREMONDAY
+          o: hi
+          a: rend=highlight
+  -
+    scope:
+      path: ""
+      type: CMON-r
+    values:
+      variants: none
+      permalink: /CMON:name-r/
+      schema:
+        type: PublicationIssue
+      series:
+        - c: CYBREMONDAY
+          o: hi
+          a: rend=highlight
+        -
+        - (
+        - regularized
+        - )
+      series_id: CMON
+      series_ext: r
+      title: ""
   -
     scope:
       path: ""
       type: CNTR
     values:
-      permalink: "/:collection:name/"
-      seo:
+      permalink: /:collection:name/
+      schema:
         type: RadioEpisode
-      series: CYBREINTERLUDE
+      series:
+        - c: CYBREMONDAY
+          o: hi
+          a: rend=highlight
+        -
+        - Interlude
   -
     scope:
       path: ""
       type: CPLA
     values:
-      permalink: "/:collection:name/"
-      seo:
+      permalink: /:collection:name/
+      schema:
         type: MusicPlaylist
-      series: CYBREPLAY
+      series:
+        - c: CYBREPLAY
+          o: hi
+          a: rend=highlight
+      description:
+        - A
+        -
+        - c: CYBREMONDAY
+          o: hi
+          a: rend=highlight
+        -
+        - accomanying playlist
+        - .
   -
     scope:
       path: ""
       type: CPLB
     values:
-      permalink: "/:collection:name/"
-      seo:
+      permalink: /:collection:name/
+      schema:
         type: MusicPlaylist
-      series: CYBREPLAY Guest Playlist
+      series:
+        - Guest
+        -
+        - c: CYBREPLAY
+          o: hi
+          a: rend=highlight
+      description:
+        - A
+        -
+        - c: CYBREMONDAY
+          o: hi
+          a: rend=highlight
+        -
+        - guest playlist
+        - .

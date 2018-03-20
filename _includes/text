@@ -1,0 +1,4 @@
+{% if include.of %}{% assign source = include.of %}{% else %}{% capture source %}{% include catalogue for=include.for %}{% endcapture %}{% endif %}{% if source.size > 0 %}<!--  [{{ source }}]  -->
+{% include {{ source | prepend: "texts/" | append: ".liquid" }} %}
+<!--  [/{{ source }}]  -->{% endif %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

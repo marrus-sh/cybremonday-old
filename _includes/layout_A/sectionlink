@@ -1,0 +1,2 @@
+{% assign ext = page.path | split: "." | last %}{% capture title %}{% include _ o="head|H3" c=include.title %}{% endcapture %}{% if ext != "tei" and include.id %}{% assign hash = include.id | replace: " ", "_" | prepend: "#" %}{% include link href=hash content=title a="subtype=sectionlink" %}{% else %}{{ title }}{% endif %}
+{%- comment %}[Strip whitespace]{% endcomment -%}

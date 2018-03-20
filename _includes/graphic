@@ -1,0 +1,4 @@
+{% comment %}
+Includes an image graphic.
+{% endcomment %}{% assign ext = page.path | split: "." | last %}{% assign attrs = include.url | prepend: "url=" %}{% if include.a %}{% assign attrs = attrs | append: "`" | append: include.a %}{% endif %}{% if include.desc %}{% assign hatts = include.desc | prepend: "alt=" %}{% else %}{% assign hatts = "" %}{% endif %}{% if include.h %}{% assign hatts = hatts | append: "`" | append: include.h %}{% endif %}{% include _ o="graphic" a=attrs h=hatts %}{% if ext == "tei" and include.desc %}{% include _ o="desc" c=include.desc %}{% endif %}{% include _ x="graphic" n=1 %}
+{%- comment %}[Strip whitespace]{% endcomment -%}
