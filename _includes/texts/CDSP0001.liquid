@@ -44,8 +44,8 @@
 	{% include _ v="which you can use to subscribe to new issues of your fav" %}
 	{% include name of="cybremonday" %}
 	{% include _ v="content" %}.
-	{% include _ v="There are feeds for" %}{% capture href %}{% include url for="/feed/CMON.atom" %}{% endcapture %}{% capture content %}{% include _ v=site.CMON.last.series %} {% include _ v="issues" %}{% endcapture %}
-	{% include link href=href content=content %},{% capture href %}{% include url for="/feed/CPLA.atom" %}{% endcapture %}{% capture content %}{% include _ v=site.CPLA.last.series %} {% include _ v="playlists" %}{% endcapture %}
+	{% include _ v="There are feeds for" %}{% capture href %}{% include url for="/feed/CMON.atom" %}{% endcapture %}{% assign coln = site.collections | where: "label", "CMON" | first %}{% capture content %}{% include _ o="title" a="level=s" c=coln.title %} {% include _ v="issues" %}{% endcapture %}
+	{% include link href=href content=content %},{% capture href %}{% include url for="/feed/CPLA.atom" %}{% endcapture %}{% assign coln = site.collections | where: "label", "CPLA" | first %}{% capture content %}{% include _ o="title" a="level=s" c=coln.title %} {% include _ v="playlists" %}{% endcapture %}
 	{% include link href=href content=content %},
 	{% include _ v="and" %},
 	{% include _ v="naturally" %},{% capture href %}{% include url for="/feed/CDSP.atom" %}{% endcapture %}
@@ -126,7 +126,7 @@
 	{% include _ v="really" %}.)
 {% include _ x="p" n=1 %}
 {% include _ o="p" %}
-	{% include _ v="That's all I have for this " %}{% include _ o="title" a="level=s" c=site.CDSP.last.series %}—{% include _ v="hope to get some more content to y'all soon" %}.
+	{% include _ v="That's all I have for this " %}{% assign coln = site.collections | where: "label", "CDSP" | first %}{% include _ o="title" a="level=s" c=coln.title %}—{% include _ v="hope to get some more content to y'all soon" %}.
 	{% include _ v="Stay safe out there" %},
 	{% include _ v="and stay cybre " %}
 	😉.

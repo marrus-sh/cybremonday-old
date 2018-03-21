@@ -2,8 +2,8 @@
 title: CYBREMONDAY
 layout: title_A
 ---
-{% assign issue = site.CMON | sort: 'date' | last %}
-<A Id=portal Title="{% if issue.title %}{{ issue.title }} | {% endif %}{{ site.title | default: site.github.repository_name}}" Href="{{ issue.url | relative_url }}">
-	<H1 id=title>CYBREMONDAY</H1>
-	<P id=latest >→ Latest ←</P>
+{% assign issue = site.CMON | sort: 'date' | last %}{% assign title = issue.title %}{% assign series = site.collections.CMON.title | default: site.title | default: site.github.repository_name %}{% capture title %}{% include _ v=title p=1 %}{% endcapture %}{% capture title %}{% if title.size > 0 %}{{ title }} | {% include _ v=series p=1 %}{% else %}{% include _ v=series p=1 %}{% endif %}{% endcapture %}{% assign url = issue.url | relative_url %}
+<A Id=portal Title={% include attr value=title %} Href={% include attr value=url %}>
+	<H1 Id=title>CYBREMONDAY</H1>
+	<P Id=latest >→ Latest ←</P>
 </A>

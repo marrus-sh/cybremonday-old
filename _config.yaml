@@ -1,7 +1,10 @@
-title: CYBREMONDAY
+title: &title
+  - c: CYBREMONDAY
+    o: hi
+    a: rend=highlight
 author: cybremonday
 publisher: cybremonday
-description: A casual webzine aimed at elucidating conversations and ideas, questioning existing narratives, and promoting discussion regarding life and culture in (cyber/cybre)space.
+description: &description A casual webzine aimed at elucidating conversations and ideas, questioning existing narratives, and promoting discussion regarding life and culture in (cyber/cybre)space.
 license: https://www.gnu.org/licenses/gpl-3.0
 url: https://cybremonday.net
 logo: /img/siri.png
@@ -16,26 +19,93 @@ collections:  #  Order matters!  Liquid in collections is parsed sequentially.
   #  Freeform content
   CPLB:  #  CYBREPLAY alternate playlists; freeform
     output: true
+    title: &CPLB-title
+      - Guest
+      -
+      - c: CYBREPLAY
+        o: hi
+        a: rend=highlight
+    description:
+      - A
+      -
+      - *title
+      -
+      - guest playlist
+      - .
   CMBD:  #  CYBREMBED embedded content; freeform
     output: true
+    title: &CMBD-title
+      - c: CYBREMBED
+        o: hi
+        a: rend=highlight
+    description: &CMBD-description ""
   CDSP:  #  CYBREDISPATCH
     output: true
+    title: &CDSP-title
+      - c: CYBREDISPATCH
+        o: hi
+        a: rend=highlight
+    description: &CDSP-description
+      - Dispatches from the cybre
+      - .
   CGST:  #  CYBREMONDAY guest issues; freeform
     output: true
+    title: &CGST-title
+      - *title
+      -
+      - Guest Issue
+    description: &CGST-description
+      - A
+      -
+      - *title
+      -
+      - guest issue
+      - .
 
   #  Numbered content
   CHEX:  #  CYBREMONDAY hex colours; tracks CMON
     output:
   CPLA:  #  CYBREPLAY playlists; tracks CMON
     output: true
+    title: &CPLA-title
+      - c: CYBREPLAY
+        o: hi
+        a: rend=highlight
+    description:
+      - A
+      -
+      - *title
+      -
+      - playlist
+      - .
   CPRJ:  #  CYBREMONDAY featured projects; tracks CMON
     output:
   CMON:  #  CYBREMONDAY original numbered issues; VVNN (V = Volume; N = Issue №)
     output: true
+    title: *title
+    description: *description
   CMON-r:  #  CYBREMONDAY regularized issues; tracks CMON
     output: true
+    title: &CMON-r-title
+      - *title
+      -
+      - (
+      - regularized
+      - )
+    description: *description
   CNTR:  #  CYBREMONDAY interludes; tracks *previous* CMON
     output: true
+    title: &CNTR-title
+      - c: *title
+      -
+      - Interlude
+    description:
+      - A
+      -
+      - *title
+      -
+      - interlude
+      - .
 
 exclude:  #  LICENSE.txt does not give the license for the rendered content
   - Gemfile
@@ -92,13 +162,8 @@ defaults:
       permalink: /:collection:name/
       seo:
         type: PublicationIssue
-      series:
-        - c: CYBREDISPATCH
-          o: hi
-          a: rend=highlight
-      description:
-        - Dispatches from the cybre
-        - .
+      series: *CDSP-title
+      description: *CDSP-description
   - scope:
       path: ""
       type: CGST
@@ -106,46 +171,26 @@ defaults:
       permalink: /:collection:name/
       seo:
         type: PublicationIssue
-      series:
-        - c: CYBREMONDAY
-          o: hi
-          a: rend=highlight
-        -
-        - Guest Issue
-      description:
-        - A
-        -
-        - c: CYBREMONDAY
-          o: hi
-          a: rend=highlight
-        -
-        - guest issue
-        - .
-  -
-    scope:
+      series: *CGST-title
+      description: *CGST-description
+  - scope:
       path: ""
       type: CMBD
     values:
       permalink: /:collection:name/
       schema:
         type: WebPage
-      series:
-        - c: CYBREMBED
-          o: hi
-          a: rend=highlight
-      description: ""
-  -
-    scope:
+      series: *CMBD-title
+      description: *CMBD-description
+  - scope:
       path: ""
       type: CMON
     values:
       permalink: /:collection:name/
       schema:
         type: PublicationIssue
-      series:
-        - c: CYBREMONDAY
-          o: hi
-          a: rend=highlight
+      series: *title
+      description: *description
   -
     scope:
       path: ""
@@ -155,14 +200,8 @@ defaults:
       permalink: /CMON:name-r/
       schema:
         type: PublicationIssue
-      series:
-        - c: CYBREMONDAY
-          o: hi
-          a: rend=highlight
-        -
-        - (
-        - regularized
-        - )
+      series: *CMON-r-title
+      description: *description
       series_id: CMON
       series_ext: r
       title: ""
@@ -174,12 +213,8 @@ defaults:
       permalink: /:collection:name/
       schema:
         type: RadioEpisode
-      series:
-        - c: CYBREMONDAY
-          o: hi
-          a: rend=highlight
-        -
-        - Interlude
+      series: *CNTR-title
+      description: *CNTR-description
   -
     scope:
       path: ""
@@ -188,19 +223,8 @@ defaults:
       permalink: /:collection:name/
       schema:
         type: MusicPlaylist
-      series:
-        - c: CYBREPLAY
-          o: hi
-          a: rend=highlight
-      description:
-        - A
-        -
-        - c: CYBREMONDAY
-          o: hi
-          a: rend=highlight
-        -
-        - accomanying playlist
-        - .
+      series: *CPLA-title
+      description: *CPLA-description
   -
     scope:
       path: ""
@@ -209,18 +233,5 @@ defaults:
       permalink: /:collection:name/
       schema:
         type: MusicPlaylist
-      series:
-        - Guest
-        -
-        - c: CYBREPLAY
-          o: hi
-          a: rend=highlight
-      description:
-        - A
-        -
-        - c: CYBREMONDAY
-          o: hi
-          a: rend=highlight
-        -
-        - guest playlist
-        - .
+      series: *CPLB-title
+      description: *CPLB-description
