@@ -1,15 +1,15 @@
 {% if include.author %}<author>
 	<activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
-	<name>{% include name of=include.author full=1 plain=1 %}</name>{% if author.email %}
+	<name>{% include name of=include.author full=1 plain=1 %}</name>{% assign author = site.data.contacts[include.author] | default: include.author %}{% if author.email %}
 	<email>{{ author.email | strip_html | xml_escape }}</email>{% endif %}{% if author.uri %}
-	<uri>{{ author.uri | strip_html | xml_escape }}</uri>{% endif %}{% if author.summary %}
-	<summary type="html">{{ author.summary | xml_escape }}</summary>{% endif %}{% if author.website %}
-	<link rel="alternate" type="text/html" href={% include attr value=author.website %} />{% endif %}{% if author.avatar %}
-	<link rel="avatar" {% assign type = author.avatar.type | default: "image/png" %}type={% include attr value=type %}{% if author.avatar.width %} media:width={% include attr value=author.avatar.width %}{% endif %}{% if author.avatar.height %} media:height={% include attr value=author.avatar.height %}{% endif %} href={% include attr value=author.avatar.url %} />{% endif %}{% if author.header %}
+	<uri>{{ author.uri | strip_html | xml_escape }}</uri>{% endif %}{% if author.summary %}{% capture content %}{% include _ v=author.summary %}{% endcapture %}
+	<summary type="html">{{ content | xml_escape }}</summary>{% endif %}{% if author.website %}{% assign value = author.website.url | default: author.website %}
+	<link rel="alternate" type="text/html" href={% include attr value=value %} />{% endif %}{% if author.avatar %}
+	<link rel="avatar" {% assign type = author.avatar.type | default: "image/png" %}type={% include attr value=type %}{% if author.avatar.width %} media:width={% include attr value=author.avatar.width %}{% endif %}{% if author.avatar.height %} media:height={% include attr value=author.avatar.height %}{% endif %} {% assign href = author.avatar.url | default: author.avatar %}href={% include attr value=author.avatar.url %} />{% endif %}{% if author.header %}
 	<link rel="header" {% assign type = author.header.type | default: "image/png" %}type={% include attr value=type %}{% if author.header.width %} media:width={% include attr value=author.header.width %}{% endif %}{% if author.header.height %} media:height={% include attr value=author.header.height %}{% endif %} href={% include attr value=author.header.url %}/>{% endif %}{% if author.uri %}
-	<poco:preferredUsername>{{ include.author | strip_html | xml_escape }}</poco:preferredUsername>
-	<poco:displayName>{% include name of=include.author full=1 plain=1 %}</poco:displayName>
+	<poco:preferredUsername>{{ include.author | strip_html | xml_escape }}</poco:preferredUsername>{% capture content %}{% include _ v=author.summary p=1 %}{% endcapture %}
 	<poco:note>{{ author.summary | strip_html | xml_escape }}</poco:note>
+	<poco:displayName>{% include name of=include.author full=1 plain=1 %}</poco:displayName>
 	<mastodon:scope>public</mastodon:scope>{% endif %}
 </author>{% endif %}
 {%- comment %}[Strip whitespace]{% endcomment -%}

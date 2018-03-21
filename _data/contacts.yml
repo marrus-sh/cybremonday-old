@@ -58,6 +58,12 @@ bea:
         o: settlement
     url: https://glitch.social/@bea
 cybremonday:
+  avatar:
+    height: 420
+    type: image/png
+    url: https://cybremonday.net/img/siri.png
+    width: 420
+  email: press@cybremonday.net
   name:
     full:
       - c:
@@ -75,6 +81,7 @@ cybremonday:
           a: rend=highlight
         o: title
         a: level=j
+  summary: A casual webzine aimed at elucidating conversations and ideas, questioning existing narratives, and promoting discussion regarding life and culture in (cyber/cybre)space.
   uri: https://cybremonday.net/
   website:
     title:

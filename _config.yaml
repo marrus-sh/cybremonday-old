@@ -66,6 +66,10 @@ defaults:
     values:
       type: cover
   - scope:
+      path: entry
+    values:
+      layout: entry
+  - scope:
       path: feed
     values:
       layout: feed

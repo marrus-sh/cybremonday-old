@@ -1,6 +1,8 @@
 ---
-title: CGST
-permalink: /CGST----/feed.atom
+series_id: CGST
+permalink: /CGST----/feed.xml
 redirect_from:
 - /CGST/
+- /CGST----/feed.atom/index.html
+- /CGST----/feed.rss/index.html
 ---

@@ -5,8 +5,8 @@ variants: none
 This feed code is *inspired by* jekyll-feed's template code;
 available at https://github.com/jekyll/jekyll-feed/ under an MIT
 license.  But it's redesigned to work with collections.
-{% endcomment %}{% assign label = page.title | default: "posts" %}{% assign collection = site.collections | where: "label", label | first %}{% assign dir = label | prepend: "/" | append: "----/" %}
-<feed xmlns="http://www.w3.org/2005/Atom" xmlns:thr="http://purl.org/syndication/thread/1.0" xmlns:activity="http://activitystrea.ms/spec/1.0/" xmlns:poco="http://portablecontacts.net/spec/1.0" xmlns:media="http://purl.org/syndication/atommedia" xmlns:ostatus="http://ostatus.org/schema/1.0" xmlns:mastodon="http://mastodon.social/schema/1.0"{% if site.lang %} xml:lang="{{ site.lang }}"{% endif %} >
+{% endcomment %}{% assign label = page.series_id | default: "posts" %}{% assign collection = site.collections | where: "label", label | first %}{% capture dir %}{% include catalogue %}{% endcapture %}{% assign dir = dir | prepend: "/" | append: "/" %}
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:thr="http://purl.org/syndication/thread/1.0" xmlns:activity="http://activitystrea.ms/spec/1.0/" xmlns:poco="http://portablecontacts.net/spec/1.0" xmlns:media="http://purl.org/syndication/atommedia" xmlns:ostatus="http://ostatus.org/schema/1.0" xmlns:mastodon="http://mastodon.social/schema/1.0"{% if site.lang %} xml:lang="{{ site.lang }}"{% endif %}>
 	<generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
 	<link href={% include feed/absolute url=page.url %} rel="self" type="application/atom+xml" />
 	<link href={% include feed/absolute url=dir %} rel="alternate" type="text/html"{% if site.lang %} hreflang="{{ site.lang }}"{% endif %} />{% assign license = page.license | default: site.license %}{% if license.size > 0 %}

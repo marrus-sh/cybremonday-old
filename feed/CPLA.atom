@@ -1,6 +1,8 @@
 ---
-title: CPLA
-permalink: /CPLA----/feed.atom
+series_id: CPLA
+permalink: /CPLA----/feed.xml
 redirect_from:
 - /CPLA/
+- /CPLA----/feed.atom/index.html
+- /CPLA----/feed.rss/index.html
 ---

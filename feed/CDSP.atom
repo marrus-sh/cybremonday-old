@@ -1,6 +1,8 @@
 ---
-title: CDSP
-permalink: /CDSP----/feed.atom
+series_id: CDSP
+permalink: /CDSP----/feed.xml
 redirect_from:
 - /CDSP/
+- /CDSP----/feed.atom/index.html
+- /CDSP----/feed.rss/index.html
 ---

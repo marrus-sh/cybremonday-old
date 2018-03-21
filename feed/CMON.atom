@@ -1,6 +1,8 @@
 ---
-title: CMON
-permalink: /CMON----/feed.atom
+series_id: CMON
+permalink: /CMON----/feed.xml
 redirect_from:
 - /CMON/
+- /CMON----/feed.atom/index.html
+- /CMON----/feed.rss/index.html
 ---

@@ -1,5 +1,5 @@
 ---
 variants: none
 ---
-<?xml version="1.0" encoding="utf-8"?>{% assign label = page.title | default: "posts" %}{% assign collection = site.collections | where: "label", label | first %}{% if collection.output %}{% assign issue = collection.docs | where: "vol_no", page.vol_no | where: "issue_no", page.issue_no %}
-{% include feed/entry.atom issue=issue %}
+<?xml version="1.0" encoding="utf-8"?>{% assign label = page.series_id | default: "posts" %}{% assign collection = site.collections | where: "label", label | first %}{% if collection.output %}{% if page.vol_no and page.issue_no %}{% assign issue = collection.docs | where: "vol_no", page.vol_no | where: "issue_no", page.issue_no | last %}{% elsif page.issue_no %}{% assign issue = collection.docs | where: "issue_no", page.issue_no | last %}{% else %}{% assign issue = collection.docs | where: "slug", page.slug | last %}{% endif %}
+{% include feed/entry.atom issue=issue %}{% endif %}
