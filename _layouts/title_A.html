@@ -26,22 +26,23 @@ width: 480
 
 	BODY {
 		Display: block;
-		Position: static;
+		Position: relative;
 		Margin: 0;
 		Border: none;
 		Padding: 0;
-		Min-Width: 30em;
+		Min-Width: 33em;
 		Height: 100vh;
 		Color: {% if hex.light %}$fg_colour{% else %}$bg_colour{% endif %};
 		Background: $hex_colour;
 		Text-Align: center;
 	}
 
+	#news,
 	#portal {
 		Display: block;
 		Position: absolute;
 		Top: 0;
-		Bottom: 0;
+		Bottom: 1.5em;
 		Left: 0;
 		Right: 0;
 		Margin: auto;
@@ -56,12 +57,32 @@ width: 480
 		Text-Decoration: none;
 		Transition: outline-color .3s, outline-offset .3s, box-shadow .3s;
 
-		BODY:Hover > & {
+		&:Hover {
+			Outline-Color: {% if hex.light %}$fg_colour{% else %}$bg_colour{% endif %};
+			Outline-Offset: 0;
+			Box-Shadow: .25em .25em .75em 0 $fg_colour;
+		}
+	}
+
+	#news {
+		Top: 10.5em;
+		Bottom: 0;
+		Padding: 0 1.5em;
+		Width: 20em;
+		Height: 1.5em;
+		Font: normal 1em / 1.5 serif;
+		Text-Overflow: ellipsis;
+		White-Space: nowrap;
+		Overflow: hidden;
+	}
+
+	#news\.date { Font-Weight: bold }
+
+	#portal {
+		BODY:Hover > #news:Not(:Hover) ~ & {
 			Outline-Color: {% if hex.light %}$fg_colour{% else %}$bg_colour{% endif %};
 			Outline-Offset: 0;
 		}
-
-		&:hover { Box-Shadow: .25em .25em .75em 0 $fg_colour }
 	}
 
 	#title {

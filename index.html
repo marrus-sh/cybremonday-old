@@ -2,8 +2,9 @@
 title: CYBREMONDAY
 layout: title_A
 ---
-{% assign issue = site.CMON | sort: 'date' | last %}{% assign title = issue.title %}{% assign series = site.collections.CMON.title | default: site.title | default: site.github.repository_name %}{% capture title %}{% include _ v=title p=1 %}{% endcapture %}{% capture title %}{% if title.size > 0 %}{{ title }} | {% include _ v=series p=1 %}{% else %}{% include _ v=series p=1 %}{% endif %}{% endcapture %}{% assign url = issue.url | relative_url %}
+{% assign issue = site.CMON | sort: 'date' | last %}{% assign title = issue.title %}{% assign series = site.collections.CMON.title | default: site.title | default: site.github.repository_name %}{% capture title %}{% include _ v=title p=1 %}{% endcapture %}{% capture title %}{% if title.size > 0 %}{{ title }} | {% include _ v=series p=1 %}{% else %}{% include _ v=series p=1 %}{% endif %}{% endcapture %}{% assign url = issue.url | relative_url %}{% assign news = site.CDSP | sort: 'date' | last %}{% assign newsurl = news.url | relative_url %}
+{% if news.date > issue.date %}<A Id=news Href={% include attr value=newsurl %}>☞ Update: {% include date datetime=news.date a="xml:id=news.date" %} ☜</A>{% endif %}
 <A Id=portal Title={% include attr value=title %} Href={% include attr value=url %}>
 	<H1 Id=title>CYBREMONDAY</H1>
-	<P Id=latest >→ Latest ←</P>
+	<P Id=latest>→ Latest ←</P>
 </A>

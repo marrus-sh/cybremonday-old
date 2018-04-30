@@ -28,7 +28,7 @@ collections:  #  Order matters!  Liquid in collections is parsed sequentially.
     description:
       - A
       -
-      - *title
+      - c: *title
       -
       - guest playlist
       - .
@@ -51,13 +51,13 @@ collections:  #  Order matters!  Liquid in collections is parsed sequentially.
   CGST:  #  CYBREMONDAY guest issues; freeform
     output: true
     title: &CGST-title
-      - *title
+      - c: *title
       -
       - Guest Issue
     description: &CGST-description
       - A
       -
-      - *title
+      - c: *title
       -
       - guest issue
       - .
@@ -74,7 +74,7 @@ collections:  #  Order matters!  Liquid in collections is parsed sequentially.
     description:
       - A
       -
-      - *title
+      - c: *title
       -
       - playlist
       - .
@@ -87,7 +87,7 @@ collections:  #  Order matters!  Liquid in collections is parsed sequentially.
   CMON-r:  #  CYBREMONDAY regularized issues; tracks CMON
     output: true
     title: &CMON-r-title
-      - *title
+      - c: *title
       -
       - (
       - regularized
@@ -102,7 +102,7 @@ collections:  #  Order matters!  Liquid in collections is parsed sequentially.
     description:
       - A
       -
-      - *title
+      - c: *title
       -
       - interlude
       - .

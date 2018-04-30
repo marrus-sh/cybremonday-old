@@ -6,7 +6,7 @@ Core formatting for TEI/HTML Content.
 @namespace xml url("http://www.w3.org/XML/1998/namespace");
 {% else %}
 //  Initialize
-ADDRESS, ARTICLE, ASIDE, BODY, BLOCKQUOTE, CANVAS, CAPTION, DETAILS, DIV, DL, EMBED, FIGCAPTION, FIGURE, FOOTER, H1, H2, H3, H4, H5, H6, HR, HTML, IFRAME, IMG, MAIN, NAV, OBJECT, OL, P, PRE, PROGRESS, SECTION, SVG, TABLE, TBODY, TD, TFOOT, TH, THEAD, TR, VIDEO {
+ADDRESS, ARTICLE, ASIDE, BODY, BLOCKQUOTE, CANVAS, CAPTION, DETAILS, DIV, DD, DL, DT, EMBED, FIGCAPTION, FIGURE, FOOTER, H1, H2, H3, H4, H5, H6, HR, HTML, IFRAME, IMG, MAIN, NAV, OBJECT, OL, P, PRE, PROGRESS, SECTION, SVG, TABLE, TBODY, TD, TFOOT, TH, THEAD, TR, VIDEO {
 	Margin: initial;
 	Border: initial;
 	Padding: initial;
@@ -148,6 +148,16 @@ $logical: "*:Root:Root &";
 		Margin-Block-End: 0.83em;
 	}
 }
+%divf { @extend %logmargin;
+
+	Margin-Top: 0;
+	Margin-Bottom: 0.83em;
+
+	#{$logical} {
+		Margin-Block-Start: 0;
+		Margin-Block-End: 0.83em;
+	}
+}
 %figBorder {
 	Border-Style: solid double double solid;
 	Border-Color: currentColor;
@@ -244,8 +254,8 @@ $logical: "*:Root:Root &";
 //  Formatting
 %attn { Font-Weight: bolder }
 %brackets {
-	&::before { Content: "[" }
-	&::after { Content: "]" }
+	&::BEFORE { Content: "[" }
+	&::AFTER { Content: "]" }
 }
 %content { Content: "" }
 %ctext { Text-Align: center }
@@ -296,8 +306,8 @@ $logical: "*:Root:Root &";
 %ordinal { Font-Variant-Numeric: ordinal lining-nums }
 %pre { White-Space: pre }
 %quoted {
-	&::before { Content: open-quote }
-	&::after { Content: close-quote }
+	&::BEFORE { Content: open-quote }
+	&::AFTER { Content: close-quote }
 }
 %rtext {
 	Text-Align: right;
@@ -324,12 +334,12 @@ $logical: "*:Root:Root &";
 	@extend %font;
 	@extend %nonumeric;
 
-	&::before {
+	&::BEFORE {
 		@extend %block;
 		@extend %atmargin;
 		@extend %content;
 	}
-	&::after {
+	&::AFTER {
 		@extend %block;
 		@extend %abmargin;
 		@extend %content;
@@ -460,13 +470,13 @@ $logical: "*:Root:Root &";
 	@extend %offset;
 
 	& > {% include tag name="cit" %} { @extend %smaller }
-	& > {% include tag name="listBibl" %}:last-child { @extend %nooffset;
+	& > {% include tag name="listBibl" %}:Last-Child { @extend %nooffset;
 
 		{% include tag name="bibl" %} {
 			@extend %noindent;
 			@extend %smaller;
 
-			&::before {
+			&::BEFORE {
 				@extend %block;
 				@extend %preContent;
 
@@ -722,11 +732,19 @@ $logical: "*:Root:Root &";
 	@extend %offset;
 	@extend %small;
 }
-{% include tag name="item" %}{ @extend %litem }
+{% include tag name="item" %}{ @extend %litem;
+
+	{% include tag name="label" %} + & {
+		@extend %block;
+		@extend %padl;
+	}
+}
 {% include tag name="l" %}{ @extend %block }
 {% include tag name="label" %}{
 	@extend %inline;
 	@extend %attn;
+
+	{% include tag name="list" %} > & { @extend %block }
 }
 {% include tag name="lang" %}{
 	@extend %inline;
@@ -799,13 +817,14 @@ $logical: "*:Root:Root &";
 	@extend %div;
 	@extend %indent;
 
-	&::before {
+	&::BEFORE {
 		@extend %block;
 		@extend %preContent;
 		@extend %noindent;
 
 		Content: "¶";
 	}
+	{% include tag name="label" %} + {% include tag name="item" %} > &:First-Of-Type { @extend %divf }
 	& > * { @extend %noindent }
 }
 {% include tag name="performance" %} {
