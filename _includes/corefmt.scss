@@ -24,7 +24,7 @@ A, ABBR, B, CITE, CODE, DEL, DFN, EM, I, IMG, INS, KBD, LABEL, MARK, OUTPUT, Q, 
 }
 Q::BEFORE, Q::AFTER { Content: none }
 *:Root *[Hidden] { Display: none }
-*[Title]:Not([Title=""]):Not(.choice) {
+*[Title]:Not([Title=""]):Not(.choice):Not(.ref) {
 	Text-Decoration: underline;
 	Text-Decoration-Style: dotted;
 }
